@@ -1,16 +1,31 @@
 {
   "files": {
-    "main.css": "/reactPractice/static/css/main.166e22a9.css",
-    "main.js": "/reactPractice/static/js/main.b230ce2c.js",
+    "main.css": "/reactPractice/static/css/main.26702068.css",
+    "main.js": "/reactPractice/static/js/main.e4aba1bb.js",
     "static/js/787.28cb0dcd.chunk.js": "/reactPractice/static/js/787.28cb0dcd.chunk.js",
-    "static/media/logo.svg": "/reactPractice/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/productPage.jpg": "/reactPractice/static/media/productPage.5ed56a78f3f387079587.jpg",
+    "static/media/findString.jpg": "/reactPractice/static/media/findString.ee27e0c654cbd5a6f5b2.jpg",
+    "static/media/NumberGame.jpg": "/reactPractice/static/media/NumberGame.9c6ea61e7f876fc49727.jpg",
+    "static/media/weatherUpdate.jpg": "/reactPractice/static/media/weatherUpdate.c2db596a11b28952475f.jpg",
+    "static/media/developer.jpg": "/reactPractice/static/media/developer.18608cccafc1b60c992e.jpg",
+    "static/media/todoList.jpg": "/reactPractice/static/media/todoList.37cbc84d96fdc4ca5c44.jpg",
+    "static/media/calculator.jpg": "/reactPractice/static/media/calculator.84897381ec421d82c3d2.jpg",
+    "static/media/sassIcon.svg": "/reactPractice/static/media/sassIcon.4f452f39442aa8395f8c11e772cec9db.svg",
+    "static/media/reactIcon.svg": "/reactPractice/static/media/reactIcon.ea8d7c26d9ce7bc5a6882779aa8cacdc.svg",
+    "static/media/vscodeIcon.svg": "/reactPractice/static/media/vscodeIcon.09d02691c8ec0c3b4204a4d5f2d7d8b4.svg",
+    "static/media/bootstrapIcon.svg": "/reactPractice/static/media/bootstrapIcon.ab5dc32f0211db2b3cadf965e6f1da66.svg",
+    "static/media/jsOfficialIcon.svg": "/reactPractice/static/media/jsOfficialIcon.f9d6615f624fd4d0da65fbf4ae5edf5c.svg",
+    "static/media/gitIcon.svg": "/reactPractice/static/media/gitIcon.fb2eda3501fb7c66c43993f361b75061.svg",
+    "static/media/githubIcon.svg": "/reactPractice/static/media/githubIcon.36dc0fbc093986dc6624f3ad8a37ab2a.svg",
     "index.html": "/reactPractice/index.html",
-    "main.166e22a9.css.map": "/reactPractice/static/css/main.166e22a9.css.map",
-    "main.b230ce2c.js.map": "/reactPractice/static/js/main.b230ce2c.js.map",
+    "static/media/cssIcon.svg": "/reactPractice/static/media/cssIcon.1dc1ff133b346eb946ede2b781ce69f8.svg",
+    "static/media/htmlIcon.svg": "/reactPractice/static/media/htmlIcon.b4f276884d6135db3f45c375dcc50b01.svg",
+    "main.26702068.css.map": "/reactPractice/static/css/main.26702068.css.map",
+    "main.e4aba1bb.js.map": "/reactPractice/static/js/main.e4aba1bb.js.map",
     "787.28cb0dcd.chunk.js.map": "/reactPractice/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.166e22a9.css",
-    "static/js/main.b230ce2c.js"
+    "static/css/main.26702068.css",
+    "static/js/main.e4aba1bb.js"
   ]
 }
