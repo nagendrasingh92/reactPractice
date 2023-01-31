@@ -1,0 +1,44 @@
+.sectionFive .contactDetails {
+    display: flex;
+    padding: 3vw 0;
+    border-bottom: 2px solid grey;
+    justify-content: flex-end;
+}
+
+.sectionFive .contactDetails .contact {
+    padding-left: 20px;
+}
+.sectionFive .contactDetails .contact i {
+    padding-left: 20px;
+}
+
+.sectionFive .footerWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw 0;
+}
+
+.sectionFive .footerWrap .footerLinks ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sectionFive .footerWrap .footerLinks ul li {
+    margin: 0px 2rem;
+    display: inline-block;
+}
+
+.sectionFive .footerWrap .footerLinks ul li a {
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #666666;
+    font-size: 1rem;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+
+.sectionFive .footerWrap .footerLinks ul li a:hover {
+    background: #13B0F5;
+}

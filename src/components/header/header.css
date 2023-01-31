@@ -1,3 +1,86 @@
-.navWrap{
-    background-color: gray;
+.sectionOne {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    position: relative;
+}
+
+ .sectionOne .logo {
+    color: #666666;
+    font-size: 20px;
+    padding: 0 100px;
+    font-weight: bold;
+}
+
+ .sectionOne .menu {
+    display: none;
+}
+
+ .sectionOne .linkWrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-right: 20px;
+}
+
+ .sectionOne .linkWrap .pannel ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ .sectionOne .linkWrap .pannel ul li {
+    margin: 0px 2rem;
+    display: inline-block;
+}
+
+ .sectionOne .linkWrap .pannel ul li a {
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #666666;
+    font-size: 1rem;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+
+ .sectionOne .linkWrap .pannel ul li a:hover {
+    background: #13B0F5;
+}
+
+ .sectionOne .linkWrap .directLink {
+    font-size: 1.7em;
+    display: flex;
+}
+
+ .sectionOne .linkWrap .directLink i {
+    color: #666666;
+    margin: 0 0.5rem;
+}
+
+@media (max-width: 768px) {
+     .sectionOne .menu {
+        display: block;
+    }
+
+     .sectionOne .linkWrap {
+        display: none;
+        width: 100%;
+        left: 0px;
+        right: 0px;
+        position: absolute;
+        top: 60px;
+        width: revert;
+        background: gray;
+        margin: 0;
+    }
+
+     .sectionOne .linkWrap .pannel ul {
+        flex-direction: column;
+    }
+
+     .sectionOne .linkWrap .pannel ul li a {
+        color: #fff;
+    }
 }
