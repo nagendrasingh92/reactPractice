@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Routes>
+      <Routes onUpdate={() => window.scrollTo(0, 0)}>
         <Route path="/" element={<Home />} />
         <Route path="/calculator" element={<Calculator />} />
         <Route path="/numberGame" element={<NumberGame />} />

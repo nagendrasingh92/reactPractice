@@ -1,0 +1,50 @@
+.weatherWrap {
+    text-align: center;
+    border-radius: 80px;
+    background-image: linear-gradient(109.6deg, rgba(156, 252, 248, 1) 11.2%, rgba(110, 123, 251, 1) 91.1%);
+    font-weight: bold;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+        0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    height: 30vw;
+    width: 20vw;
+    justify-content: center;
+    padding: 10vw;
+    margin: 10vw 25vw;
+}
+
+.weatherWrap .heading {
+    font-size: 30px;
+}
+
+.weatherWrap .container .inputWrap {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.weatherWrap .container .inputWrap .inputEle {
+    border-bottom: 1px solid black;
+}
+
+.weatherWrap .container .inputWrap .inputEle input {
+    background-color: transparent;
+    border: none;
+}
+
+
+.weatherWrap .container .weatherContainer .weatherEle {
+    padding: 2px;
+    margin: 20px;
+}
+
+.weatherWrap .container .inputWrap .searchBox {
+    background: linear-gradient(157deg, #9dbbd8 0%, #e5d3e6 99%);
+    border-radius: 50px;
+    transition: 56ms;
+    width: 80px;
+
+}
+
+.weatherWrap .container .inputWrap .searchBox:hover {
+    background: linear-gradient(157deg, #84b5e3 0%, #e789ec 99%);
+}
