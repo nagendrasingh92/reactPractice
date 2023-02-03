@@ -18,7 +18,7 @@ function Header() {
           <i className="fa-brands fa-github"></i>
           <i className="fa-brands fa-twitter"></i>
           <i className="fa-brands fa-linkedin"></i>
-          <i className="fa-solid fa-circle-half-stroke" onclick=""></i>
+          <i className="fa-solid fa-circle-half-stroke"></i>
         </div>
       </div>
     </div>

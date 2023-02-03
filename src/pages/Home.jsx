@@ -73,8 +73,8 @@ function Home() {
                                 <div><span>Tech Stack</span>"html, css, javaScript"</div>
                             </div>
                             <div className="cardFooter">
-                            <Link to="/calculator"><a href="/pages/calculator/calculator.html" target="_blank" alt="preview"><i className="fa-solid fa-link"></i>Live
-                                    Preview</a></Link>
+                                <Link to="/calculator"><i className="fa-solid fa-link"></i>Live
+                                    Preview</Link>
                                 <a href="" target="_blank"><i className="fa-brands fa-github" alt="view code"></i>View Code</a>
                             </div>
                         </div>
@@ -91,8 +91,8 @@ function Home() {
                                 <div><span>Tech Stack</span>"html, css javaScript"</div>
                             </div>
                             <div className="cardFooter">
-                            <Link to="/numberGame"><a href="/pages/numberGame/numberGame.html" target="_blank"><i className="fa-solid fa-link"></i>Live
-                                    Priview</a></Link>
+                                <Link to="/numberGame"><i className="fa-solid fa-link"></i>Live
+                                    Priview</Link>
                                 <a href="" target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
                             </div>
                         </div>
@@ -109,7 +109,7 @@ function Home() {
                                 <div><span>Tech Stack</span>"html, css javaScript"</div>
                             </div>
                             <div className="cardFooter">
-                            <Link to="/toDoLists"><a href="/pages/todolist/todoList.html" target="_blank"><i className="fa-solid fa-link"></i>Live Priview</a></Link>
+                                <Link to="/toDoLists"><i className="fa-solid fa-link"></i>Live Priview</Link>
                                 <a href="" target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
                             </div>
                         </div>
@@ -126,7 +126,7 @@ function Home() {
                                 <div><span>Tech Stack</span>"html, css javaScript"</div>
                             </div>
                             <div className="cardFooter">
-                                <Link to="/weather"><a href="/pages/weather/weather.html" target="_blank"><i className="fa-solid fa-link"></i>Live Priview</a></Link>
+                                <Link to="/weather"><i className="fa-solid fa-link"></i>Live Priview</Link>
 
                                 <a href="" target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
                             </div>
@@ -144,8 +144,8 @@ function Home() {
                                 <div><span>Tech Stack</span>"html, css javaScript"</div>
                             </div>
                             <div className="cardFooter">
-                            <Link to="/arrayOfObjects"><a href="/pages/arrayOfObjects/arrayOfObjects.html" target="_blank"><i className="fa-solid fa-link"></i>Live
-                                    Priview</a></Link>
+                                <Link to="/arrayOfObjects"><i className="fa-solid fa-link"></i>Live
+                                    Priview</Link>
                                 <a href="" target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
                             </div>
                         </div>
@@ -162,8 +162,8 @@ function Home() {
                                 <div><span>Tech Stack</span>"html, css javaScript"</div>
                             </div>
                             <div className="cardFooter">
-                            <Link to="/productPage"><a href="/pages/productPage/productPage.html" target="_blank"><i className="fa-solid fa-link"></i>Live
-                                    Priview</a></Link>
+                                <Link to="/productPage"><i className="fa-solid fa-link"></i>Live
+                                    Priview</Link>
                                 <a href="" target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
                             </div>
                         </div>
