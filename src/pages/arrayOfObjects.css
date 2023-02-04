@@ -1,3 +1,78 @@
-td,th{
+.tableWrap {
+	box-shadow: inset 0px 1px 0px 0px #010101;
+	margin: 20px;
+}
+
+.tableWrap .searchWrap input{
+	width: 40%;
+	margin: 5px;
+}
+
+
+.tableWrap .tableHeading {
+	background-color: rgb(96, 96, 227);
+	color: white;
+	padding: 10px;
+}
+
+.tableWrap .getBttnWrap{
+	text-align: center;
+}
+
+.tableWrap .getBttnWrap .getBttn {
+	box-shadow: inset 0px 1px 0px 0px #bbdaf7;
+	background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+	background-color: #79bbff;
+	border-radius: 6px;
+	border: 1px solid #84bbf3;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 6px 24px;
+}
+
+.tableWrap .getBttnWrap .getBttn:hover {
+	background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+	background-color: #378de5;
+}
+
+.tableWrap .arrayContent {
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.tableWrap .arrayContent .title{
+	text-align: left;
+}
+
+
+
+.tableWrap .arrayContent tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.tableWrap .arrayContent tr:hover {
+	background-color: #ddd;
+}
+
+.tableWrap .arrayContent th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+.tableWrap .arrayContent tr, .tableWrap .arrayContent td {
 	border: 1px solid black;
+	text-align: center;
+}
+
+.tableWrap .arrayContent th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #04AA6D;
+	color: white;
 }

@@ -8,7 +8,6 @@ function NumberGame() {
     const [data,setData] = useState(dataValue) 
 
     const handleMove = (index) => {
-        debugger;
         let dataValue = data[index]
         if(dataValue){
             setSelectedIndex(index)
