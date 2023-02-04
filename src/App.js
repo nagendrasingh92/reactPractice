@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Calculator from './pages/Calculator';
 import Weather from './pages/Weather';
 import NumberGame from './pages/NumberGame';
-import ToDoLists from './pages/ToDoLists';
+import TodoLists from './pages/TodoLists';
 import ArrayOfObjects from './pages/ArrayOfObjects';
 import ProductPage from './pages/ProductPage';
 
@@ -18,7 +18,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/calculator" element={<Calculator />} />
         <Route path="/numberGame" element={<NumberGame />} />
-        <Route path="/toDoLists" element={<ToDoLists />} />
+        <Route path="/todoLists" element={<TodoLists />} />
         <Route path="/arrayOfObjects" element={<ArrayOfObjects />} />
         <Route path="/weather" element={<Weather />} />
         <Route path="/productPage" element={<ProductPage />} />

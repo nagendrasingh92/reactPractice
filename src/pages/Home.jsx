@@ -75,7 +75,7 @@ function Home() {
                             <div className="cardFooter">
                                 <Link to="/calculator"><i className="fa-solid fa-link"></i>Live
                                     Preview</Link>
-                                <a href="" target="_blank"><i className="fa-brands fa-github" alt="view code"></i>View Code</a>
+                                <a  target="_blank"><i className="fa-brands fa-github" alt="view code"></i>View Code</a>
                             </div>
                         </div>
                     </div>
@@ -93,7 +93,7 @@ function Home() {
                             <div className="cardFooter">
                                 <Link to="/numberGame"><i className="fa-solid fa-link"></i>Live
                                     Priview</Link>
-                                <a href="" target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
+                                <a  target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
                             </div>
                         </div>
                     </div>
@@ -110,7 +110,7 @@ function Home() {
                             </div>
                             <div className="cardFooter">
                                 <Link to="/toDoLists"><i className="fa-solid fa-link"></i>Live Priview</Link>
-                                <a href="" target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
+                                <a  target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
                             </div>
                         </div>
                     </div>
@@ -128,7 +128,7 @@ function Home() {
                             <div className="cardFooter">
                                 <Link to="/weather"><i className="fa-solid fa-link"></i>Live Priview</Link>
 
-                                <a href="" target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
+                                <a  target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
                             </div>
                         </div>
                     </div>
@@ -146,7 +146,7 @@ function Home() {
                             <div className="cardFooter">
                                 <Link to="/arrayOfObjects"><i className="fa-solid fa-link"></i>Live
                                     Priview</Link>
-                                <a href="" target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
+                                <a  target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
                             </div>
                         </div>
                     </div>
@@ -164,7 +164,7 @@ function Home() {
                             <div className="cardFooter">
                                 <Link to="/productPage"><i className="fa-solid fa-link"></i>Live
                                     Priview</Link>
-                                <a href="" target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
+                                <a  target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
                             </div>
                         </div>
                     </div>

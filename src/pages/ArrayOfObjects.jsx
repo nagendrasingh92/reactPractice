@@ -3,31 +3,57 @@ import axios from 'axios';
 import './arrayOfObjects.css';
 
 function ArrayOfObjects() {
-    const [arrayEle, setarrayEle] = useState([]);
-    const [search, setSearch] = useState('');
-
-    const handleSearch = (event) => {
-        setSearch(event.target.value);
-    };
+    const [arrayEle, setArrayEle] = useState([]);
+    const [filterVal, setFilterVal] = useState('');
+    const [searchApiData, setSearchApiData] = useState([]);
 
     const arrayContainer = async () => {
         await axios.get(`https://jsonplaceholder.typicode.com/todos`)
             .then((res) => {
-                console.log('res', res)
-                setarrayEle(res.data)
+                setArrayEle(res.data)
+                setSearchApiData(res.data)
             });
     }
 
-    
+    console.log('hello')
+
+    const handleSearchValue = (event) => {
+        console.log("value", event.target.value)
+        
+        setFilterVal(event.target.value)
+    }
+
+    const handleFilter = () => {
+        if (filterVal === '') {
+            setArrayEle(searchApiData)
+        } else {
+            const filterResult = searchApiData.filter(item => item.title.toLowerCase().includes(filterVal.toLowerCase()))
+            setArrayEle(filterResult)
+        }
+    }
+
 
 
     return (
-        <div>
-            <div onClick={() => arrayContainer()}>Get data</div>
-            <label htmlFor="search">
-                Search by Task:
-                <input id="search" type="text" onClick={handleSearch} />
-            </label>
+        <div className='tableWrap'>
+            <div className='tableHeading'>
+                Get data from API.
+            </div>
+
+            <div className='getBttnWrap'>
+                <span>To load table click on </span><span className='getBttn' onClick={() => arrayContainer()}>Get Data</span>
+            </div>
+            <div className='searchWrap'>
+                <input
+                    placeholder='Search'
+                    className="searchBarInput"
+                    type="text"
+                    value={filterVal}
+                    onChange={(event) => handleSearchValue(event)} />
+                    <div className='searchBttn' onClick={() => handleFilter()}>
+                        Search
+                    </div>
+            </div>
 
             <table className='arrayContent'>
                 <thead>
@@ -42,9 +68,9 @@ function ArrayOfObjects() {
                     {
                         arrayEle.map((item, index) => {
                             return (<tr key={index}>
-                                <td>{item.userid}</td>
+                                <td>{item.userId}</td>
                                 <td>{item.id}</td>
-                                <td>{item.title}</td>
+                                <td className='title'>{item.title}</td>
                                 <td>{item.completed ? 'yes' : 'no'}</td>
                             </tr>)
                         }
