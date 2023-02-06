@@ -1,26 +1,77 @@
-import { useState } from 'react';
-import './todoLists.css';
+import { useState } from "react";
+import './todoLists.css'
 
-function ToDoLists() {
+function TodoLists() {
     const [inputTask, setInputTask] = useState('');
     const [taskContainer, setTaskContainer] = useState([]);
+    const [editTask, setEditTask] = useState('');
 
     const handleInput = (value) => {
-        console.log("value", value);
-
         setInputTask(value);
-        console.log("valuep", inputTask);
 
-    }
+    };
 
     const handleTask = () => {
-        if (inputTask){
-            setTaskContainer(inputTask)
+        if (inputTask) {
+            setTaskContainer((taskEleTemp) => {
+                return [...taskEleTemp, { id: Date.now(), title: inputTask, status: false, isEdit: false }];
+            });
+            setInputTask('');
         } else {
             alert('please enter task')
         }
-        console.log('array', taskContainer );
+    };
+
+    const deleteItem = (itemId) => {
+        console.log("id", itemId)
+        setTaskContainer((oldTask) => {
+            return oldTask.filter((item) => {
+                return item.id !== itemId;
+            });
+        });
+    };
+
+    const editItem = (id) => {
+        console.log("id edit", id);
+        let templist = [...taskContainer];
+        let updatedList = templist.map((item) => {
+            if (item.id === id) {
+                item.isEdit = true;
+                setEditTask(item.title)
+            }
+            return item;
+        })
+        setTaskContainer(updatedList)
     }
+
+    const handleEdit = (value) => {
+        setEditTask(value);
+    }
+
+    const saveItem = (id) => {
+        let templist = [...taskContainer];
+        let updatedList = templist.map((item) => {
+            if (item.id === id) {
+                item.isEdit = false;
+                item.title = editTask;
+            }
+            return item;
+        })
+        setTaskContainer(updatedList)
+    }
+
+    const cancelItem = (id) => {
+        let templist = [...taskContainer];
+        let updatedList = templist.map((item) => {
+            if (item.id === id) {
+                item.isEdit = false;
+            }
+            return item;
+        })
+        setTaskContainer(updatedList)
+    }
+
+
 
     return (
         <div className='todoListsPageWrap'>
@@ -33,15 +84,56 @@ function ToDoLists() {
                         onChange={(event) => handleInput(event.target.value)}
                     />
                 </div>
-
-
-                <div className='submitbttn' onClick={() => handleTask()}>
-                    Submit
+                <div
+                    className='submitBttn'
+                    onClick={() => handleTask()}>Submit
                 </div>
+            </div>
+            <div className="taskContainerWrap">
+                <ol>
+                    {taskContainer.map((item, index) => {
+                        return (
+                            <li key={index} className="taskRow">
+                                {!item.isEdit ? (
+                                    <>
+                                        <span>{item.title}</span>
+                                        <span
+                                            className="todoDelete"
+                                            onClick={() => deleteItem(item.id)}>Delete
+                                        </span>
+                                        <span
+                                            className="todoEdit"
+                                            onClick={() => editItem(item.id)}>Edit
+                                        </span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <input
+                                            value={editTask}
+                                            onChange={(event) => handleEdit(event.target.value)}
+                                        />
+                                        <span
+                                            className="save"
+                                            onClick={() => saveItem(item.id)}
+                                        >Save
+
+                                        </span>
+                                        <span
+                                            className="cancel"
+                                            onClick={() => cancelItem(item.id)}
+                                        >Cancel
+                                        </span>
+                                    </>
+                                )}
+                            </li>
+                        )
+                    }
+                    )}
+                </ol>
             </div>
         </div>
 
     )
 }
 
-export default ToDoLists;
+export default TodoLists;
