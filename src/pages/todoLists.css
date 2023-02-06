@@ -1,0 +1,41 @@
+.todoListsPageWrap {
+    background-image: linear-gradient(109.6deg, rgba(156, 252, 248, 1) 11.2%, rgba(110, 123, 251, 1) 91.1%);
+  font-weight: bold;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  margin: 10vw 25vw;
+  height: 20vw;
+  text-align: center;
+}
+
+.todoListsPageWrap .todoListsWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.todoListsPageWrap .todoListsWrap .submitBttn {
+    border: 2px solid red;
+    margin: 10px;
+    padding: 3px;
+}
+
+.todoListsPageWrap .taskContainerWrap .taskRow{
+    margin: 20px;
+}
+
+.todoListsPageWrap .taskContainerWrap .taskRow .todoDelete{
+    border: 2px solid red;
+    margin: 6px;
+    padding: 3px;
+
+}
+.todoListsPageWrap .taskContainerWrap .taskRow .todoEdit{
+    border: 2px solid red;
+    margin: 6px;
+    padding: 3px;
+
+}
+
