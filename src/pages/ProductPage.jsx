@@ -3,7 +3,7 @@ function ProductPage() {
         <div>
            Product page
         </div>
-
+ 
     )
 }
 
