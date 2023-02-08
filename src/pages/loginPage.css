@@ -1,0 +1,7 @@
+.loginPageWrap {
+
+}
+.loginPageWrap .pageContent {
+    display: flex;
+    flex-direction: column;
+}

@@ -4,7 +4,6 @@ import './todoLists.css'
 function TodoLists() {
     const [inputTask, setInputTask] = useState('');
     const [taskContainer, setTaskContainer] = useState([]);
-    const [editTask, setEditTask] = useState('');
 
     const handleInput = (value) => {
         setInputTask(value);
@@ -14,7 +13,7 @@ function TodoLists() {
     const handleTask = () => {
         if (inputTask) {
             setTaskContainer((taskEleTemp) => {
-                return [...taskEleTemp, { id: Date.now(), title: inputTask, status: false, isEdit: false }];
+                return [...taskEleTemp, { id: Date.now(), title: inputTask, status: false, isEdit: false, tempTitle: inputTask }];
             });
             setInputTask('');
         } else {
@@ -37,15 +36,23 @@ function TodoLists() {
         let updatedList = templist.map((item) => {
             if (item.id === id) {
                 item.isEdit = true;
-                setEditTask(item.title)
+                item.tempTitle = item.title;
             }
             return item;
         })
         setTaskContainer(updatedList)
     }
 
-    const handleEdit = (value) => {
-        setEditTask(value);
+    const handleEdit = (id, value) => {
+        //setEditTask(value);
+        let templist = [...taskContainer];
+        let updatedList = templist.map((item) => {
+            if (item.id === id) {
+                item.tempTitle = value;
+            }
+            return item;
+        })
+        setTaskContainer(updatedList)
     }
 
     const saveItem = (id) => {
@@ -53,7 +60,7 @@ function TodoLists() {
         let updatedList = templist.map((item) => {
             if (item.id === id) {
                 item.isEdit = false;
-                item.title = editTask;
+                item.title = item.tempTitle;
             }
             return item;
         })
@@ -109,8 +116,8 @@ function TodoLists() {
                                 ) : (
                                     <>
                                         <input
-                                            value={editTask}
-                                            onChange={(event) => handleEdit(event.target.value)}
+                                            value={item.tempTitle}
+                                            onChange={(event) => handleEdit(item.id, event.target.value)}
                                         />
                                         <span
                                             className="save"

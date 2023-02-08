@@ -19,6 +19,66 @@ import productPage from "../assets/image/productPage.jpg"
 
 
 function Home() {
+
+    const cardArray
+        =
+        [{
+            id: '1',
+            src: calculator,
+            cardHeader: 'Calculator',
+            operation: 'Operation:- Add, Subtract, Multiply, Divide.',
+            link: '/calculator'
+        },
+
+        {
+            id: '2',
+            src: NumberGame,
+            cardHeader: 'Number Game',
+            operation: 'Operation:- Arrange numbers from 1 to 15.',
+            link: '/numberGame'
+        },
+
+        {
+            id: '3',
+            src: todoList,
+            cardHeader: 'To-do Lists',
+            operation: 'Operation:- Add, Delete, Edit task.',
+            link: '/toDoLists'
+        },
+
+        {
+            id: '4',
+            src: weatherUpdate,
+            cardHeader: 'Weather find',
+            operation: 'Operation:- Display temperature, description, humidity, wind speed.',
+            link: '/weather'
+        },
+
+        {
+            id: '5',
+            src: findString,
+            cardHeader: 'Array of objects',
+            operation: 'Operation:- Fetch data table from APIs adn place a search box.',
+            link: '/arrayOfObjects'
+        },
+
+        {
+            id: '6',
+            src: productPage,
+            cardHeader: 'Product page',
+            operation: 'Operation:- Add product to wishList',
+            link: '/productPage'
+        },
+
+        {
+            id: '7',
+            src: productPage,
+            cardHeader: 'Login Page',
+            operation: 'Operation:- Add product to wishList',
+            link: '/loginPage'
+        }
+        ];
+
     return (
         <>
             <div className="sectionTwo" id="about">
@@ -30,7 +90,9 @@ function Home() {
                     I am a web developer.
                 </div>
                 <div className="developerImage">
-                    <img src={developer} alt="developer" widht="100rem" height="100rem" />
+                    <div className="imageWrap">
+                        <img src={developer} alt="developer" />
+                    </div>
                 </div>
             </div>
             <div className="sectionThree" id="tech-stack">
@@ -62,112 +124,30 @@ function Home() {
                     </div>
                 </div>
                 <div className="sectionFourCardWrap">
-                    <div className="colWrap">
-                        <div className="cardBorder">
-                            <div className="cardImage">
-                                <img src={calculator} alt="Todo List" />
-                            </div>
-                            <div className="cardContent">
-                                <div className="cardHeader">Calculator</div>
-                                <div className="operation">Operation:- Add, Subtract, Multiply, Divide</div>
-                                <div><span>Tech Stack</span>"html, css, javaScript"</div>
-                            </div>
-                            <div className="cardFooter">
-                                <Link to="/calculator"><i className="fa-solid fa-link"></i>Live
-                                    Preview</Link>
-                                <a  target="_blank"><i className="fa-brands fa-github" alt="view code"></i>View Code</a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div className="colWrap">
-                        <div className="cardBorder">
-                            <div className="cardImage">
-                                <img src={NumberGame} alt="Number Game" />
-                            </div>
-                            <div className="cardContent">
-                                <div className="cardHeader">Number game</div>
-                                <div className="operation">Operation:- Arrange numbers from 1 to 15.</div>
-                                <div><span>Tech Stack</span>"html, css javaScript"</div>
-                            </div>
-                            <div className="cardFooter">
-                                <Link to="/numberGame"><i className="fa-solid fa-link"></i>Live
-                                    Priview</Link>
-                                <a  target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="colWrap">
-                        <div className="cardBorder">
-                            <div className="cardImage">
-                                <img src={todoList} alt="" />
-                            </div>
-                            <div className="cardContent">
-                                <div className="cardHeader">To-do Lists</div>
-                                <div className="operation">Operation:-Add, Delete, Edit task.</div>
-                                <div><span>Tech Stack</span>"html, css javaScript"</div>
-                            </div>
-                            <div className="cardFooter">
-                                <Link to="/toDoLists"><i className="fa-solid fa-link"></i>Live Priview</Link>
-                                <a  target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="colWrap">
-                        <div className="cardBorder">
-                            <div className="cardImage">
-                                <img src={weatherUpdate} alt="" />
-                            </div>
-                            <div className="cardContent">
-                                <div className="cardHeader">Wheather find</div>
-                                <div className="operation">Operation:- Display temperature, description, humidity, wind speed.</div>
-                                <div><span>Tech Stack</span>"html, css javaScript"</div>
-                            </div>
-                            <div className="cardFooter">
-                                <Link to="/weather"><i className="fa-solid fa-link"></i>Live Priview</Link>
-
-                                <a  target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="colWrap">
-                        <div className="cardBorder">
-                            <div className="cardImage">
-                                <img src={findString} alt="Find string" />
-                            </div>
-                            <div className="cardContent">
-                                <div className="cardHeader">Array of objects</div>
-                                <div className="operation">Operation:- Fetch Data table from APIs and place a search box.</div>
-                                <div><span>Tech Stack</span>"html, css javaScript"</div>
-                            </div>
-                            <div className="cardFooter">
-                                <Link to="/arrayOfObjects"><i className="fa-solid fa-link"></i>Live
-                                    Priview</Link>
-                                <a  target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="colWrap">
-                        <div className="cardBorder">
-                            <div className="cardImage">
-                                <img src={productPage} alt="Product page" />
-                            </div>
-                            <div className="cardContent">
-                                <div className="cardHeader">Product page</div>
-                                <div className="operation">Operation:- Add product to wishList.</div>
-                                <div><span>Tech Stack</span>"html, css javaScript"</div>
-                            </div>
-                            <div className="cardFooter">
-                                <Link to="/productPage"><i className="fa-solid fa-link"></i>Live
-                                    Priview</Link>
-                                <a  target="_blank"><i className="fa-brands fa-github"></i>View Code</a>
-                            </div>
-                        </div>
-                    </div>
+                    {
+                        cardArray.map((item, index) => {
+                            return (
+                                <div className="colWrap" key={index}>
+                                    <div className="cardBorder">
+                                        <div className="cardImage">
+                                            <img src={item.src} alt={item.cardHeader} />
+                                        </div>
+                                        <div className="cardContent">
+                                            <div className="cardHeader">{item.cardHeader}</div>
+                                            <div className="operation">{item.operation}</div>
+                                            <div><span>Tech Stack:-</span> html, css, reactJs</div>
+                                        </div>
+                                        <div className="cardFooter">
+                                            <Link to={item.link}><i className="fa-solid fa-link"></i>Live
+                                                Preview</Link>
+                                            <a href="#1" target="_blank"><i className="fa-brands fa-github" alt="view code"></i>View Code</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </div>
         </>

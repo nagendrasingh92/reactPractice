@@ -7,6 +7,8 @@ import NumberGame from './pages/NumberGame';
 import TodoLists from './pages/TodoLists';
 import ArrayOfObjects from './pages/ArrayOfObjects';
 import ProductPage from './pages/ProductPage';
+import LoginPage from './pages/LoginPage';
+
 
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
@@ -22,6 +24,7 @@ function App() {
         <Route path="/arrayOfObjects" element={<ArrayOfObjects />} />
         <Route path="/weather" element={<Weather />} />
         <Route path="/productPage" element={<ProductPage />} />
+        <Route path="/loginPage" element={<LoginPage />} />
       </Routes>
       <Footer />
     </div>
