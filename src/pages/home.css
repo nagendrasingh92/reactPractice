@@ -3,11 +3,13 @@
      align-items: center;
      justify-content: space-between;
      height: 40vw;
+     max-width: 1100px;
+     margin: auto;
  }
 
  .sectionTwo .intro {
      font-size: 2.5rem;
-     margin-left: 10%;
+     width: 100%;
  }
 
  .sectionTwo .intro .name {
@@ -17,11 +19,30 @@
  }
 
  .sectionTwo .developerImage {
-     margin-right: 20%;
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .sectionTwo .developerImage .imageWrap{
+    height: 300px;
+    width: 300px;
+    display: flex;
+    align-items: center;
  }
 
  .sectionTwo .developerImage img {
      border-radius: 50%;
+     width: 100%;
+ }
+
+
+ @media (max-width:768px){
+    .sectionTwo {
+        flex-direction: column;
+        height: unset;
+    }
  }
 
  .sectionThree {
