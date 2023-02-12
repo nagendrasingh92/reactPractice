@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import  {useSelector} from 'react-redux';
 import './home.css'
 import developer from "../assets/image/developer.jpg"
 import bootstrapIcon from "../assets/image/bootstrapIcon.svg"
@@ -19,6 +20,7 @@ import productPage from "../assets/image/productPage.jpg"
 
 
 function Home() {
+    const { weatherData } = useSelector((state) => state.weather );
 
     const cardArray
         =
@@ -149,7 +151,19 @@ function Home() {
                         })
                     }
                 </div>
+                
             </div>
+             {(weatherData && weatherData.name) && (
+                    <div className="weatherContainer">
+                        <div className="weatherEle">City Name :- {weatherData?.name}</div>
+                        <div className="weatherEle">Temperature :- {weatherData?.main?.temp}°C</div>
+                        <div className="weatherEle">Description :- {weatherData?.weather[0]?.description}</div>
+                        <div className="weatherEle"><img src={`http://openweathermap.org/img/w/${weatherData?.weather[0]?.icon}.png`} alt='weather icon' /></div>
+                        <div className="weatherEle"> Wind speed:- {weatherData?.wind?.speed} Km/h</div>
+                        <div className="weatherEle"> Humidity :- {weatherData?.main?.humidity}%</div>
+                    </div>
+                )
+                }
         </>
     )
 }

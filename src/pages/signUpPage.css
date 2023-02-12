@@ -1,0 +1,39 @@
+.loginPageWrap {
+    text-align: center;
+    }
+    .loginPageWrap .pageContent {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        margin: 5% auto;
+        background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+        justify-content: center;
+        text-align: center;
+    }
+    .loginPageWrap .pageContent .loginHeader{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .loginPageWrap .pageContent .loginHeader .iconWrap{
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 10%;
+        height: 10%;
+    }
+    
+    .loginPageWrap .pageContent .loginHeader .iconWrap .icon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        color: rgb(246, 242, 242);
+        width: 40px;
+        height: 40px;
+        background-color: red;
+    }
+    
