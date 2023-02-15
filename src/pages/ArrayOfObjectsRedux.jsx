@@ -20,9 +20,6 @@ function ArrayOfObjectsRedux() {
                 setSearchApiData(res.data)
             });
     }
-
-    console.log('hello')
-
     const handleSearchValue = (event) => {
         console.log("value", event.target.value)
         

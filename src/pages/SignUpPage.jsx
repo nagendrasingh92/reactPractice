@@ -5,10 +5,12 @@ function SignUpPage() {
 
     const formik = useFormik({
         initialValues: {
+            Username: '',
             email: '',
             password: '',
         },
         validationSchema: Yup.object({
+            Username: Yup.string().min(15, 'Must be 4 characters').required('Required'),
             password: Yup.string().max(15, 'Must be 15 characters or less').required('Required'),
             email: Yup.string().email('Invalid email address').required('Required'),
         }),
@@ -21,68 +23,57 @@ function SignUpPage() {
 
 
     return (
-        <div className="loginPageWrap">
-            <div className="pageContent">
-                <div className="loginHeader">
-                    <div className="iconWrap">
-                        <i className="fa-solid fa-lock icon"></i>
+        <div className="SignUpPageWrap">
+            <form onSubmit={formik.handleSubmit}>
+
+                <div className="pageContent">
+                    <div className="loginHeader">
+                        <div className="iconWrap">
+                            <i className="fa-solid fa-lock icon"></i>
+                        </div>
+                        Sign up
                     </div>
-                    Sign up
-                </div>
-                <form onSubmit={formik.handleSubmit}>
                     <div className="Name">
-                        <label className='inputLabel'>
-                            Name
-                        </label>
                         <input
-                            type='name'
-                            name='name'
-                            value={formik.values.email}
-                            placeholder="name"
+                            type='text'
+                            name='Username'
+                            value={formik.values.Username}
+                            placeholder="Name"
                             onChange={formik.handleChange}
                         />
-                        {formik.errors.email && (<div>{formik.errors.email}</div>)}
+                        {formik.errors.Username && (<div>{formik.errors.Username}</div>)}
                     </div>
-                    <div className="emaildWrap">
-                        <label className='inputLabel'>
-                            Email
-                        </label>
+                    <div className="emailWrap">
                         <input
                             type='email'
                             name='email'
                             value={formik.values.email}
-                            placeholder="email"
+                            placeholder="Email address"
                             onChange={formik.handleChange}
                         />
-                        {formik.errors.password && (<div>{formik.errors.password}</div>)}
+                        {formik.errors.email && (<div>{formik.errors.email}</div>)}
                     </div>
 
                     <div className="passwordWrap">
-                        <label className='inputLabel'>
-                            Password
-                        </label>
                         <input
                             type='password'
                             name='password'
                             value={formik.values.email}
-                            placeholder="password"
+                            placeholder="Password"
                             onChange={formik.handleChange}
                         />
                         {formik.errors.password && (<div>{formik.errors.password}</div>)}
                     </div>
 
                     <div className="confirmPasswordWrap">
-                        <label className='inputLabel'>
-                            Confirm Password
-                        </label>
                         <input
                             type='password'
                             name='confirmPassword'
                             value={formik.values.email}
-                            placeholder="confirmPassword"
+                            placeholder="Confirm Password"
                             onChange={formik.handleChange}
                         />
-                        {formik.errors.password && (<div>{formik.errors.password}</div>)}
+                        {formik.errors.confirmPassword && (<div>{formik.errors.confirmPassword}</div>)}
                     </div>
 
 
@@ -91,8 +82,9 @@ function SignUpPage() {
 
                     </div>
 
-                </form>
-            </div>
+                </div>
+            </form>
+
         </div>
 
     )
