@@ -8,12 +8,15 @@ import { array } from './arrayOfObjects';
 
 import { todoLists } from './todoLists';
 
+import {product} from './productPage'
+
 
 const rootReducer = combineReducers({
     counter,
     weather,
     array,
-    todoLists
+    todoLists,
+    product
 });
 
 export default rootReducer;
