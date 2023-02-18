@@ -56,9 +56,9 @@ function Home() {
         {
             id: '5',
             src: findString,
-            cardHeader: 'Array of objects',
-            operation: 'Operation:- Fetch data table from APIs adn place a search box.',
-            link: '/arrayOfObjects'
+            cardHeader: 'Data Table using API',
+            operation: 'Operation:- Fetch data table from APIs and place a search box.',
+            link: '/DataTableUsingApi'
         },
 
         {

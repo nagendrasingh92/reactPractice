@@ -8,7 +8,7 @@ function Footer() {
                 <div className="contact">
                     +91 7737957798
                 </div>
-                <div className="contact">
+                <div className="contact" id="contact">
                     nagendra.chauhan2001@gmail.com
                 </div>
                 <div className="contact">
@@ -23,7 +23,7 @@ function Footer() {
                     <ul>
                         <li><Link to="/">Home</Link></li>
                         <li><a href="/#projects">Projects</a></li>
-                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div className="footerContent">

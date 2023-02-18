@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
-import './arrayOfObjects.css';
+import './DataTableUsingApi.css';
 
-function ArrayOfObjects() {
+function DataTableUsingApi() {
     const [arrayEle, setArrayEle] = useState([]);
     const [filterVal, setFilterVal] = useState('');
     const [searchApiData, setSearchApiData] = useState([]);
@@ -82,4 +82,4 @@ function ArrayOfObjects() {
     )
 }
 
-export default ArrayOfObjects;
+export default DataTableUsingApi;
