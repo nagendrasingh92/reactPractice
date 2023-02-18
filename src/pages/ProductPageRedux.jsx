@@ -7,7 +7,7 @@ import { productPageConstants } from '../store/reducers/productPage/actions'
 function ProductPageRedux() {
     const dispatch = useDispatch();
     const { productsData } = useSelector((state) => state.product);
-    const [whishListData,setWhishListData] = useState([]) 
+    const [whishListData, setWhishListData] = useState([])
 
     useEffect(() => {
         axios.get(`https://dummyjson.com/products`)
@@ -21,14 +21,29 @@ function ProductPageRedux() {
     const handleWishList = (id) => {
         let data = [...whishListData];
 
-        if(!data.includes(id)){
+        if (!data.includes(id)) {
             data.push(id)
             setWhishListData(data)
         } else {
             alert('item already added');
         }
-       
+
     }
+
+    const handleRemove = (id) => {
+        let remaningData = whishListData.filter((item) => item !== id);
+        setWhishListData(remaningData)
+    }
+
+    /*const calculateTotal = () => {
+        (productsData && productsData.products && whishListData) &&
+            whishListData.map((item) => {
+                let data = productsData.products.find((productItem) => productItem.id === item);
+                return (
+                    total += parseInt({data.price});
+                )
+            });
+    }*/
 
     // productsData.filter((item) =>  wishList.includes(item.id)).map(() => {
 
@@ -38,14 +53,35 @@ function ProductPageRedux() {
 
     return (
         <div>
+
             <div className="pageHead">
                 <div className="firstHead">Super Product List</div>
                 <div className="secondHead">Great deals on quality electronic gadgets</div>
             </div>
+            <div className="wishListWraper">
+                <div className="wishList">
+                    Wishlist <br />
+                    <ul className="productSelected">
+                        {(productsData && productsData.products && whishListData) &&
+                            whishListData.map((item) => {
+                                let data = productsData.products.find((productItem) => productItem.id === item);
+                                console.log('data', data)
+                                return (
+                                    <li className="listBorder" >
+                                        <span className="selectedProduct">{data.title}</span>
+                                        <span className="remove" onClick={() => handleRemove(item)}>Remove</span>
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
+                    <div>Total {/*calculateTotal()*/}</div>
+                </div>
+            </div>
 
             <div className="productContainer">
 
-                { (productsData && productsData.products ) && 
+                {(productsData && productsData.products) &&
                     productsData.products.map((item) => {
                         return (
                             <div className="productBorder">
@@ -88,22 +124,6 @@ function ProductPageRedux() {
                         )
                     })
                 }
-            </div>
-
-
-            <div className="wishListWraper">
-                <div className="wishList">
-                    Wishlist <br />
-                    <ul className="productSelected">
-                        <li className="listBorder" >
-                            <span className="selectedProduct"></span>
-                            <span className="remove">Remove</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div className="totalWraper">
-                Your wishlist total is: SEK <span className="total"></span>
             </div>
         </div>
 

@@ -4,7 +4,7 @@ import { counter } from './counter';
 
 import { weather } from "./weather";
 
-import { array } from './arrayOfObjects';
+import { array } from './DataTableUsingApi';
 
 import { todoLists } from './todoLists';
 

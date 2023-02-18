@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import  { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import './arrayOfObjects.css';
-import { arrayConstants } from '../store/reducers/arrayOfObjects/actions'
+import './DataTableUsingApi.css';
+import { arrayConstants } from '../store/reducers/DataTableUsingApi/actions'
 
 
-function ArrayOfObjectsRedux() {
+function DataTableUsingApiRedux() {
     const { arrayData } = useSelector((state) => state.array );
     const dispatch = useDispatch();
 
@@ -85,4 +85,4 @@ function ArrayOfObjectsRedux() {
     )
 }
 
-export default ArrayOfObjectsRedux;
+export default DataTableUsingApiRedux;
