@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/reactPractice/static/css/main.ff21f8d8.css",
-    "main.js": "/reactPractice/static/js/main.bc72413d.js",
+    "main.js": "/reactPractice/static/js/main.3df7527f.js",
     "static/js/787.28cb0dcd.chunk.js": "/reactPractice/static/js/787.28cb0dcd.chunk.js",
     "static/media/productPage.jpg": "/reactPractice/static/media/productPage.5ed56a78f3f387079587.jpg",
     "static/media/findString.jpg": "/reactPractice/static/media/findString.ee27e0c654cbd5a6f5b2.jpg",
@@ -15,17 +15,17 @@
     "static/media/vscodeIcon.svg": "/reactPractice/static/media/vscodeIcon.09d02691c8ec0c3b4204a4d5f2d7d8b4.svg",
     "static/media/bootstrapIcon.svg": "/reactPractice/static/media/bootstrapIcon.ab5dc32f0211db2b3cadf965e6f1da66.svg",
     "static/media/jsOfficialIcon.svg": "/reactPractice/static/media/jsOfficialIcon.f9d6615f624fd4d0da65fbf4ae5edf5c.svg",
+    "index.html": "/reactPractice/index.html",
     "static/media/gitIcon.svg": "/reactPractice/static/media/gitIcon.fb2eda3501fb7c66c43993f361b75061.svg",
     "static/media/githubIcon.svg": "/reactPractice/static/media/githubIcon.36dc0fbc093986dc6624f3ad8a37ab2a.svg",
-    "index.html": "/reactPractice/index.html",
     "static/media/cssIcon.svg": "/reactPractice/static/media/cssIcon.1dc1ff133b346eb946ede2b781ce69f8.svg",
     "static/media/htmlIcon.svg": "/reactPractice/static/media/htmlIcon.b4f276884d6135db3f45c375dcc50b01.svg",
     "main.ff21f8d8.css.map": "/reactPractice/static/css/main.ff21f8d8.css.map",
-    "main.bc72413d.js.map": "/reactPractice/static/js/main.bc72413d.js.map",
+    "main.3df7527f.js.map": "/reactPractice/static/js/main.3df7527f.js.map",
     "787.28cb0dcd.chunk.js.map": "/reactPractice/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ff21f8d8.css",
-    "static/js/main.bc72413d.js"
+    "static/js/main.3df7527f.js"
   ]
 }
