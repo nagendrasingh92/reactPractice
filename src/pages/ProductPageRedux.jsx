@@ -28,28 +28,22 @@ function ProductPageRedux() {
             alert('item already added');
         }
 
-    }
+    };
 
     const handleRemove = (id) => {
         let remaningData = whishListData.filter((item) => item !== id);
         setWhishListData(remaningData)
+    };
+
+    const calculateTotal = () => {
+        let total = 0;
+        whishListData.map((item) => {
+            let data = productsData.products.find((productItem) => productItem.id === item);
+            console.log('data', data)
+            total += data.price;
+        })
+        return total;
     }
-
-    /*const calculateTotal = () => {
-        (productsData && productsData.products && whishListData) &&
-            whishListData.map((item) => {
-                let data = productsData.products.find((productItem) => productItem.id === item);
-                return (
-                    total += parseInt({data.price});
-                )
-            });
-    }*/
-
-    // productsData.filter((item) =>  wishList.includes(item.id)).map(() => {
-
-    // });
-
-
 
     return (
         <div>
@@ -65,7 +59,6 @@ function ProductPageRedux() {
                         {(productsData && productsData.products && whishListData) &&
                             whishListData.map((item) => {
                                 let data = productsData.products.find((productItem) => productItem.id === item);
-                                console.log('data', data)
                                 return (
                                     <li className="listBorder" >
                                         <span className="selectedProduct">{data.title}</span>
@@ -75,7 +68,7 @@ function ProductPageRedux() {
                             })
                         }
                     </ul>
-                    <div>Total {/*calculateTotal()*/}</div>
+                    <div>Total = {calculateTotal()}</div>
                 </div>
             </div>
 

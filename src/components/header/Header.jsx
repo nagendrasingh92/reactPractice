@@ -4,7 +4,7 @@ function Header() {
   return (
     <div className="sectionOne">
       <div className="logo">
-        Logo Design
+        <a href="/#home">Logo Design</a>
       </div>
       <div className="linkWrap">
         <div className="pannel">

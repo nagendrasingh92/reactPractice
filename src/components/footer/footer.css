@@ -1,6 +1,6 @@
 .sectionFive .contactDetails {
     display: flex;
-    padding: 3vw 0;
+    padding: 2em;
     border-bottom: 2px solid grey;
     justify-content: flex-end;
 }
@@ -16,13 +16,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1vw 0;
+    padding: 2em;
 }
 
 .sectionFive .footerWrap .footerLinks ul {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
+    padding-left: 0;
 }
 
 .sectionFive .footerWrap .footerLinks ul li {
