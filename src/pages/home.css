@@ -25,11 +25,11 @@
      align-items: center;
  }
 
- .sectionTwo .developerImage .imageWrap{
-    height: 300px;
-    width: 300px;
-    display: flex;
-    align-items: center;
+ .sectionTwo .developerImage .imageWrap {
+     height: 300px;
+     width: 300px;
+     display: flex;
+     align-items: center;
  }
 
  .sectionTwo .developerImage img {
@@ -38,11 +38,11 @@
  }
 
 
- @media (max-width:768px){
-    .sectionTwo {
-        flex-direction: column;
-        height: unset;
-    }
+ @media (max-width:768px) {
+     .sectionTwo {
+         flex-direction: column;
+         height: unset;
+     }
  }
 
  .sectionThree {
@@ -70,17 +70,16 @@
      width: 6rem;
      margin: 4rem;
  }
+
  .sectionHead {
-    font-size: 28px;
-    color: #42466E;
-    font-weight: bold;
-  }
- .sectionFour {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     justify-content: center;
-     padding: 10vw 0;
+     font-size: 28px;
+     color: #42466E;
+     font-weight: bold;
+ }
+
+
+ .sectionFour .sectionFourTitleWrap {
+     text-align: center;
  }
 
  .sectionFour .sectionFourCardWrap {
@@ -89,16 +88,16 @@
  }
 
  .sectionFour .sectionFourCardWrap .colWrap {
-     padding: 2vw;
-     width: 26vw;
+     flex-basis: 33%;
+     margin: auto;
+
  }
 
  .sectionFour .sectionFourCardWrap .colWrap .cardBorder {
-     display: flex;
-     flex-direction: column;
      border-radius: 10px;
      overflow: hidden;
      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+     margin: 22px;
  }
 
  .sectionFour .sectionFourCardWrap .colWrap .cardBorder .cardImage {

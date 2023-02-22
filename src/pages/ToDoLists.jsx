@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from '@mui/material/Button';
 import './todoLists.css'
 
 function TodoLists() {
@@ -76,13 +77,21 @@ function TodoLists() {
             return item;
         })
         setTaskContainer(updatedList)
+
     }
 
 
 
     return (
         <div className='todoListsPageWrap'>
+            <div>
+                To Do List
+                <Button variant="text">Text</Button>
+      <Button variant="contained">Contained</Button>
+      <Button variant="outlined">Outlined</Button>
+            </div>
             <div className='todoListsWrap'>
+
                 <div className='inputWrap'>
                     <input
                         placeholder='Enter Task'
