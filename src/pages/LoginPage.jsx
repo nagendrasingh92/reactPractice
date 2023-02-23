@@ -29,7 +29,7 @@ function LoginPage() {
                     <div className="iconWrap">
                         <i className="fa-solid fa-lock icon"></i>
                     </div>
-                    Sign in
+                    LOGIN
                 </div>
                 <div className="userNameWrap">
                     <input

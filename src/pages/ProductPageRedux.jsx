@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import './productPageRedux.css'
 import { productPageConstants } from '../store/reducers/productPage/actions'
+import Button from '@mui/material/Button';
+
 
 function ProductPageRedux() {
     const dispatch = useDispatch();
@@ -62,13 +64,14 @@ function ProductPageRedux() {
                                 return (
                                     <li className="listBorder" >
                                         <span className="selectedProduct">{data.title}</span>
-                                        <span className="remove" onClick={() => handleRemove(item)}>Remove</span>
+                                        <Button variant="contained" className='remove' onClick={() => handleRemove(item)}>Remove</Button>
+
                                     </li>
                                 )
                             })
                         }
                     </ul>
-                    <div>Total = {calculateTotal()}</div>
+                    <div>Total = ${calculateTotal()}</div>
                 </div>
             </div>
 

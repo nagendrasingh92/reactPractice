@@ -84,26 +84,18 @@ function TodoLists() {
 
     return (
         <div className='todoListsPageWrap'>
-            <div>
+            <div className="todoHeader">
                 To Do List
-                <Button variant="text">Text</Button>
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
             </div>
             <div className='todoListsWrap'>
-
-                <div className='inputWrap'>
-                    <input
-                        placeholder='Enter Task'
-                        value={inputTask}
-                        name='todoListInput'
-                        onChange={(event) => handleInput(event.target.value)}
-                    />
-                </div>
-                <div
-                    className='submitBttn'
-                    onClick={() => handleTask()}>Submit
-                </div>
+                <input
+                    className='inputWrap'
+                    placeholder='Enter Task'
+                    value={inputTask}
+                    name='todoListInput'
+                    onChange={(event) => handleInput(event.target.value)}
+                />
+                <Button variant="contained" size="small" onClick={() => handleTask()}>Submit</Button>
             </div>
             <div className="taskContainerWrap">
                 <ol>
@@ -114,12 +106,12 @@ function TodoLists() {
                                     <>
                                         <span>{item.title}</span>
                                         <span
-                                            className="todoDelete"
-                                            onClick={() => deleteItem(item.id)}>Delete
+                                            onClick={() => deleteItem(item.id)}>
+                                            <Button variant="contained" size="small">Delete</Button>
                                         </span>
                                         <span
-                                            className="todoEdit"
-                                            onClick={() => editItem(item.id)}>Edit
+                                            onClick={() => editItem(item.id)}>
+                                            <Button variant="contained" size="small">Edit</Button>
                                         </span>
                                     </>
                                 ) : (
@@ -129,15 +121,13 @@ function TodoLists() {
                                             onChange={(event) => handleEdit(item.id, event.target.value)}
                                         />
                                         <span
-                                            className="save"
-                                            onClick={() => saveItem(item.id)}
-                                        >Save
+                                            onClick={() => saveItem(item.id)}>
+                                            <Button variant="contained" size="small">Save</Button>
 
                                         </span>
                                         <span
-                                            className="cancel"
-                                            onClick={() => cancelItem(item.id)}
-                                        >Cancel
+                                            onClick={() => cancelItem(item.id)}>
+                                            <Button variant="contained" size="small">Cancel</Button>
                                         </span>
                                     </>
                                 )}
