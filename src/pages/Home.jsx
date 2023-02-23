@@ -42,7 +42,7 @@ function Home() {
             src: todoList,
             cardHeader: 'To-do Lists',
             operation: 'Operation:- Add, Delete, Edit task.',
-            link: '/toDoLists'
+            link: '/todoLists'
         },
 
         {

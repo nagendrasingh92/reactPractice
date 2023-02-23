@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./calculator.css"
+import Button from '@mui/material/Button';
 
 function Calculator() {
     const [firstInput, setFirstInput] = useState("");
@@ -115,8 +116,9 @@ function Calculator() {
 
                 </div>
                 <div className="outputWrap">
-                <div className="border" onClick={() => handleCalculate()}>Submit</div>
-                <div className="border" onClick={() => handleReset()}>Reset</div>
+                <Button variant="contained" size="small" onClick={() => handleCalculate()}>Submit</Button>
+                <Button variant="contained" size="small" onClick={() => handleReset()}>Reset</Button>
+
                 <div className="output">{output}</div>
                 </div>
             </div>

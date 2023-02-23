@@ -4,14 +4,14 @@ function Header() {
   return (
     <div className="sectionOne">
       <div className="logo">
-        <a href="/#home">Logo Design</a>
+      <Link to="/">Logo Design</Link>
       </div>
       <div className="linkWrap">
         <div className="pannel">
           <ul>
-            <li><Link to="/"><a href="/#home">Home</a></Link></li>
-            <li><a href="/#projects">Projects</a></li>
-            <li><a href="/#contact">Contact</a></li>
+            <li><Link to="/">Home</Link></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
         <div className="directLink">
