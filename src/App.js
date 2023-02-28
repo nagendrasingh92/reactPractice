@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Calculator from './pages/Calculator';
 import Weather from './pages/Weather';
 import NumberGame from './pages/NumberGame';
-import TodoLists from './pages/TodoLists';
+import TodoList from './pages/TodoList';
 import DataTableUsingApi from './pages/DataTableUsingApi';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from "./pages/SignUpPage";
@@ -18,15 +18,15 @@ import ProductPageRedux from "./pages/ProductPageRedux";
 
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
+import QuizPage from "./pages/QuizPage";
 function App() {
   return (
     <div className="App">
       <Header />
       <Routes onUpdate={() => window.scrollTo(0, 0)}>
-        <Route path="/" element={<Home />} />
         <Route path="/calculator" element={<Calculator />} />
         <Route path="/numberGame" element={<NumberGame />} />
-        <Route path="/todoLists" element={<TodoLists />} />
+        <Route path="/todoLists" element={<TodoList />} />
         <Route path="/dataTableUsingApi" element={<DataTableUsingApi />} />
         <Route path="/weather" element={<Weather />} />
         <Route path="/productPageRedux" element={<ProductPageRedux />} />
@@ -36,6 +36,8 @@ function App() {
         <Route path="/weatherRedux" element={<WeatherRedux />} />
         <Route path="/dataTableUsingApiRedux" element={<DataTableUsingApiRedux />} />
         <Route path="/todoListsRedux" element={<TodoListsRedux />} />
+        <Route path="/quiz" element={<QuizPage />} />
+        <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
     </div>
