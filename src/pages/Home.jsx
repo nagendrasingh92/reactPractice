@@ -16,6 +16,8 @@ import NumberGame from "../assets/image/NumberGame.jpg"
 import todoList from "../assets/image/todoList.jpg"
 import weatherUpdate from "../assets/image/weatherUpdate.jpg"
 import productPage from "../assets/image/productPage.jpg"
+import quizPage from "../assets/image/quiz.png"
+
 
 
 function Home() {
@@ -64,7 +66,7 @@ function Home() {
         {
             id: '6',
             src: productPage,
-            cardHeader: 'Product page',
+            cardHeader: 'Product display',
             operation: 'Operation:- Add product to wishList',
             link: '/productPageRedux'
         },
@@ -72,9 +74,17 @@ function Home() {
         {
             id: '7',
             src: productPage,
-            cardHeader: 'Login Page',
+            cardHeader: 'Login and signup',
             operation: 'Operation:- Add product to wishList',
             link: '/loginPage'
+        },
+
+        {
+            id: '8',
+            src: quizPage,
+            cardHeader: 'Quiz',
+            operation: 'Operation:- A simple quiz with score card',
+            link: '/quiz'
         }
         ];
 

@@ -15,9 +15,9 @@ function Header() {
           </ul>
         </div>
         <div className="directLink">
-          <i className="fa-brands fa-github"></i>
-          <i className="fa-brands fa-twitter"></i>
-          <i className="fa-brands fa-linkedin"></i>
+          <a href="https://github.com/nagendrasingh92/reactPractice" target="_blank"><i className="fa-brands fa-github"></i></a>
+          <a href="https://twitter.com/nagendraReact" target="_blank"><i className="fa-brands fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/in/nagendra-singh-chauhan-0328091aa" target="_blank"><i className="fa-brands fa-linkedin"></i></a>
           <i className="fa-solid fa-circle-half-stroke"></i>
         </div>
       </div>

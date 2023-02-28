@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from '@mui/material/Button';
 import './todoLists.css'
 
-function TodoLists() {
+function TodoList() {
     const [inputTask, setInputTask] = useState('');
     const [taskContainer, setTaskContainer] = useState([]);
 
@@ -142,4 +142,4 @@ function TodoLists() {
     )
 }
 
-export default TodoLists;
+export default TodoList;
