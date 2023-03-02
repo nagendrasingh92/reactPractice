@@ -25,19 +25,16 @@ function Weather() {
             </div>
             <div className="container">
                 <div className='inputWrap'>
-                    <div className='inputEle'>
-                        <input
-                            type="text"
-                            id="city"
-                            placeholder="Enter City Name"
-                            value={city}
-                            onChange={(event) => handleCityChange(event.target.value)}
-                        />
-                    </div>
-
-                    <div className='searchBox' onClick={() => getWeatherData()}>
+                    <input
+                        type="text"
+                        id="city"
+                        placeholder="Enter City Name"
+                        value={city}
+                        onChange={(event) => handleCityChange(event.target.value)}
+                    />
+                    <span className='searchBox' onClick={() => getWeatherData()}>
                         Search
-                    </div>
+                    </span>
                 </div>
 
 
