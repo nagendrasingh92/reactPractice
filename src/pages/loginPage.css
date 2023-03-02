@@ -1,44 +1,22 @@
 .loginPageWrap {
-    
+    text-align: center;
 }
 .loginPageWrap .pageContent {
-    padding: 20px;
-    border-radius: 40px;
-    justify-content: space-between;
-    height: 25vw;
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    margin: 5% auto;
-    background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+    border: 2px solid grey;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    padding: 10px;
 }
-
-.loginPageWrap .pageContent .rememberMe{
-    display: flex;
-}
-
 .loginPageWrap .pageContent input {
-    width: 100%;
+    width: 50%;
     border-radius: 5px;
-    height: 100%;
+    margin: 10px;
 }
-
 .loginPageWrap .pageContent .rememberMe input{
     width: auto;
 }
-
-
-.loginPageWrap .pageContent .loginHeader{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.loginPageWrap .pageContent .loginHeader .iconWrap{
-    
-}
-
-.loginPageWrap .pageContent .loginHeader .iconWrap .icon{
+.loginPageWrap .pageContent .iconWrap .icon{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,4 +25,5 @@
     width: 40px;
     height: 40px;
     background-color: red;
+    margin: auto;
 }

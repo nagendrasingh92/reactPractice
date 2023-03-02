@@ -25,12 +25,10 @@ function LoginPage() {
         <div className="loginPageWrap">
             <form className="pageContent" onSubmit={formik.handleSubmit}>
 
-                <div className="loginHeader">
-                    <div className="iconWrap">
-                        <i className="fa-solid fa-lock icon"></i>
-                    </div>
-                    LOGIN
+                <div className="iconWrap">
+                    <i className="fa-solid fa-lock icon"></i>
                 </div>
+                LOGIN
                 <div className="userNameWrap">
                     <input
                         type='text'

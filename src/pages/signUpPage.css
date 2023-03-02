@@ -1,44 +1,22 @@
 .SignUpPageWrap {
-    
+    margin: auto;
+    text-align: center;
 }
 .SignUpPageWrap .pageContent {
-    padding: 20px;
-    border-radius: 40px;
-    justify-content: space-between;
-    height: 40vw;
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    margin: 5% auto;
-    background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+    border-radius: 10px;
+    width: 50%;
+    border: 2px solid grey;
+    margin: auto;
+    text-align: center;
+    padding: 10px;
 }
-
-.SignUpPageWrap .pageContent .rememberMe{
-    display: flex;
-}
-
 .SignUpPageWrap .pageContent input {
-    width: 100%;
+    width: 50%;
     border-radius: 5px;
     height: 100%;
+    margin: 5px;
 }
-
-.SignUpPageWrap .pageContent .rememberMe input{
-    width: auto;
-}
-
-
-.SignUpPageWrap .pageContent .loginHeader{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.SignUpPageWrap .pageContent .loginHeader .iconWrap{
-    
-}
-
-.SignUpPageWrap .pageContent .loginHeader .iconWrap .icon{
+.SignUpPageWrap .pageContent .iconWrap{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,4 +25,5 @@
     width: 40px;
     height: 40px;
     background-color: red;
+    margin: auto;
 }

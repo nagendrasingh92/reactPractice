@@ -1,25 +1,18 @@
-.calculatorPageWrap{
-    display: flex;
-    justify-content: center;
-}
-.calculatorPageWrap .calculatorWrap {
+.calculatorWrap {
     text-align: center;
-    border-radius: 80px;
-    background-image: linear-gradient( 109.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% );
+    border-radius: 20px;
     font-weight: bold;
     box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
     width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    margin: auto;
 }
 
-.calculatorPageWrap .calculatorWrap .header{
+.calculatorWrap .header{
     margin-top: 20px;
 }
 
-.calculatorPageWrap .calculatorWrap .inputOutput{
+.calculatorWrap .inputOutput{
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -29,8 +22,7 @@
 }
 
 
-.calculatorPageWrap .calculatorWrap .inputOutput .inputWrap{
-    background: linear-gradient(21deg, #10abff, #1beabd);
+.calculatorWrap .inputOutput .inputWrap{
     text-align: center;
     padding: 3px;
     border-radius: 9999em;
@@ -38,32 +30,19 @@
     
 }
 
-.calculatorPageWrap .calculatorWrap .inputOutput .inputWrap input {
+.calculatorWrap .inputOutput .inputWrap input {
     border-radius: inherit;
-    outline: none;
-    border: none;
+    text-align: center;
 }
 
-.calculatorPageWrap .calculatorWrap .outputWrap .border {
+.calculatorWrap .outputWrap .border {
     margin: 10px;
-    background-image: linear-gradient(90deg,#52a0fd 0,#00e2fa 51%,#52a0fd);
     color: rgb(98, 28, 28);
     padding: 6px;
     border-radius: 20px;
 }
-.calculatorPageWrap .calculatorWrap .outputWrap{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-.calculatorPageWrap .calculatorWrap .outputWrap .output {
-    background: linear-gradient(21deg, #10abff, #1beabd);
-    text-align: center;
-    padding: 3px;
-    border-radius: 9999em;
-    margin: 5px;
-    width: 20%;
+.calculatorWrap .output{
+    border: 2px solid grey;
+    width: 10%;
+    margin: 10px auto;
 }

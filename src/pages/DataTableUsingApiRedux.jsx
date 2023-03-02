@@ -53,7 +53,7 @@ function DataTableUsingApiRedux() {
                     type="text"
                     value={filterVal}
                     onChange={(event) => handleSearchValue(event)} />
-                    <div className='searchBttn' onClick={() => handleFilter()}>
+                    <div  className='searchBttn' onClick={() => handleFilter()}>
                         Search
                     </div>
             </div>
