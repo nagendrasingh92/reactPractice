@@ -5,28 +5,17 @@
     font-weight: bold;
     box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
         0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-    height: 30vw;
-    width: 20vw;
+    
     justify-content: center;
-    padding: 10vw;
-    margin: 10vw 25vw;
+    height: 40em;
 }
 
 .weatherWrap .heading {
-    font-size: 30px;
+    font-size: 2em;
+    padding: 20px
 }
 
-.weatherWrap .container .inputWrap {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
-}
-
-.weatherWrap .container .inputWrap .inputEle {
-    border-bottom: 1px solid black;
-}
-
-.weatherWrap .container .inputWrap .inputEle input {
+.weatherWrap .container .inputWrap input {
     background-color: transparent;
     border: none;
 }
