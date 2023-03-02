@@ -81,47 +81,45 @@ function Calculator() {
     };
     return (
 
-        <div className="calculatorPageWrap">
-            <div className="calculatorWrap">
-                <div className="header">
-                    React Calculator
+        <div className="calculatorWrap">
+            <div className="header">
+                React Calculator
+            </div>
+            <div className="inputOutput">
+                <div className="inputWrap">
+                    <input
+                        value={firstInput}
+                        name="firstValue"
+                        placeholder="Enter First Number"
+                        onChange={(event) => handleInputChange(event.target.value, event.target.name)}
+                    />
                 </div>
-                <div className="inputOutput">
-                    <div className="inputWrap">
-                        <input
-                            value={firstInput}
-                            name="firstValue"
-                            placeholder="Enter First Number"
-                            onChange={(event) => handleInputChange(event.target.value, event.target.name)}
-                        />
-                    </div>
-                    <div className="inputWrap">
-                        <input
-                            value={secondInput}
-                            name="secondValue"
-                            placeholder="Enter Second Number"
-                            onChange={(event) => handleInputChange(event.target.value, event.target.name)}
-                        />
-                    </div>
-
-
-                    <div className="selectWrap">
-                        <select name="operation" value={operation} onChange={(event) => handleOperation(event.target.value)}>
-                            <option name="plus" value="+">Add</option>
-                            <option name="subtract" value="-">Subtract</option>
-                            <option name="multiply" value="*">Multiply</option>
-                            <option name="divide" value="/">Divide</option>
-                        </select>
-                    </div>
-
+                <div className="inputWrap">
+                    <input
+                        value={secondInput}
+                        name="secondValue"
+                        placeholder="Enter Second Number"
+                        onChange={(event) => handleInputChange(event.target.value, event.target.name)}
+                    />
                 </div>
-                <div className="outputWrap">
+
+
+                <div className="selectWrap">
+                    <select name="operation" value={operation} onChange={(event) => handleOperation(event.target.value)}>
+                        <option name="plus" value="+">Add</option>
+                        <option name="subtract" value="-">Subtract</option>
+                        <option name="multiply" value="*">Multiply</option>
+                        <option name="divide" value="/">Divide</option>
+                    </select>
+                </div>
+
+            </div>
+            <div className="outputWrap">
                 <Button variant="contained" size="small" onClick={() => handleCalculate()}>Submit</Button>
                 <Button variant="contained" size="small" onClick={() => handleReset()}>Reset</Button>
-
-                <div className="output">{output}</div>
-                </div>
             </div>
+            <div className="output">{output}</div>
+
         </div>
 
     )

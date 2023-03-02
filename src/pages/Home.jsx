@@ -21,38 +21,38 @@ import quizPage from "../assets/image/quiz.png"
 
 
 function Home() {
-    const cardArray
-        =
+    const cardArray =
         [{
             id: '1',
             src: calculator,
             cardHeader: 'Calculator',
             operation: 'Operation:- Add, Subtract, Multiply, Divide.',
-            link: '/calculator'
+            link: '/calculator',
+            tech: 'html, css, reactJs'
         },
-
         {
             id: '2',
             src: NumberGame,
             cardHeader: 'Number Game',
             operation: 'Operation:- Arrange numbers from 1 to 15.',
-            link: '/numberGame'
+            link: '/numberGame',
+            tech: 'html, css, reactJs'
         },
-
         {
             id: '3',
             src: todoList,
             cardHeader: 'To-do Lists',
             operation: 'Operation:- Add, Delete, Edit task.',
-            link: '/todoLists'
+            link: '/todoLists',
+            tech: 'html, css, reactJs'
         },
-
         {
             id: '4',
             src: weatherUpdate,
             cardHeader: 'Weather find',
             operation: 'Operation:- Display temperature, description, humidity, wind speed.',
-            link: '/weather'
+            link: '/weather',
+            tech: 'html, css, reactJs'
         },
 
         {
@@ -60,31 +60,32 @@ function Home() {
             src: findString,
             cardHeader: 'Data Table using API',
             operation: 'Operation:- Fetch data table from APIs and place a search box.',
-            link: '/DataTableUsingApi'
+            link: '/DataTableUsingApi',
+            tech: 'html, css, reactJs'
         },
-
         {
             id: '6',
             src: productPage,
             cardHeader: 'Product display',
             operation: 'Operation:- Add product to wishList',
-            link: '/productPageRedux'
+            link: '/productPageRedux',
+            tech: 'html, css, reactJs'
         },
-
         {
             id: '7',
             src: productPage,
             cardHeader: 'Login and signup',
             operation: 'Operation:- Add product to wishList',
-            link: '/loginPage'
+            link: '/loginPage',
+            tech: 'html, css, reactJs'
         },
-
         {
             id: '8',
             src: quizPage,
             cardHeader: 'Quiz',
             operation: 'Operation:- A simple quiz with score card',
-            link: '/quiz'
+            link: '/quiz',
+            tech: 'html, css, reactJs'
         }
         ];
 
@@ -92,11 +93,10 @@ function Home() {
         <>
             <div className="sectionTwo" id="about">
                 <div className="intro">
-                    Hi👋,<br />
-                    My name is <br />
-                    <span className="name">Nagendra Singh Chauhan<br />
-                    </span>
-                    I am a web developer.
+                    <div>Hi👋,</div>
+                    <div>My name is </div>
+                    <div><span className="name">Nagendra Singh Chauhan</span></div>
+                    <div>I am a web developer.</div>
                 </div>
                 <div className="developerImage">
                     <div className="imageWrap">
@@ -145,7 +145,7 @@ function Home() {
                                         <div className="cardContent">
                                             <div className="cardHeader">{item.cardHeader}</div>
                                             <div className="operation">{item.operation}</div>
-                                            <div><span>Tech Stack:-</span> html, css, reactJs</div>
+                                            <div><span>Tech Stack:-</span>{item.tech}</div>
                                         </div>
                                         <div className="cardFooter">
                                             <Link to={item.link}><i className="fa-solid fa-link"></i>Live

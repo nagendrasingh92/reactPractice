@@ -27,12 +27,10 @@ function SignUpPage() {
             <form onSubmit={formik.handleSubmit}>
 
                 <div className="pageContent">
-                    <div className="loginHeader">
-                        <div className="iconWrap">
-                            <i className="fa-solid fa-lock icon"></i>
-                        </div>
-                        Sign up
+                    <div className="iconWrap">
+                        <i className="fa-solid fa-lock icon"></i>
                     </div>
+                    Sign up
                     <div className="Name">
                         <input
                             type='text'
