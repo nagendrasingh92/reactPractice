@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import './productPageRedux.css'
+import './productPageRedux.scss'
 import { productPageConstants } from '../store/reducers/productPage/actions'
 import Button from '@mui/material/Button';
 

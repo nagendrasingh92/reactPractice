@@ -86,6 +86,8 @@
  .sectionFour .sectionFourCardWrap {
      display: flex;
      flex-wrap: wrap;
+     max-width: 1200px;
+     margin: auto;
  }
 
  .sectionFour .sectionFourCardWrap .colWrap {

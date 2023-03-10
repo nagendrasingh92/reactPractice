@@ -83,7 +83,7 @@ function Calculator() {
 
         <div className="calculatorWrap">
             <div className="header">
-                React Calculator
+                Calculator
             </div>
             <div className="inputOutput">
                 <div className="inputWrap">
@@ -115,7 +115,7 @@ function Calculator() {
 
             </div>
             <div className="outputWrap">
-                <Button variant="contained" size="small" onClick={() => handleCalculate()}>Submit</Button>
+                <Button sx={{mr: '12px;'}} variant="contained" size="small" onClick={() => handleCalculate()}>Submit</Button>
                 <Button variant="contained" size="small" onClick={() => handleReset()}>Reset</Button>
             </div>
             <div className="output">{output}</div>
