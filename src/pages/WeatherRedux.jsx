@@ -20,10 +20,15 @@ function WeatherRedux() {
             });
     }
 
+    const resetData = () => {
+        setCity('')
+        dispatch({type:  weatherConstants.UPDATE, payload: {} })
+    }
+
     return (
         <div className="weatherWrap">
             <div className="heading">
-                Weather update
+                Weather
             </div>
             <div className="container">
                 <div className='inputWrap'>
@@ -39,6 +44,9 @@ function WeatherRedux() {
 
                     <div className='searchBox' onClick={() => getWeatherData()}>
                         Search
+                    </div>
+                    <div className='searchBox' onClick={() => resetData()}>
+                        Reset
                     </div>
                 </div>
 

@@ -1,0 +1,58 @@
+.quizWrap {
+    background-color: rgb(252, 248, 248);
+    text-align: center;
+    border-radius: 10px;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 25em;
+    font-weight: bold;
+
+    .questionContainer {
+        width: 60%;
+
+        .operationWrap {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .questionWrap {
+            margin: 10px;
+            .questionTitle{
+                text-align: left;
+                margin: 10px;
+            }
+            .optionsWrap {
+                display: flex;
+                flex-wrap: wrap;
+                text-align: left;
+                .optionWrap {
+                    flex: 1 0 40%;
+                    margin: 10px;
+
+                    .options {
+                        background-color: aqua;
+                        padding: 5px;
+                    }
+
+                    .normal {
+                        padding: 5px;
+                    }
+
+                    .active {
+                        background-color: aquamarine;
+                        margin: auto;
+                    }
+                }
+            }
+
+        }
+
+        .questionBox {
+            width: 25%;
+        }
+    }
+
+}

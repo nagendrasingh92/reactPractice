@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from '@mui/material/Button';
-import './todoLists.css'
+import './todoLists.scss'
 
 function TodoList() {
     const [inputTask, setInputTask] = useState('');

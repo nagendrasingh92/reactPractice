@@ -6,6 +6,8 @@
   width: 50%;
   text-align: center;
   border-radius: 20px;
+  padding: 2em;
+  margin: 2em auto;
 }
 
 .numberGameWrap .main {

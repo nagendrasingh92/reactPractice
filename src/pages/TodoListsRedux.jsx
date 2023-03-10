@@ -1,7 +1,7 @@
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from "react";
-import './todoLists.css'
+import './todoLists.scss'
 import { todoListsConstants } from '../store/reducers/todoLists/actions'
 
 

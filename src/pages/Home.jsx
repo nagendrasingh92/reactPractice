@@ -84,7 +84,7 @@ function Home() {
             src: quizPage,
             cardHeader: 'Quiz',
             operation: 'Operation:- A simple quiz with score card',
-            link: '/quiz',
+            link: '/quizDashboard',
             tech: 'html, css, reactJs'
         }
         ];

@@ -18,7 +18,7 @@ import ProductPageRedux from "./pages/ProductPageRedux";
 
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
-import QuizPage from "./pages/QuizPage";
+import QuizDashboard from "./pages/Quiz/QuizDashboard";
 function App() {
   return (
     <div className="App">
@@ -36,7 +36,7 @@ function App() {
         <Route path="/weatherRedux" element={<WeatherRedux />} />
         <Route path="/dataTableUsingApiRedux" element={<DataTableUsingApiRedux />} />
         <Route path="/todoListsRedux" element={<TodoListsRedux />} />
-        <Route path="/quiz" element={<QuizPage />} />
+        <Route path="/quizDashboard" element={<QuizDashboard />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
