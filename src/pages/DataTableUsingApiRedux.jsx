@@ -2,12 +2,13 @@ import { useState } from 'react';
 import  { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import './DataTableUsingApi.css';
-import { arrayConstants } from '../store/reducers/DataTableUsingApi/actions'
+import { arrayConstants } from '../store/reducers/dataTableUsingApi/actions'
 
 
 function DataTableUsingApiRedux() {
-    const { arrayData } = useSelector((state) => state.array );
     const dispatch = useDispatch();
+    const { arrayData } = useSelector((state) => state.array );
+
 
     const [filterVal, setFilterVal] = useState('');
     const [searchApiData, setSearchApiData] = useState([]);

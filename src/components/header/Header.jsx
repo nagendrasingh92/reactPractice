@@ -1,6 +1,32 @@
 import { Link } from "react-router-dom"
 import './header.css'
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch  } from 'react-redux';
+import { authenticateConstants } from '../../store/reducers/authenticate/actions'
+
+
 function Header() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { authenticateUser } = useSelector((state) => state.authenticate);
+  console.log('valuess', authenticateUser)
+  const handleUser = (item) => {
+    console.log('value', item)
+    switch (item) {
+      case 'logIn': {
+        navigate(`/loginPage`)
+        break;
+      }
+      default: {
+        dispatch({ type: authenticateConstants.LOGGEDOUT_USER_DATA})
+        navigate(`*`)
+        break;
+      }
+    }
+  }
   return (
     <div className="sectionOne">
       <div className="logo">
@@ -19,6 +45,7 @@ function Header() {
           <a href="https://twitter.com/nagendraReact" target="_blank"><i className="fa-brands fa-twitter"></i></a>
           <a href="https://www.linkedin.com/in/nagendra-singh-chauhan-0328091aa" target="_blank"><i className="fa-brands fa-linkedin"></i></a>
           <i className="fa-solid fa-circle-half-stroke"></i>
+          {authenticateUser == null ? (<LoginIcon onClick={()=> handleUser('logIn')}></LoginIcon>) : (<LogoutIcon onClick={()=> handleUser('logOut')}></LogoutIcon>)}
         </div>
       </div>
     </div>

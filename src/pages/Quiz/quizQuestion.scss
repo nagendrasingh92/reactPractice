@@ -31,6 +31,9 @@
                 .optionWrap {
                     flex: 1 0 40%;
                     margin: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
 
                     .options {
                         background-color: aqua;
@@ -39,11 +42,13 @@
 
                     .normal {
                         padding: 5px;
+                        width: 80%;
                     }
 
                     .active {
                         background-color: aquamarine;
-                        margin: auto;
+                        width: 80%;
+
                     }
                 }
             }

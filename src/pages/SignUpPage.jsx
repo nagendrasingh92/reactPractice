@@ -1,22 +1,47 @@
 import { useFormik } from 'formik';
 import './signUpPage.css';
 import * as Yup from 'yup';
-function SignUpPage() {
+import { useSelector, useDispatch } from 'react-redux';
+import { authenticateConstants } from '../store/reducers/authenticate/actions'
 
+
+function SignUpPage() {
+    const dispatch = useDispatch();
+    const { userData } = useSelector((state) => state.authenticate);
+
+    console.log('userData12', userData)
     const formik = useFormik({
         initialValues: {
-            Username: '',
+            Name: '',
             email: '',
             password: '',
+            confirmPassword: '',
         },
         validationSchema: Yup.object({
-            Username: Yup.string().min(15, 'Must be 4 characters').required('Required'),
-            password: Yup.string().max(15, 'Must be 15 characters or less').required('Required'),
+            Name: Yup.string().min(4, 'Must be 4 characters').required('Required'),
             email: Yup.string().email('Invalid email address').required('Required'),
+            password: Yup
+                .string()
+                .required('Please enter your password.')
+                .min(8, 'Your password is too short.'),
+            confirmPassword: Yup
+                .string()
+                .required('Please confirm your password.')
+                .oneOf([Yup.ref('password')], 'Your passwords do not match.')
         }),
         onSubmit: values => {
-            console.log('te')
-            alert(JSON.stringify(values, null, 2));
+            let userInfo = values;
+            console.log('te', userInfo)
+            console.log('userData12111', userData)
+            let temp = userData.find((item) => item.email === userInfo.email);
+            console.log('temp', temp);
+            if (!temp) {
+                let y1 = [ ...userData, userInfo] 
+                console.log('u1', y1); 
+                dispatch({ type: authenticateConstants.UPDATE_USER_LIST, payload: y1 })
+            } else{
+                alert('Already exist.')
+            }
         },
     });
 
@@ -34,12 +59,12 @@ function SignUpPage() {
                     <div className="Name">
                         <input
                             type='text'
-                            name='Username'
-                            value={formik.values.Username}
+                            name='Name'
+                            value={formik.values.Name}
                             placeholder="Name"
                             onChange={formik.handleChange}
                         />
-                        {formik.errors.Username && (<div>{formik.errors.Username}</div>)}
+                        {formik.errors.Name && (<div>{formik.errors.Name}</div>)}
                     </div>
                     <div className="emailWrap">
                         <input
@@ -56,7 +81,7 @@ function SignUpPage() {
                         <input
                             type='password'
                             name='password'
-                            value={formik.values.email}
+                            value={formik.values.password}
                             placeholder="Password"
                             onChange={formik.handleChange}
                         />
@@ -67,7 +92,7 @@ function SignUpPage() {
                         <input
                             type='password'
                             name='confirmPassword'
-                            value={formik.values.email}
+                            value={formik.values.confirmPassword}
                             placeholder="Confirm Password"
                             onChange={formik.handleChange}
                         />

@@ -5,7 +5,7 @@ export function array (state = { arrayData: [] }, action) {
         case arrayConstants.UPDATE:
             return {...state, arrayData: action.payload };
         case arrayConstants.RESET:
-            return { arrayData: {} };
+            return { arrayData: [] };
         default:
             return state
     }

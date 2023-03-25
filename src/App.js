@@ -18,7 +18,11 @@ import ProductPageRedux from "./pages/ProductPageRedux";
 
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
-import QuizDashboard from "./pages/Quiz/QuizDashboard";
+import QuizDashboard from "./pages/quiz/QuizDashboard";
+
+import QuizQuestion from './pages/quiz/QuizQuestion';
+import QuizScore from "./pages/quiz/QuizScore";
+
 function App() {
   return (
     <div className="App">
@@ -37,6 +41,8 @@ function App() {
         <Route path="/dataTableUsingApiRedux" element={<DataTableUsingApiRedux />} />
         <Route path="/todoListsRedux" element={<TodoListsRedux />} />
         <Route path="/quizDashboard" element={<QuizDashboard />} />
+        <Route path="/quizDashboard/score" element={<QuizScore />} />
+        <Route path="/quizDashboard/:id/:subId" element={<QuizQuestion />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
