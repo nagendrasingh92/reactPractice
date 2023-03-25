@@ -2,24 +2,44 @@ import { useFormik } from 'formik';
 import './loginPage.css';
 import * as Yup from 'yup';
 import { Link } from "react-router-dom"
+import { useSelector, useDispatch  } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { authenticateConstants } from '../store/reducers/authenticate/actions'
+
+
 
 function LoginPage() {
+    const { userData } = useSelector((state) => state.authenticate);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const formik = useFormik({
         initialValues: {
-            userName: '',
+            email: '',
             password: '',
         },
         validationSchema: Yup.object({
             password: Yup.string().max(15, 'Must be 15 characters or less').required('Required'),
-            userName: Yup.string().email('Invalid User Name address').required('Required'),
+            email: Yup.string().email('Invalid User Name address').required('Required'),
         }),
+
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+            handleLogin(values)
         },
     });
 
-
+    const handleLogin  = (values) => {
+        console.log('value', userData)
+        let userInfo = values;
+        let temp = userData.find((item) => item.email === userInfo.email && item.password === userInfo.password);
+        console.log('Value1', temp)
+        if (temp) {
+            dispatch({ type: authenticateConstants.LOGGEDIN_USER_DATA, payload: temp })
+            navigate(`/quizDashboard`)
+        } else {
+            alert('Wrong credentials')
+        }
+    }
 
     return (
         <div className="loginPageWrap">
@@ -32,9 +52,9 @@ function LoginPage() {
                 <div className="userNameWrap">
                     <input
                         type='text'
-                        name='userName'
+                        name='email'
                         value={formik.values.email}
-                        placeholder="User Name *"
+                        placeholder="Email address"
                         onChange={formik.handleChange}
                     />
                     {formik.errors.email && (<div>{formik.errors.email}</div>)}
@@ -55,7 +75,6 @@ function LoginPage() {
                 </div>
                 <div className="signInbttn">
                     <button type="submit"> SIGN IN</button>
-
                 </div>
                 <div className="singUp">
                     Don't have an account?

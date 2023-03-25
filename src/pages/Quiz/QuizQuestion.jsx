@@ -3,17 +3,32 @@ import { useState } from 'react';
 import QuestionData from './QuestionData';
 import './quizQuestion.scss'
 import { Button } from "@material-ui/core";
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { quizConstants } from '../../store/reducers/quiz/actions'
+import { useDispatch } from 'react-redux';
 
 
-function QuizPage() {
+
+function QuizQuestion() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const params = useParams();
+    console.log('params', params);
     const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [quizList, setQuizList] = useState(QuestionData)
+    const [quizList, setQuizList] = useState([])
+
+
+    useEffect(() => {
+        let questionList = QuestionData.filter((item) => item.categoryId === parseInt(params.id) && item.levelId === parseInt(params.subId))
+        setQuizList(questionList);
+    }, [QuestionData])
 
     const handleOption = (opType) => {
         let tempQ = JSON.parse(JSON.stringify(quizList))
         tempQ[currentQuestion].userAns = opType;
         setQuizList(tempQ);
-        console.log("value", tempQ)
     }
 
     const handleOperation = (type) => {
@@ -30,15 +45,10 @@ function QuizPage() {
                     setCurrentQuestion(currentQuestion + 1)
                 }
                 break;
-
             }
             case 'submit': {
-                let score = 0;
-                quizList.map((item) => {
-                        if(item.userAns === item.correctAns)
-                        score += 1;                    
-                })
-                alert(`your score is ${score}`);
+                dispatch({ type: quizConstants.UPDATE, payload: quizList })
+                navigate(`/quizDashboard/score`)
                 break;
 
             }
@@ -46,6 +56,8 @@ function QuizPage() {
                 break;
         }
     }
+
+
 
     // const handleQuestionNumber = (number) => {
     //     switch (number) {
@@ -79,41 +91,41 @@ function QuizPage() {
                         return (
                             <div className='questionWrap'>
                                 <div className='questionTitle'>
-                                    {currentQuestion+1}. {item.questionText}
+                                    {currentQuestion + 1}. {item.questionText}
                                 </div>
                                 <div className='optionsWrap'>
                                     <div className='optionWrap'>
-                                        <span className='options'>
+                                        <div className='options'>
                                             A.
-                                        </span>
-                                        <span className={item.userAns === 'a' ? 'active normal' : 'normal'} onClick={() => handleOption('a')}>
+                                        </div>
+                                        <div className={item.userAns === 'a' ? 'active normal' : 'normal'} onClick={() => handleOption('a')}>
                                             {item.options.a}
-                                        </span>
+                                        </div>
                                     </div>
 
                                     <div className='optionWrap'>
-                                        <span className='options'>
+                                        <div className='options'>
                                             B.
-                                        </span>
-                                        <span className={item.userAns === 'b' ? 'active normal' : 'normal'} onClick={() => handleOption('b')}>
+                                        </div>
+                                        <div className={item.userAns === 'b' ? 'active normal' : 'normal'} onClick={() => handleOption('b')}>
                                             {item.options.b}
-                                        </span>
+                                        </div>
                                     </div>
                                     <div className='optionWrap'>
-                                        <span className='options'>
+                                        <div className='options'>
                                             C.
-                                        </span>
-                                        <span className={item.userAns === 'c' ? 'active normal' : 'normal'} onClick={() => handleOption('c')}>
+                                        </div>
+                                        <div className={item.userAns === 'c' ? 'active normal' : 'normal'} onClick={() => handleOption('c')}>
                                             {item.options.c}
-                                        </span>
+                                        </div>
                                     </div>
                                     <div className='optionWrap'>
-                                        <span className='options'>
+                                        <div className='options'>
                                             D.
-                                        </span>
-                                        <span className={item.userAns === 'd' ? 'active normal' : 'normal'} onClick={() => handleOption('d')}>
+                                        </div>
+                                        <div className={item.userAns === 'd' ? 'active normal' : 'normal'} onClick={() => handleOption('d')}>
                                             {item.options.d}
-                                        </span>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -131,12 +143,12 @@ function QuizPage() {
                             Previous
                         </Button>
                     </div>
-                    <div onClick={() => handleOperation(`${currentQuestion > 3 ? "submit" : "next"}`)}>
+                    <div onClick={() => handleOperation(`${currentQuestion > 8 ? "submit" : "next"}`)}>
                         <Button
                             variant="contained"
                             color="primary"
                         >
-                            {currentQuestion > 3 ? "Submit" : "Next Question"}
+                            {currentQuestion > 8 ? "Submit" : "Next Question"}
                         </Button>
                     </div>
                 </div>
@@ -154,4 +166,4 @@ function QuizPage() {
 
 }
 
-export default QuizPage;
+export default QuizQuestion;
