@@ -1,22 +1,19 @@
-.loginPageWrap {
+.SignUpPageWrap {
+    margin: auto;
     text-align: center;
 }
-.loginPageWrap .pageContent {
-    border: 2px solid grey;
+.SignUpPageWrap .pageContent {
+    border-radius: 10px;
     width: 50%;
+    border: 2px solid grey;
     margin: auto;
     text-align: center;
     padding: 10px;
 }
-.loginPageWrap .pageContent input {
-    width: 50%;
-    border-radius: 5px;
+.SignUpPageWrap .pageContent .textFieldWrap {
     margin: 10px;
-}
-.loginPageWrap .pageContent .rememberMe input{
-    width: auto;
-}
-.loginPageWrap .pageContent .iconWrap .icon{
+} 
+.SignUpPageWrap .pageContent .iconWrap{
     display: flex;
     justify-content: center;
     align-items: center;

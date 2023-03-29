@@ -1,18 +1,18 @@
 import { Route, Routes } from "react-router-dom"
 import './App.css';
 import Home from './pages/Home';
-import Calculator from './pages/Calculator';
-import Weather from './pages/Weather';
-import NumberGame from './pages/NumberGame';
-import TodoList from './pages/TodoList';
-import DataTableUsingApi from './pages/DataTableUsingApi';
-import LoginPage from './pages/LoginPage';
-import SignUpPage from "./pages/SignUpPage";
+import Calculator from './pages/calculator/Calculator';
+import Weather from './pages/weatherSearch/Weather';
+import NumberGame from './pages/numberGame/NumberGame';
+import TodoList from './pages/todoList/TodoList';
+import DataTableUsingApi from './pages/dataTable/DataTableUsingApi';
+import LoginPage from './pages/authentication/LoginPage';
+import SignUpPage from "./pages/authentication/SignUpPage";
 import CounterPage from './pages/CounterPage';
-import WeatherRedux from './pages/WeatherRedux';
-import DataTableUsingApiRedux from "./pages/DataTableUsingApiRedux";
-import TodoListsRedux from "./pages/TodoListsRedux";
-import ProductPageRedux from "./pages/ProductPageRedux";
+import WeatherRedux from './pages/weatherSearch/WeatherRedux';
+import DataTableUsingApiRedux from "./pages/dataTable/DataTableUsingApiRedux";
+import TodoListsRedux from "./pages/todoList/TodoListsRedux";
+import ProductPageRedux from "./pages/productDisplay/ProductPageRedux";
 
 
 

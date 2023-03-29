@@ -17,10 +17,16 @@ import todoList from "../assets/image/todoList.jpg"
 import weatherUpdate from "../assets/image/weatherUpdate.jpg"
 import productPage from "../assets/image/productPage.jpg"
 import quizPage from "../assets/image/quiz.png"
+import loginSingup from "../assets/image/loginSingup.png"
+import { useSelector, useDispatch  } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
 
 function Home() {
+    const { authenticateUser } = useSelector((state) => state.authenticate);
+    const navigate = useNavigate();
+
     const cardArray =
         [{
             id: '1',
@@ -43,7 +49,7 @@ function Home() {
             src: todoList,
             cardHeader: 'To-do Lists',
             operation: 'Operation:- Add, Delete, Edit task.',
-            link: '/todoLists',
+            link: '/todoListsRedux',
             tech: 'html, css, reactJs'
         },
         {
@@ -73,7 +79,7 @@ function Home() {
         },
         {
             id: '7',
-            src: productPage,
+            src: loginSingup,
             cardHeader: 'Login and signup',
             operation: 'Operation:- Add product to wishList',
             link: '/loginPage',
@@ -89,6 +95,18 @@ function Home() {
         }
         ];
 
+        const handleUser = (item) => {
+            console.log('value', item)
+            switch (item) {
+              case 'logIn': {
+                navigate(`/loginPage`)
+                break;
+              }
+              default: {
+                break;
+              }
+            }
+          }
     return (
         <>
             <div className="sectionTwo" id="about">
@@ -148,8 +166,10 @@ function Home() {
                                             <div><span>Tech Stack:-</span>{item.tech}</div>
                                         </div>
                                         <div className="cardFooter">
-                                            <Link to={item.link}><i className="fa-solid fa-link"></i>Live
-                                                Preview</Link>
+                                        {authenticateUser == null ? (<div onClick={()=> handleUser('logIn')}>Live Preview</div>) : (<Link to={item.link}><i className="fa-solid fa-link"></i>Live
+                                                Preview</Link>)}
+
+                                            
                                             <a href="#1" target="_blank"><i className="fa-brands fa-github" alt="view code"></i>View Code</a>
                                         </div>
                                     </div>

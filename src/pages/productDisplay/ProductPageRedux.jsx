@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import './productPageRedux.scss'
-import { productPageConstants } from '../store/reducers/productPage/actions'
+import { productPageConstants } from '../../store/reducers/productPage/actions'
 import Button from '@mui/material/Button';
 
 
@@ -16,7 +16,6 @@ function ProductPageRedux() {
             .then((res) => {
                 console.log('res', res)
                 dispatch({ type: productPageConstants.UPDATE, payload: res.data })
-
             });
     }, [])
 

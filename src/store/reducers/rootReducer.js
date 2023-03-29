@@ -4,7 +4,7 @@ import { counter } from './counter';
 
 import { weather } from "./weather";
 
-import { array } from './dataTableUsingApi';
+import { dataTableUsingApi } from './dataTableUsingApi';
 
 import { todoLists } from './todoLists';
 
@@ -19,7 +19,7 @@ import authenticate from './authenticate';
 const rootReducer = combineReducers({
     counter,
     weather,
-    array,
+    dataTableUsingApi,
     todoLists,
     product,
     quiz,
