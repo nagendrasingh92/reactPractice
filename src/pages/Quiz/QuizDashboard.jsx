@@ -100,10 +100,10 @@ function QuizDashboard() {
     return (
         <div className='quizDashboardWrap'>
             <div>                        
-                <div>Username: {authenticateUser.Username}</div>
+                <div>Username: {authenticateUser.name}</div>
                 <div>Email-Id: {authenticateUser.email}</div>
 
-                {console.log('valeu',authenticateUser)}
+                {console.log('value',authenticateUser)}
             </div>
             {category.length > 0 && category.map((item) => {
                 return (

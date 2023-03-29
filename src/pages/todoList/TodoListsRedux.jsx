@@ -2,13 +2,15 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from "react";
 import './todoLists.scss'
-import { todoListsConstants } from '../store/reducers/todoLists/actions'
+import { todoListsConstants } from '../../store/reducers/todoLists/actions'
+import Button from '@mui/material/Button';
 
 
 function TodoListsRedux() {
     const { todoData } = useSelector((state) => state.todoLists);
     const dispatch = useDispatch();
     const [inputTask, setInputTask] = useState('');
+    const { authenticateUser } = useSelector((state) => state.authenticate);
 
     const handleInput = (value) => {
         setInputTask(value);
@@ -34,7 +36,7 @@ function TodoListsRedux() {
         dispatch({
             type: todoListsConstants.UPDATE,
             payload: temp
-         })
+        })
 
     };
 
@@ -91,6 +93,12 @@ function TodoListsRedux() {
 
     return (
         <div className='todoListsPageWrap'>
+            <div>
+                <div>Username: {authenticateUser.name}</div>
+                <div>Email-Id: {authenticateUser.email}</div>
+
+                {console.log('valeu', authenticateUser)}
+            </div>
             <div className='todoListsWrap'>
                 <div className='inputWrap'>
                     <input
@@ -100,10 +108,7 @@ function TodoListsRedux() {
                         onChange={(event) => handleInput(event.target.value)}
                     />
                 </div>
-                <div
-                    className='submitBttn'
-                    onClick={() => handleTask()}>Submit
-                </div>
+                <Button variant="contained" className='submitBttn' onClick={() => handleTask()}>Submit</Button>
             </div>
             <div className="taskContainerWrap">
                 <ol>
@@ -113,13 +118,21 @@ function TodoListsRedux() {
                                 {!item.isEdit ? (
                                     <>
                                         <span>{item.title}</span>
-                                        <span
-                                            className="todoDelete"
-                                            onClick={() => deleteItem(item.id)}>Delete
+                                        <span>
+                                            <Button
+                                                variant="contained"
+                                                className="todoDelete"
+                                                onClick={() => deleteItem(item.id)}
+                                            >Delete
+                                            </Button>
                                         </span>
-                                        <span
-                                            className="todoEdit"
-                                            onClick={() => editItem(item.id)}>Edit
+                                        <span>
+                                            <Button
+                                                variant="contained"
+                                                className="todoEdit"
+                                                onClick={() => editItem(item.id)}
+                                            >Edit
+                                            </Button>
                                         </span>
                                     </>
                                 ) : (
@@ -128,16 +141,21 @@ function TodoListsRedux() {
                                             value={item.tempTitle}
                                             onChange={(event) => handleEdit(item.id, event.target.value)}
                                         />
-                                        <span
-                                            className="save"
-                                            onClick={() => saveItem(item.id)}
-                                        >Save
-
+                                        <span>
+                                            <Button
+                                                variant="contained"
+                                                className="save"
+                                                onClick={() => saveItem(item.id)}
+                                            >Save
+                                            </Button>
                                         </span>
-                                        <span
-                                            className="cancel"
-                                            onClick={() => cancelItem(item.id)}
-                                        >Cancel
+                                        <span>
+                                            <Button
+                                                variant="contained"
+                                                className="cancel"
+                                                onClick={() => cancelItem(item.id)}
+                                            >Cancel
+                                            </Button>
                                         </span>
                                     </>
                                 )}

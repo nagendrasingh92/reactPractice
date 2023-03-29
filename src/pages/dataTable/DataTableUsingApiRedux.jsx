@@ -2,12 +2,12 @@ import { useState } from 'react';
 import  { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import './DataTableUsingApi.css';
-import { arrayConstants } from '../store/reducers/dataTableUsingApi/actions'
+import { arrayConstants } from '../../store/reducers/dataTableUsingApi/actions'
 
 
 function DataTableUsingApiRedux() {
     const dispatch = useDispatch();
-    const { arrayData } = useSelector((state) => state.array );
+    const { arrayData } = useSelector((state) => state.dataTableUsingApi );
 
 
     const [filterVal, setFilterVal] = useState('');
@@ -35,9 +35,6 @@ function DataTableUsingApiRedux() {
             dispatch({type:  arrayConstants.UPDATE, payload: filterResult })
         }
     }
-
-
-
     return (
         <div className='tableWrap'>
             <div className='tableHeading'>

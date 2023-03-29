@@ -13,10 +13,6 @@ $background-color_1: green;
 		padding: 2em;
 		.submitBttn {
 			margin: 10px;
-			border-radius: 20px;
-			color: $color_1;
-			background-color: $background-color_1;
-			padding: 3px 10px;
 		}
 	}
 	.taskContainerWrap {
@@ -25,31 +21,19 @@ $background-color_1: green;
 			margin: 20px;
 			.todoDelete {
 				margin: 6px;
-				border-radius: 20px;
-				color: $color_1;
-				background-color: $background-color_1;
-				padding: 3px 10px;
+				
 			}
 			.todoEdit {
 				margin: 6px;
-				border-radius: 20px;
-				color: $color_1;
-				background-color: $background-color_1;
-				padding: 3px 10px;
+				
 			}
 			.save {
 				margin: 6px;
-				border-radius: 20px;
-				color: $color_1;
-				background-color: $background-color_1;
-				padding: 3px 10px;
+				
 			}
 			.cancel {
 				margin: 6px;
-				border-radius: 20px;
-				color: $color_1;
-				background-color: $background-color_1;
-				padding: 3px 10px;
+				
 			}
 		}
 	}

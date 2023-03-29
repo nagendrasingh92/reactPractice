@@ -2,7 +2,7 @@ import { useState } from 'react';
 import  {useSelector, useDispatch} from 'react-redux';
 import axios from 'axios';
 import './weather.css'
-import {weatherConstants} from '../store/reducers/weather/actions'
+import {weatherConstants} from '../../store/reducers/weather/actions'
 function WeatherRedux() {
     const { weatherData } = useSelector((state) => state.weather );
     const dispatch = useDispatch();

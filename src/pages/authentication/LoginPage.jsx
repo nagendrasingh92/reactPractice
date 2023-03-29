@@ -1,10 +1,11 @@
 import { useFormik } from 'formik';
 import './loginPage.css';
-import * as Yup from 'yup';
+import * as yup from 'yup';
 import { Link } from "react-router-dom"
-import { useSelector, useDispatch  } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { authenticateConstants } from '../store/reducers/authenticate/actions'
+import { authenticateConstants } from '../../store/reducers/authenticate/actions'
+import TextField from '@mui/material/TextField';
 
 
 
@@ -12,30 +13,37 @@ function LoginPage() {
     const { userData } = useSelector((state) => state.authenticate);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const validationSchema = yup.object({
+        email: yup
+            .string('Enter your email')
+            .email('Enter a valid email')
+            .required('Email is required'),
+        password: yup
+            .string('Enter your password')
+            .min(8, 'Password should be of minimum 8 characters length')
+            .required('Password is required'),
+    });
 
     const formik = useFormik({
         initialValues: {
             email: '',
             password: '',
         },
-        validationSchema: Yup.object({
-            password: Yup.string().max(15, 'Must be 15 characters or less').required('Required'),
-            email: Yup.string().email('Invalid User Name address').required('Required'),
-        }),
+        validationSchema: validationSchema,
 
         onSubmit: values => {
             handleLogin(values)
         },
     });
 
-    const handleLogin  = (values) => {
+    const handleLogin = (values) => {
         console.log('value', userData)
         let userInfo = values;
         let temp = userData.find((item) => item.email === userInfo.email && item.password === userInfo.password);
         console.log('Value1', temp)
         if (temp) {
             dispatch({ type: authenticateConstants.LOGGEDIN_USER_DATA, payload: temp })
-            navigate(`/quizDashboard`)
+            navigate(`*`)
         } else {
             alert('Wrong credentials')
         }
@@ -49,25 +57,29 @@ function LoginPage() {
                     <i className="fa-solid fa-lock icon"></i>
                 </div>
                 LOGIN
-                <div className="userNameWrap">
-                    <input
-                        type='text'
-                        name='email'
+                <div className="textFieldWrap">
+                    <TextField
+                        size="small"
+                        id="email"
+                        name="email"
+                        label="Email"
                         value={formik.values.email}
-                        placeholder="Email address"
                         onChange={formik.handleChange}
+                        error={formik.touched.email && Boolean(formik.errors.email)}
+                        helperText={formik.touched.email && formik.errors.email}
                     />
-                    {formik.errors.email && (<div>{formik.errors.email}</div>)}
                 </div>
-                <div className="passwordWrap">
-                    <input
-                        type='password'
-                        name='password'
+                <div className="textFieldWrap">
+                    <TextField
+                        size="small"
+                        id="password"
+                        name="password"
+                        label="Password"
                         value={formik.values.password}
-                        placeholder="Password *"
                         onChange={formik.handleChange}
+                        error={formik.touched.password && Boolean(formik.errors.password)}
+                        helperText={formik.touched.password && formik.errors.password}
                     />
-                    {formik.errors.password && (<div>{formik.errors.password}</div>)}
                 </div>
                 <div className="rememberMe">
                     <input type="checkbox" id="checkBox" name="vehicheckBoxcle1" value="" />
