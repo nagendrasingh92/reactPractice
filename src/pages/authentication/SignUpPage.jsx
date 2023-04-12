@@ -43,14 +43,10 @@ function SignUpPage() {
         
         onSubmit: values => {
             let userInfo = values;
-            console.log('te', userInfo)
-            console.log('userData12111', userData)
             let temp = userData.find((item) => item.email === userInfo.email);
-            console.log('temp', temp);
             let id = Date.now().toString(36) + Math.random().toString(36).substr(2)
             if (!temp) {
                 let userlist = [...userData, { ...userInfo, id: id } ]
-                console.log('u1', userlist);
                 dispatch({ type: authenticateConstants.UPDATE_USER_LIST, payload: userlist })
                 navigate(`/loginPage`)
             } else {
@@ -99,6 +95,7 @@ function SignUpPage() {
                         id="password"
                         name="password"
                         label="Password"
+                        type="password"
                         value={formik.values.password}
                         onChange={formik.handleChange}
                         error={formik.touched.password && Boolean(formik.errors.password)}
@@ -111,6 +108,7 @@ function SignUpPage() {
                         id="confirmPassword"
                         name="confirmPassword"
                         label="Confirm Password"
+                        type="password"
                         value={formik.values.confirmPassword}
                         onChange={formik.handleChange}
                         error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}

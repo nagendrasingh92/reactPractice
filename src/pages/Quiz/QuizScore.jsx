@@ -1,28 +1,58 @@
 
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import './quizScore.scss';
+import Table from '@mui/material/Table';
 import Button from '@mui/material/Button';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { Link } from "react-router-dom"
 
 
 function QuizScore() {
+    const { quizResult } = useSelector((state) => state.quiz);
     const { quizData } = useSelector((state) => state.quiz);
-    const [scoreDisplay, setScoreDisplay] = useState(0);
 
-
-    const handleScore = () => {
-        let score = 0;
-        quizData.map((item) => {
-            if (item.userAns === item.correctAns)
-                score += 1;
-        })
-        console.log('data', quizData)
-        setScoreDisplay(score);
-    }
+    console.log('que', quizData)
     return (
         <div className='scoreboarderWrap'>
-            <Button onClick={() => handleScore()} variant="contained">Click</Button>
-            <span> to display your score {scoreDisplay}</span>
+            <div className='marginForAll'>
+            <Link to='/quizDashboard'><Button variant="contained">Go to Quiz dashboard</Button></Link>
+            </div>
+            <div>
+                Total Score : - {quizResult.score}
+            </div>
+            <div>
+                <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Question No.</TableCell>
+                                <TableCell align="left">Question</TableCell>
+                                <TableCell align="left">Correct Answer</TableCell>
+                                <TableCell align="left">User Answer</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {quizData.map((row) => (
+                                <TableRow
+                                    key={row.name}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell align="left">{row.id}</TableCell>
+                                    <TableCell align="left">{row.questionText}</TableCell>
+                                    <TableCell align="left">{row.correctAns}</TableCell>
+                                    <TableCell align="left">{row.userAns}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </div>
+
         </div>
     );
 }

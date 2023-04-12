@@ -20,8 +20,9 @@ function TodoListsRedux() {
         if (inputTask) {
             dispatch({
                 type: todoListsConstants.UPDATE,
-                payload: [...todoData, { id: Date.now(), title: inputTask, status: false, isEdit: false, tempTitle: inputTask }]
+                payload: [...todoData, {userId: `${authenticateUser.userId}`, id: Date.now(), title: inputTask, status: false, isEdit: false, tempTitle: inputTask }]
             })
+            console.log('valueaad',todoData)
             setInputTask('');
         } else {
             alert('please enter task')
@@ -112,7 +113,7 @@ function TodoListsRedux() {
             </div>
             <div className="taskContainerWrap">
                 <ol>
-                    {todoData.map((item, index) => {
+                    {todoData.filter((item) => item.userId === authenticateUser.userId).map((item, index) => {
                         return (
                             <li key={index} className="taskRow">
                                 {!item.isEdit ? (

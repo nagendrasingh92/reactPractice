@@ -3,7 +3,7 @@ import './loginPage.css';
 import * as yup from 'yup';
 import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { authenticateConstants } from '../../store/reducers/authenticate/actions'
 import TextField from '@mui/material/TextField';
 
@@ -12,6 +12,9 @@ import TextField from '@mui/material/TextField';
 function LoginPage() {
     const { userData } = useSelector((state) => state.authenticate);
     const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams();
+    searchParams.get("redirect")
+    console.log('location', searchParams.get("redirect"))
     const dispatch = useDispatch();
     const validationSchema = yup.object({
         email: yup
@@ -43,7 +46,11 @@ function LoginPage() {
         console.log('Value1', temp)
         if (temp) {
             dispatch({ type: authenticateConstants.LOGGEDIN_USER_DATA, payload: temp })
-            navigate(`*`)
+            if(searchParams.get("redirect")){
+                navigate(searchParams.get("redirect"))
+            } else {
+                navigate(`*`)
+            }
         } else {
             alert('Wrong credentials')
         }
@@ -75,6 +82,7 @@ function LoginPage() {
                         id="password"
                         name="password"
                         label="Password"
+                        type="password"
                         value={formik.values.password}
                         onChange={formik.handleChange}
                         error={formik.touched.password && Boolean(formik.errors.password)}

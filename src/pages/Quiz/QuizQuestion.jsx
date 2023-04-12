@@ -7,15 +7,15 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { quizConstants } from '../../store/reducers/quiz/actions'
-import { useDispatch } from 'react-redux';
-
-
+import { useDispatch, useSelector } from 'react-redux';
 
 function QuizQuestion() {
+    const {authenticateUser} = useSelector((state) => state.authenticate);
+    // let t1 = useSelector((state) => state.quiz);
+    const { quizUserData } = useSelector((state) => state.quiz);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const params = useParams();
-    console.log('params', params);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [quizList, setQuizList] = useState([])
 
@@ -25,13 +25,15 @@ function QuizQuestion() {
         setQuizList(questionList);
     }, [QuestionData])
 
-    const handleOption = (opType) => {
+    const handleOption = (selectedOp) => {
         let tempQ = JSON.parse(JSON.stringify(quizList))
-        tempQ[currentQuestion].userAns = opType;
+        tempQ[currentQuestion].userAns = selectedOp;
         setQuizList(tempQ);
+        console.log('quizUserdata',tempQ)
     }
 
     const handleOperation = (type) => {
+        debugger;
         switch (type) {
             case 'previous': {
                 if (currentQuestion > 0) {
@@ -47,10 +49,47 @@ function QuizQuestion() {
                 break;
             }
             case 'submit': {
+                let score = 0;
+                quizList.map((item) => {
+                    if (item.userAns === item.correctAns){
+                        score += 1;
+                    }
+                })
+                let quizScoreData = {
+                    userId: authenticateUser.id,
+                    categoryId: params.id,
+                    levelId: params.subId,
+                    score: score,
+                    totalQuestion: (quizList.length -1),
+                    correctQuestion: score,
+                }
+
+                let tempUserData = quizUserData;
+                let tempUserQuizObj = tempUserData.find((item) => ( 
+                    (item.userId === authenticateUser.id) && 
+                    (item.categoryId === params.id) && 
+                    (item.levelId === params.subId))
+                )
+
+                if(tempUserQuizObj && tempUserQuizObj.userId && tempUserQuizObj.score > score){ 
+                    tempUserData.map((item) => {
+                        if((item.userId === authenticateUser.id) && 
+                        (item.categoryId === params.id) && 
+                        (item.levelId === params.subId)){
+                            item.score = score
+                        }
+                        return item;
+                    })
+                } else if (!tempUserQuizObj) {
+                    tempUserData.push(quizScoreData)
+                }
                 dispatch({ type: quizConstants.UPDATE, payload: quizList })
+                console.log('quizUserdata',quizList)
+                dispatch({ type: quizConstants.UPDATE_USER_DATA, payload: tempUserData })
+                dispatch({ type: quizConstants.UPDATE_QUIZ_SCORE, payload: quizScoreData})
+                console.log('tempUserData', quizScoreData)
                 navigate(`/quizDashboard/score`)
                 break;
-
             }
             default:
                 break;
@@ -98,7 +137,7 @@ function QuizQuestion() {
                                         <div className='options'>
                                             A.
                                         </div>
-                                        <div className={item.userAns === 'a' ? 'active normal' : 'normal'} onClick={() => handleOption('a')}>
+                                        <div className={item.userAns === item.options.a ? 'active normal' : 'normal'} onClick={() => handleOption(item.options.a)}>
                                             {item.options.a}
                                         </div>
                                     </div>
@@ -107,7 +146,7 @@ function QuizQuestion() {
                                         <div className='options'>
                                             B.
                                         </div>
-                                        <div className={item.userAns === 'b' ? 'active normal' : 'normal'} onClick={() => handleOption('b')}>
+                                        <div className={item.userAns === item.options.b ? 'active normal' : 'normal'} onClick={() => handleOption(item.options.b)}>
                                             {item.options.b}
                                         </div>
                                     </div>
@@ -115,7 +154,7 @@ function QuizQuestion() {
                                         <div className='options'>
                                             C.
                                         </div>
-                                        <div className={item.userAns === 'c' ? 'active normal' : 'normal'} onClick={() => handleOption('c')}>
+                                        <div className={item.userAns === item.options.c ? 'active normal' : 'normal'} onClick={() => handleOption(item.options.c)}>
                                             {item.options.c}
                                         </div>
                                     </div>
@@ -123,7 +162,7 @@ function QuizQuestion() {
                                         <div className='options'>
                                             D.
                                         </div>
-                                        <div className={item.userAns === 'd' ? 'active normal' : 'normal'} onClick={() => handleOption('d')}>
+                                        <div className={item.userAns === item.options.d ? 'active normal' : 'normal'} onClick={() => handleOption(item.options.d)}>
                                             {item.options.d}
                                         </div>
                                     </div>
@@ -143,10 +182,11 @@ function QuizQuestion() {
                             Previous
                         </Button>
                     </div>
-                    <div onClick={() => handleOperation(`${currentQuestion > 8 ? "submit" : "next"}`)}>
+                    <div >
                         <Button
                             variant="contained"
                             color="primary"
+                            onClick={() => handleOperation(`${currentQuestion > 8 ? "submit" : "next"}`)}
                         >
                             {currentQuestion > 8 ? "Submit" : "Next Question"}
                         </Button>
