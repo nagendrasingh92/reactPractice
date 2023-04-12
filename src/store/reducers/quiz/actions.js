@@ -1,5 +1,7 @@
 export const quizConstants = {
     UPDATE: 'UPDATE_QUIZ',
+    UPDATE_USER_DATA: 'UPDATE_USER_DATA',
     GET: 'GET_QUIZ',
-    RESET: 'RESET_QUIZ'
+    RESET: 'RESET_QUIZ',
+    UPDATE_QUIZ_SCORE: 'UPDATE_QUIZ_SCORE'
 };

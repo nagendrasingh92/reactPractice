@@ -34,7 +34,7 @@ function Home() {
             cardHeader: 'Calculator',
             operation: 'Operation:- Add, Subtract, Multiply, Divide.',
             link: '/calculator',
-            tech: 'html, css, reactJs'
+            tech: 'html, css, reactJs',
         },
         {
             id: '2',
@@ -95,11 +95,11 @@ function Home() {
         }
         ];
 
-        const handleUser = (item) => {
+        const handleUser = (item, redirect = '') => {
             console.log('value', item)
             switch (item) {
               case 'logIn': {
-                navigate(`/loginPage`)
+                navigate(`/loginPage?redirect=${redirect}`)
                 break;
               }
               default: {
@@ -166,7 +166,7 @@ function Home() {
                                             <div><span>Tech Stack:-</span>{item.tech}</div>
                                         </div>
                                         <div className="cardFooter">
-                                        {authenticateUser == null ? (<div onClick={()=> handleUser('logIn')}>Live Preview</div>) : (<Link to={item.link}><i className="fa-solid fa-link"></i>Live
+                                        {authenticateUser == null ? (<div onClick={()=> handleUser('logIn', item.link)}>Live Preview</div>) : (<Link to={item.link}><i className="fa-solid fa-link"></i>Live
                                                 Preview</Link>)}
 
                                             

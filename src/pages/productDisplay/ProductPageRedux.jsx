@@ -10,14 +10,13 @@ function ProductPageRedux() {
     const dispatch = useDispatch();
     const { productsData } = useSelector((state) => state.product);
     const [whishListData, setWhishListData] = useState([])
+    const [skip, setSkip] = useState(0);
 
     useEffect(() => {
-        axios.get(`https://dummyjson.com/products`)
-            .then((res) => {
-                console.log('res', res)
-                dispatch({ type: productPageConstants.UPDATE, payload: res.data })
-            });
+        loadData()
     }, [])
+
+    
 
     const handleWishList = (id) => {
         let data = [...whishListData];
@@ -44,6 +43,32 @@ function ProductPageRedux() {
             total += data.price;
         })
         return total;
+    }
+
+    const getData = (type) => {
+        console.log('type', type, 'productsData', productsData, 'skip+10', skip+10)
+        switch(type){
+            case 'prev': 
+                loadData()
+                break;
+            case 'next': 
+                if(productsData.total >= skip+10){
+                    setSkip(skip+10)
+                    loadData()
+                    
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    const loadData = () => {
+        axios.get(`https://dummyjson.com/products?limit=10&skip=${skip}`)
+        .then((res) => {
+            console.log('res', res)
+            dispatch({ type: productPageConstants.UPDATE, payload: res.data })
+        });
     }
 
     return (
@@ -119,6 +144,10 @@ function ProductPageRedux() {
                         )
                     })
                 }
+            </div>
+            <div>
+                <div onClick={() => getData('prev')}>Previous</div>
+                <div onClick={() => getData('next')}>Next</div>
             </div>
         </div>
 
