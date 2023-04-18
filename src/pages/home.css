@@ -91,7 +91,7 @@
  }
 
  .sectionFour .sectionFourCardWrap .colWrap {
-     flex-basis: 33%;
+     flex-basis: 31%;
      margin: auto;
 
  }
@@ -99,7 +99,7 @@
  .sectionFour .sectionFourCardWrap .colWrap .cardBorder {
      border-radius: 10px;
      overflow: hidden;
-     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+     box-shadow: 2px 2px 100px rgba(0,0,0,.2);
      margin: 22px;
  }
 
@@ -125,7 +125,7 @@
  .sectionFour .sectionFourCardWrap .colWrap .cardBorder .cardContent .operation {
      padding: 10px 0;
      text-overflow: ellipsis;
-     height: 3em;
+     height: 4em;
  }
 
  .sectionFour .sectionFourCardWrap .colWrap .cardBorder .cardFooter {

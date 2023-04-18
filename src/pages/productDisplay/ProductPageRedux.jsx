@@ -55,7 +55,6 @@ function ProductPageRedux() {
                 if(productsData.total >= skip+10){
                     setSkip(skip+10)
                     loadData()
-                    
                 }
                 break;
             default:

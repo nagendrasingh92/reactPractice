@@ -36,7 +36,7 @@ ChartJS.register(
 
 
 function QuizDashboard() {
-    const { chartUserTempquizResult, quizUserData } = useSelector((state) => state.quiz);
+    const { quizUserData } = useSelector((state) => state.quiz);
     const { authenticateUser } = useSelector((state) => state.authenticate);
     const [chartResult, setChartResult] = useState({ easy: 0, medium: 0, hard: 0 });
     const [selectedTechnology, setSelectedTechnology] = useState();
