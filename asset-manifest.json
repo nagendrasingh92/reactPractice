@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/reactPractice/static/css/main.d3849067.css",
-    "main.js": "/reactPractice/static/js/main.721dc69a.js",
+    "main.css": "/reactPractice/static/css/main.08eb7a41.css",
+    "main.js": "/reactPractice/static/js/main.46ac45bb.js",
     "static/js/787.28cb0dcd.chunk.js": "/reactPractice/static/js/787.28cb0dcd.chunk.js",
     "static/media/loginSingup.png": "/reactPractice/static/media/loginSingup.0fffa0df1b97f5641db1.png",
     "static/media/quiz.png": "/reactPractice/static/media/quiz.b340cd61cabaf40c35aa.png",
@@ -12,6 +12,7 @@
     "static/media/developer.jpg": "/reactPractice/static/media/developer.18608cccafc1b60c992e.jpg",
     "static/media/todoList.jpg": "/reactPractice/static/media/todoList.37cbc84d96fdc4ca5c44.jpg",
     "static/media/calculator.jpg": "/reactPractice/static/media/calculator.84897381ec421d82c3d2.jpg",
+    "static/media/adminImage.jpg": "/reactPractice/static/media/adminImage.abb6ec400dc78b6ecdef.jpg",
     "static/media/sassIcon.svg": "/reactPractice/static/media/sassIcon.4f452f39442aa8395f8c11e772cec9db.svg",
     "static/media/reactIcon.svg": "/reactPractice/static/media/reactIcon.ea8d7c26d9ce7bc5a6882779aa8cacdc.svg",
     "static/media/vscodeIcon.svg": "/reactPractice/static/media/vscodeIcon.09d02691c8ec0c3b4204a4d5f2d7d8b4.svg",
@@ -22,12 +23,12 @@
     "static/media/githubIcon.svg": "/reactPractice/static/media/githubIcon.36dc0fbc093986dc6624f3ad8a37ab2a.svg",
     "static/media/cssIcon.svg": "/reactPractice/static/media/cssIcon.1dc1ff133b346eb946ede2b781ce69f8.svg",
     "static/media/htmlIcon.svg": "/reactPractice/static/media/htmlIcon.b4f276884d6135db3f45c375dcc50b01.svg",
-    "main.d3849067.css.map": "/reactPractice/static/css/main.d3849067.css.map",
-    "main.721dc69a.js.map": "/reactPractice/static/js/main.721dc69a.js.map",
+    "main.08eb7a41.css.map": "/reactPractice/static/css/main.08eb7a41.css.map",
+    "main.46ac45bb.js.map": "/reactPractice/static/js/main.46ac45bb.js.map",
     "787.28cb0dcd.chunk.js.map": "/reactPractice/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d3849067.css",
-    "static/js/main.721dc69a.js"
+    "static/css/main.08eb7a41.css",
+    "static/js/main.46ac45bb.js"
   ]
 }
