@@ -47,6 +47,7 @@ function SignUpPage() {
             let id = Date.now().toString(36) + Math.random().toString(36).substr(2)
             if (!temp) {
                 let userlist = [...userData, { ...userInfo, id: id } ]
+                console.log('ddsf', userlist)
                 dispatch({ type: authenticateConstants.UPDATE_USER_LIST, payload: userlist })
                 navigate(`/loginPage`)
             } else {

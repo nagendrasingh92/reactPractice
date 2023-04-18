@@ -18,7 +18,8 @@ import weatherUpdate from "../assets/image/weatherUpdate.jpg"
 import productPage from "../assets/image/productPage.jpg"
 import quizPage from "../assets/image/quiz.png"
 import loginSingup from "../assets/image/loginSingup.png"
-import { useSelector, useDispatch  } from 'react-redux';
+import adminImage from "../assets/image/adminImage.jpg"
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -28,85 +29,103 @@ function Home() {
     const navigate = useNavigate();
 
     const cardArray =
-        [{
-            id: '1',
-            src: calculator,
-            cardHeader: 'Calculator',
-            operation: 'Operation:- Add, Subtract, Multiply, Divide.',
-            link: '/calculator',
-            tech: 'html, css, reactJs',
-        },
-        {
-            id: '2',
-            src: NumberGame,
-            cardHeader: 'Number Game',
-            operation: 'Operation:- Arrange numbers from 1 to 15.',
-            link: '/numberGame',
-            tech: 'html, css, reactJs'
-        },
-        {
-            id: '3',
-            src: todoList,
-            cardHeader: 'To-do Lists',
-            operation: 'Operation:- Add, Delete, Edit task.',
-            link: '/todoListsRedux',
-            tech: 'html, css, reactJs'
-        },
-        {
-            id: '4',
-            src: weatherUpdate,
-            cardHeader: 'Weather find',
-            operation: 'Operation:- Display temperature, description, humidity, wind speed.',
-            link: '/weather',
-            tech: 'html, css, reactJs'
-        },
+        [
+            {
+                id: '1',
+                src: adminImage,
+                cardHeader: 'Admin Portal',
+                operation: 'Operation:- To review user info',
+                previewLink: '/adminPortal',
+                codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages',
+                tech: 'html, css, reactJs',
+            },
+            {
+                id: '2',
+                src: calculator,
+                cardHeader: 'Calculator',
+                operation: 'Operation:- Add, Subtract, Multiply, Divide.',
+                previewLink: '/calculator',
+                codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/calculator',
+                tech: 'html, css, reactJs',
+            },
+            {
+                id: '3',
+                src: NumberGame,
+                cardHeader: 'Number Game',
+                operation: 'Operation:- Arrange numbers from 1 to 15.',
+                previewLink: '/numberGame',
+                codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/numberGame',
+                tech: 'html, css, reactJs'
+            },
+            {
+                id: '4',
+                src: todoList,
+                cardHeader: 'To-do Lists',
+                operation: 'Operation:- Add, Delete, Edit task.',
+                previewLink: '/todoListsRedux',
+                codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/todoList',
+                tech: 'html, css, reactJs'
+            },
+            {
+                id: '5',
+                src: weatherUpdate,
+                cardHeader: 'Weather find',
+                operation: 'Operation:- Display temperature, description, humidity, wind speed.',
+                previewLink: '/weather',
+                codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/weatherSearch',
+                tech: 'html, css, reactJs'
+            },
 
-        {
-            id: '5',
-            src: findString,
-            cardHeader: 'Data Table using API',
-            operation: 'Operation:- Fetch data table from APIs and place a search box.',
-            link: '/DataTableUsingApi',
-            tech: 'html, css, reactJs'
-        },
-        {
-            id: '6',
-            src: productPage,
-            cardHeader: 'Product display',
-            operation: 'Operation:- Add product to wishList',
-            link: '/productPageRedux',
-            tech: 'html, css, reactJs'
-        },
-        {
-            id: '7',
-            src: loginSingup,
-            cardHeader: 'Login and signup',
-            operation: 'Operation:- Add product to wishList',
-            link: '/loginPage',
-            tech: 'html, css, reactJs'
-        },
-        {
-            id: '8',
-            src: quizPage,
-            cardHeader: 'Quiz',
-            operation: 'Operation:- A simple quiz with score card',
-            link: '/quizDashboard',
-            tech: 'html, css, reactJs'
-        }
+            {
+                id: '6',
+                src: findString,
+                cardHeader: 'Data Table using API',
+                operation: 'Operation:- Fetch data table from APIs and place a search box.',
+                previewLink: '/DataTableUsingApi',
+                codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/dataTable',
+                tech: 'html, css, reactJs'
+            },
+            {
+                id: '7',
+                src: productPage,
+                cardHeader: 'Product display',
+                operation: 'Operation:- Add product to wishList',
+                previewLink: '/productPageRedux',
+                codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/productDisplay',
+                tech: 'html, css, reactJs'
+            },
+            {
+                id: '8',
+                src: loginSingup,
+                cardHeader: 'Login and signup',
+                operation: 'Operation:- Add product to wishList',
+                previewLink: '/loginPage',
+                codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/authentication',
+                tech: 'html, css, reactJs'
+            },
+            {
+                id: '9',
+                src: quizPage,
+                cardHeader: 'Quiz',
+                operation: 'Operation:- A simple quiz with score card',
+                previewLink: '/quizDashboard',
+                codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/Quiz',
+                tech: 'html, css, reactJs'
+            }
         ];
 
-        const handleUser = (item, redirect = '') => {
-            console.log('value', item)
-            switch (item) {
-              case 'logIn': {
+    const handleUser = (item, redirect = '') => {
+        console.log('value', item)
+        switch (item) {
+            case 'logIn': {
                 navigate(`/loginPage?redirect=${redirect}`)
                 break;
-              }
-              default: {
-                break;
-              }
             }
-          }
+            default: {
+                break;
+            }
+        }
+    }
     return (
         <>
             <div className="sectionTwo" id="about">
@@ -166,11 +185,11 @@ function Home() {
                                             <div><span>Tech Stack:-</span>{item.tech}</div>
                                         </div>
                                         <div className="cardFooter">
-                                        {authenticateUser == null ? (<div onClick={()=> handleUser('logIn', item.link)}>Live Preview</div>) : (<Link to={item.link}><i className="fa-solid fa-link"></i>Live
+                                            {authenticateUser == null ? (<div onClick={() => handleUser('logIn', item.previewLink)}>Live Preview</div>) : (<Link to={item.previewLink}><i className="fa-solid fa-link"></i>Live
                                                 Preview</Link>)}
 
-                                            
-                                            <a href="#1" target="_blank"><i className="fa-brands fa-github" alt="view code"></i>View Code</a>
+
+                                            <a href={item.codeLink} target="_blank"><i className="fa-brands fa-github" alt="view code"></i>View Code</a>
                                         </div>
                                     </div>
                                 </div>
@@ -178,7 +197,7 @@ function Home() {
                         })
                     }
                 </div>
-                
+
             </div>
         </>
     )

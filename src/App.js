@@ -13,6 +13,7 @@ import WeatherRedux from './pages/weatherSearch/WeatherRedux';
 import DataTableUsingApiRedux from "./pages/dataTable/DataTableUsingApiRedux";
 import TodoListsRedux from "./pages/todoList/TodoListsRedux";
 import ProductPageRedux from "./pages/productDisplay/ProductPageRedux";
+import AdminPortal from "./pages/AdminPortal";
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import QuizDashboard from "./pages/quiz/QuizDashboard";
@@ -37,6 +38,7 @@ function App() {
         <Route path="/weatherRedux" element={<WeatherRedux />} />
         <Route path="/dataTableUsingApiRedux" element={<DataTableUsingApiRedux />} />
         <Route path="/todoListsRedux" element={<TodoListsRedux />} />
+        <Route path="/adminPortal" element={<AdminPortal />} />
         <Route path="/quizDashboard" element={<QuizDashboard />} />
         <Route path="/quizType" element={<QuizType />} />
         <Route path="/quizDashboard/score" element={<QuizScore />} />
