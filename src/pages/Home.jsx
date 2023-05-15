@@ -135,7 +135,7 @@ function Home() {
                 break;
             }
         }
-    }
+    } 
     return (
         <>
             <div className="sectionTwo" id="about">
