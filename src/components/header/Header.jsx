@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom"
-import './header.css'
+import { Link } from "react-router-dom";
+import './header.css';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch  } from 'react-redux';
-import { authenticateConstants } from '../../store/reducers/authenticate/actions'
+import { authenticateConstants } from '../../store/reducers/authenticate/actions';
 
 
 function Header() {
@@ -30,7 +30,7 @@ function Header() {
   return (
     <div className="sectionOne">
       <div className="logo">
-      <Link to="/">Logo Design</Link>
+      <Link to="/">Portfolio</Link>
       </div>
       <div className="linkWrap">
         <div className="pannel">
