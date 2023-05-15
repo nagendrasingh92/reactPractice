@@ -19,6 +19,7 @@ import productPage from "../assets/image/productPage.jpg"
 import quizPage from "../assets/image/quiz.png"
 import loginSingup from "../assets/image/loginSingup.png"
 import adminImage from "../assets/image/adminImage.jpg"
+import contractImage from "../assets/image/contractPage.jpg"
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -111,6 +112,15 @@ function Home() {
                 previewLink: '/quizDashboard',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/Quiz',
                 tech: 'html, css, reactJs'
+            },
+            {
+                id: '10',
+                src: contractImage,
+                cardHeader: 'Contract Automation',
+                operation: 'Operation:- Add, Delete customer and contract',
+                previewLink: 'https://nagendrasingh92.github.io/contractAutomation',
+                codeLink: 'https://github.com/nagendrasingh92/contractAutomation',
+                tech: 'html, css, reactJs'
             }
         ];
 
@@ -185,8 +195,8 @@ function Home() {
                                             <div><span>Tech Stack:-</span>{item.tech}</div>
                                         </div>
                                         <div className="cardFooter">
-                                            {authenticateUser == null ? (<div onClick={() => handleUser('logIn', item.previewLink)}>Live Preview</div>) : (<Link to={item.previewLink}><i className="fa-solid fa-link"></i>Live
-                                                Preview</Link>)}
+                                            {authenticateUser == null ? (<div onClick={() => handleUser('logIn', item.previewLink)}>Live Preview</div>) : (<a href={item.previewLink}><i className="fa-solid fa-link"></i>Live
+                                                Preview</a>)}
 
 
                                             <a href={item.codeLink} target="_blank"><i className="fa-brands fa-github" alt="view code"></i>View Code</a>
