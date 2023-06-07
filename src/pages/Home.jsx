@@ -36,7 +36,7 @@ function Home() {
                 src: adminImage,
                 cardHeader: 'Admin Portal',
                 operation: 'Operation:- To review user info',
-                previewLink: '/adminPortal',
+                previewLink: '/reactPractice/adminPortal',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages',
                 tech: 'html, css, reactJs',
             },
@@ -45,7 +45,7 @@ function Home() {
                 src: calculator,
                 cardHeader: 'Calculator',
                 operation: 'Operation:- Add, Subtract, Multiply, Divide.',
-                previewLink: '/calculator',
+                previewLink: '/reactPractice/calculator',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/calculator',
                 tech: 'html, css, reactJs',
             },
@@ -54,7 +54,7 @@ function Home() {
                 src: NumberGame,
                 cardHeader: 'Number Game',
                 operation: 'Operation:- Arrange numbers from 1 to 15.',
-                previewLink: '/numberGame',
+                previewLink: '/reactPractice/numberGame',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/numberGame',
                 tech: 'html, css, reactJs'
             },
@@ -63,7 +63,7 @@ function Home() {
                 src: todoList,
                 cardHeader: 'To-do Lists',
                 operation: 'Operation:- Add, Delete, Edit task.',
-                previewLink: '/todoListsRedux',
+                previewLink: '/reactPractice/todoListsRedux',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/todoList',
                 tech: 'html, css, reactJs'
             },
@@ -72,7 +72,7 @@ function Home() {
                 src: weatherUpdate,
                 cardHeader: 'Weather find',
                 operation: 'Operation:- Display temperature, description, humidity, wind speed.',
-                previewLink: '/weather',
+                previewLink: '/reactPractice/weather',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/weatherSearch',
                 tech: 'html, css, reactJs'
             },
@@ -82,7 +82,7 @@ function Home() {
                 src: findString,
                 cardHeader: 'Data Table using API',
                 operation: 'Operation:- Fetch data table from APIs and place a search box.',
-                previewLink: '/DataTableUsingApi',
+                previewLink: '/reactPractice/dataTableUsingApi',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/dataTable',
                 tech: 'html, css, reactJs'
             },
@@ -91,7 +91,7 @@ function Home() {
                 src: productPage,
                 cardHeader: 'Product display',
                 operation: 'Operation:- Add product to wishList',
-                previewLink: '/productPageRedux',
+                previewLink: '/reactPractice/productPageRedux',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/productDisplay',
                 tech: 'html, css, reactJs'
             },
@@ -100,7 +100,7 @@ function Home() {
                 src: loginSingup,
                 cardHeader: 'Login and signup',
                 operation: 'Operation:- Add product to wishList',
-                previewLink: '/loginPage',
+                previewLink: '/reactPractice/loginPage',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/authentication',
                 tech: 'html, css, reactJs'
             },
@@ -109,7 +109,7 @@ function Home() {
                 src: quizPage,
                 cardHeader: 'Quiz',
                 operation: 'Operation:- A simple quiz with score card',
-                previewLink: '/quizDashboard',
+                previewLink: '/reactPractice/quizDashboard',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/Quiz',
                 tech: 'html, css, reactJs'
             },
