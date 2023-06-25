@@ -1,21 +1,23 @@
-import { useFormik } from 'formik';
-import './loginPage.css';
-import * as yup from 'yup';
-import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { authenticateConstants } from '../../store/reducers/authenticate/actions'
+import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 import TextField from '@mui/material/TextField';
+
+import './loginPage.css';
+import { authenticateConstants } from '../../store/reducers/authenticate/actions'
 
 
 
 function LoginPage() {
     const { userData } = useSelector((state) => state.authenticate);
     const navigate = useNavigate();
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     searchParams.get("redirect")
     console.log('location', searchParams.get("redirect"))
     const dispatch = useDispatch();
+
     const validationSchema = yup.object({
         email: yup
             .string('Enter your email')
@@ -33,20 +35,20 @@ function LoginPage() {
             password: '',
         },
         validationSchema: validationSchema,
-
         onSubmit: values => {
             handleLogin(values)
         },
     });
 
     const handleLogin = (values) => {
-        console.log('value', userData)
+        debugger;
         let userInfo = values;
         let temp = userData.find((item) => item.email === userInfo.email && item.password === userInfo.password);
-        console.log('Value1', temp)
+        console.log('temp', userData)
         if (temp) {
             dispatch({ type: authenticateConstants.LOGGEDIN_USER_DATA, payload: temp })
             if(searchParams.get("redirect")){
+                console.log('search', searchParams.get("redirect"));
                 navigate(searchParams.get("redirect"))
             } else {
                 navigate(`*`)
@@ -54,6 +56,11 @@ function LoginPage() {
         } else {
             alert('Wrong credentials')
         }
+    }
+
+    const guestLogin = () => {
+        formik.setFieldValue("email", 'guest@g.com');
+        formik.setFieldValue("password", '12345678');
     }
 
     return (
@@ -100,7 +107,9 @@ function LoginPage() {
                     Don't have an account?
                     <Link to='/signUpPage'>Sign Up</Link>
                 </div>
-
+                <div>
+                Continue as <button type='button' onClick={()=> guestLogin()} >Guest</button>
+                </div>
             </form>
 
         </div >

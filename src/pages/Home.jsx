@@ -22,8 +22,9 @@ import adminImage from "../assets/image/adminImage.jpg"
 import contractImage from "../assets/image/contractPage.jpg"
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { CONSTANTS } from "../helper/constants/constants"
 
-
+const { BASEURL } = CONSTANTS;
 
 function Home() {
     const { authenticateUser } = useSelector((state) => state.authenticate);
@@ -36,7 +37,7 @@ function Home() {
                 src: adminImage,
                 cardHeader: 'Admin Portal',
                 operation: 'Operation:- To review user info',
-                previewLink: '/reactPractice/adminPortal',
+                previewLink: '/adminPortal',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages',
                 tech: 'html, css, reactJs',
             },
@@ -45,7 +46,7 @@ function Home() {
                 src: calculator,
                 cardHeader: 'Calculator',
                 operation: 'Operation:- Add, Subtract, Multiply, Divide.',
-                previewLink: '/reactPractice/calculator',
+                previewLink: '/calculator',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/calculator',
                 tech: 'html, css, reactJs',
             },
@@ -54,7 +55,7 @@ function Home() {
                 src: NumberGame,
                 cardHeader: 'Number Game',
                 operation: 'Operation:- Arrange numbers from 1 to 15.',
-                previewLink: '/reactPractice/numberGame',
+                previewLink: '/numberGame',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/numberGame',
                 tech: 'html, css, reactJs'
             },
@@ -63,7 +64,7 @@ function Home() {
                 src: todoList,
                 cardHeader: 'To-do Lists',
                 operation: 'Operation:- Add, Delete, Edit task.',
-                previewLink: '/reactPractice/todoListsRedux',
+                previewLink: '/todoListsRedux',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/todoList',
                 tech: 'html, css, reactJs'
             },
@@ -72,7 +73,7 @@ function Home() {
                 src: weatherUpdate,
                 cardHeader: 'Weather find',
                 operation: 'Operation:- Display temperature, description, humidity, wind speed.',
-                previewLink: '/reactPractice/weather',
+                previewLink: '/weather',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/weatherSearch',
                 tech: 'html, css, reactJs'
             },
@@ -82,7 +83,7 @@ function Home() {
                 src: findString,
                 cardHeader: 'Data Table using API',
                 operation: 'Operation:- Fetch data table from APIs and place a search box.',
-                previewLink: '/reactPractice/dataTableUsingApi',
+                previewLink: '/dataTableUsingApi',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/dataTable',
                 tech: 'html, css, reactJs'
             },
@@ -91,7 +92,7 @@ function Home() {
                 src: productPage,
                 cardHeader: 'Product display',
                 operation: 'Operation:- Add product to wishList',
-                previewLink: '/reactPractice/productPageRedux',
+                previewLink: '/productPageRedux',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/productDisplay',
                 tech: 'html, css, reactJs'
             },
@@ -100,7 +101,7 @@ function Home() {
                 src: loginSingup,
                 cardHeader: 'Login and signup',
                 operation: 'Operation:- Add product to wishList',
-                previewLink: '/reactPractice/loginPage',
+                previewLink: '/loginPage',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/authentication',
                 tech: 'html, css, reactJs'
             },
@@ -109,7 +110,7 @@ function Home() {
                 src: quizPage,
                 cardHeader: 'Quiz',
                 operation: 'Operation:- A simple quiz with score card',
-                previewLink: '/reactPractice/quizDashboard',
+                previewLink: '/quizDashboard',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/Quiz',
                 tech: 'html, css, reactJs'
             },
@@ -195,7 +196,7 @@ function Home() {
                                             <div><span>Tech Stack:-</span>{item.tech}</div>
                                         </div>
                                         <div className="cardFooter">
-                                            {authenticateUser == null ? (<div onClick={() => handleUser('logIn', item.previewLink)}>Live Preview</div>) : (<a href={item.previewLink}><i className="fa-solid fa-link"></i>Live
+                                            {authenticateUser == null ? (<div onClick={() => handleUser('logIn', item.previewLink)}>Live Preview</div>) : (<a href={  item.previewLink.includes('https') ? item.previewLink : `${BASEURL}${item.previewLink}` }><i className="fa-solid fa-link"></i>Live
                                                 Preview</a>)}
 
 

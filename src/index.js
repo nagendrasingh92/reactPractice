@@ -6,10 +6,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 import store from './store/store';
+import {CONSTANTS} from './helper/constants/constants';
+
+const {BASEURL} = CONSTANTS;
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <BrowserRouter  basename='/reactPractice'>
+    <BrowserRouter  basename={BASEURL}>
       <Provider store={store}>
         <App />
       </Provider>
