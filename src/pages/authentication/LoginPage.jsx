@@ -1,33 +1,24 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { loggedInUserData } from '../../redux/slices/authenticate/authenticateSlice';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
-import * as yup from 'yup';
 import TextField from '@mui/material/TextField';
-
+import { validationSchema } from '../../helper/constants/validation';
 import './loginPage.css';
-import { authenticateConstants } from '../../store/reducers/authenticate/actions'
+//import { authenticateConstants } from '../../store/reducers/authenticate/actions'
+import { ROUTE_PATH } from '../../helper/constants/route';
 
-
+const { HOME } = ROUTE_PATH;
 
 function LoginPage() {
-    const { userData } = useSelector((state) => state.authenticate);
     const navigate = useNavigate();
-    const [searchParams] = useSearchParams();
-    searchParams.get("redirect")
-    console.log('location', searchParams.get("redirect"))
     const dispatch = useDispatch();
 
-    const validationSchema = yup.object({
-        email: yup
-            .string('Enter your email')
-            .email('Enter a valid email')
-            .required('Email is required'),
-        password: yup
-            .string('Enter your password')
-            .min(8, 'Password should be of minimum 8 characters length')
-            .required('Password is required'),
-    });
+    const { userData } = useSelector((state) => state.authenticate);
+    const [searchParams] = useSearchParams();
+
+    searchParams.get("redirect")
 
     const formik = useFormik({
         initialValues: {
@@ -41,17 +32,15 @@ function LoginPage() {
     });
 
     const handleLogin = (values) => {
-        debugger;
         let userInfo = values;
         let temp = userData.find((item) => item.email === userInfo.email && item.password === userInfo.password);
         console.log('temp', userData)
         if (temp) {
-            dispatch({ type: authenticateConstants.LOGGEDIN_USER_DATA, payload: temp })
+            dispatch(loggedInUserData(temp))
             if(searchParams.get("redirect")){
-                console.log('search', searchParams.get("redirect"));
                 navigate(searchParams.get("redirect"))
             } else {
-                navigate(`*`)
+                navigate(HOME)
             }
         } else {
             alert('Wrong credentials')

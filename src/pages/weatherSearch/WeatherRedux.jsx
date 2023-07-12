@@ -1,28 +1,33 @@
 import { useState } from 'react';
 import  {useSelector, useDispatch} from 'react-redux';
-import axios from 'axios';
-import './weather.css'
-import {weatherConstants} from '../../store/reducers/weather/actions'
+import './weather.css';
+import fetchWeatherAction from "../../redux/slices/weather/weatherThunk";
+
 function WeatherRedux() {
-    const { weatherData } = useSelector((state) => state.weather );
-    const dispatch = useDispatch();
     const [city, setCity] = useState('');
+    const dispatch = useDispatch();
 
     const handleCityChange = (value) => {
-        setCity(value)
+        setCity(value);
     }
 
-    const getWeatherData = async () => {
-        await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=70796e6346b6279389b2c9bb362df985&units=metric`)
-            .then((res) => {
-                console.log('res', res)
-                dispatch({type:  weatherConstants.UPDATE, payload: res.data })
-            });
-    }
+    const weatherData = useSelector(state => state.weather);
+    const { weather } = weatherData;
 
+    // console.log("hieee")
+
+    // const weatherData = useSelector(state => state);
+    // const { extraReducers } = weatherData;
+    // const { weather } = extraReducers;
+     
+    // console.log('state', extraReducers)
+    
     const resetData = () => {
         setCity('')
-        dispatch({type:  weatherConstants.UPDATE, payload: {} })
+    }
+
+    const getWeatherData = () => {
+        dispatch(fetchWeatherAction(city))
     }
 
     return (
@@ -51,14 +56,14 @@ function WeatherRedux() {
                 </div>
 
 
-                {(weatherData && weatherData.name) && (
+                {(weather && weather.name) && (
                     <div className="weatherContainer">
-                        <div className="weatherEle">City Name :- {weatherData?.name}</div>
-                        <div className="weatherEle">Temperature :- {weatherData?.main?.temp}°C</div>
-                        <div className="weatherEle">Description :- {weatherData?.weather[0]?.description}</div>
-                        <div className="weatherEle"><img src={`http://openweathermap.org/img/w/${weatherData?.weather[0]?.icon}.png`} alt='weather icon' /></div>
-                        <div className="weatherEle"> Wind speed:- {weatherData?.wind?.speed} Km/h</div>
-                        <div className="weatherEle"> Humidity :- {weatherData?.main?.humidity}%</div>
+                        <div className="weatherEle">City Name :- {weather?.name}</div>
+                        <div className="weatherEle">Temperature :- {weather?.main?.temp}°C</div>
+                        <div className="weatherEle">Description :- {weather?.weather[0]?.description}</div>
+                        <div className="weatherEle"><img src={`http://openweathermap.org/img/w/${weather?.weather[0]?.icon}.png`} alt='weather icon' /></div>
+                        <div className="weatherEle"> Wind speed:- {weather?.wind?.speed} Km/h</div>
+                        <div className="weatherEle"> Humidity :- {weather?.main?.humidity}%</div>
                     </div>
                 )
                 }

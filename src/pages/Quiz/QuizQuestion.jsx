@@ -1,13 +1,13 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Button } from "@material-ui/core";
+import { useParams, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { update, updateUserData, updateQuizScore} from '../../redux/slices/quiz/quizSlice';
+
 import QuestionData from './QuestionData';
 import './quizQuestion.scss'
-import { Button } from "@material-ui/core";
-import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { quizConstants } from '../../store/reducers/quiz/actions'
-import { useDispatch, useSelector } from 'react-redux';
+//import { quizConstants } from '../../store/reducers/quiz/actions'
 
 function QuizQuestion() {
     const {authenticateUser} = useSelector((state) => state.authenticate);
@@ -23,13 +23,12 @@ function QuizQuestion() {
     useEffect(() => {
         let questionList = QuestionData.filter((item) => item.categoryId === parseInt(params.id) && item.levelId === parseInt(params.subId))
         setQuizList(questionList);
-    }, [QuestionData])
+    }, [params.id, params.subId]);
 
     const handleOption = (selectedOp) => {
-        let tempQ = JSON.parse(JSON.stringify(quizList))
+        let tempQ = [...quizList];
         tempQ[currentQuestion].userAns = selectedOp;
         setQuizList(tempQ);
-        console.log('quizUserdata',tempQ)
     }
 
     const handleOperation = (type) => {
@@ -50,21 +49,21 @@ function QuizQuestion() {
             }
             case 'submit': {
                 let score = 0;
-                quizList.map((item) => {
+                quizList.forEach((item) => {
                     if (item.userAns === item.correctAns){
                         score += 1;
                     }
-                })
+                });
                 let quizScoreData = {
                     userId: authenticateUser.id,
                     categoryId: params.id,
                     levelId: params.subId,
                     score: score,
-                    totalQuestion: (quizList.length -1),
+                    totalQuestion: quizList.length,
                     correctQuestion: score,
-                }
+                };
 
-                let tempUserData = quizUserData;
+                let tempUserData = [...quizUserData];
                 let tempUserQuizObj = tempUserData.find((item) => ( 
                     (item.userId === authenticateUser.id) && 
                     (item.categoryId === params.id) && 
@@ -72,7 +71,7 @@ function QuizQuestion() {
                 )
 
                 if(tempUserQuizObj && tempUserQuizObj.userId && tempUserQuizObj.score > score){ 
-                    tempUserData.map((item) => {
+                    tempUserData.forEach((item) => {
                         if((item.userId === authenticateUser.id) && 
                         (item.categoryId === params.id) && 
                         (item.levelId === params.subId)){
@@ -83,11 +82,11 @@ function QuizQuestion() {
                 } else if (!tempUserQuizObj) {
                     tempUserData.push(quizScoreData)
                 }
-                dispatch({ type: quizConstants.UPDATE, payload: quizList })
-                console.log('quizUserdata',quizList)
-                dispatch({ type: quizConstants.UPDATE_USER_DATA, payload: tempUserData })
-                dispatch({ type: quizConstants.UPDATE_QUIZ_SCORE, payload: quizScoreData})
-                console.log('tempUserData', quizScoreData)
+                dispatch(update(quizList));
+                dispatch(updateUserData(tempUserData));
+                dispatch(updateQuizScore(quizScoreData));
+                setQuizList([]);
+                quizScoreData={};
                 navigate(`/quizDashboard/score`)
                 break;
             }

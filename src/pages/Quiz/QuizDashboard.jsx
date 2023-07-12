@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import './quizDashboard.scss'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom"
 import Table from '@mui/material/Table';
 import Button from '@mui/material/Button';
@@ -15,8 +14,12 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { Bar } from 'react-chartjs-2';
+
+import './quizDashboard.scss'
+
 import {
-    Chart as ChartJS,
+    Chart as ChartIcon,
     CategoryScale,
     LinearScale,
     BarElement,
@@ -24,8 +27,9 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-ChartJS.register(
+
+
+ChartIcon.register(
     CategoryScale,
     LinearScale,
     BarElement,
@@ -36,15 +40,15 @@ ChartJS.register(
 
 
 function QuizDashboard() {
-    const { quizUserData } = useSelector((state) => state.quiz);
+    const quizUserData = useSelector((state) => state.quiz.quizUserData);
     const { authenticateUser } = useSelector((state) => state.authenticate);
+    const dispatch = useDispatch();
     const [chartResult, setChartResult] = useState({ easy: 0, medium: 0, hard: 0 });
     const [selectedTechnology, setSelectedTechnology] = useState();
-    console.log('quizUserData', quizUserData)
 
     const handleChange = (type) => {
+        debugger;
 
-        console.log('type', type)
         switch (type) {
             case 1: {
                 let chartUserTemp1 = quizUserData.find((item) => (
@@ -52,31 +56,33 @@ function QuizDashboard() {
                     (item.categoryId === '1') &&
                     (item.levelId === '1'))
                 )
-                let chartUserT = quizUserData.find((item) => (
-                    (item.userId === authenticateUser.id)
-                    )
-                )
-                console.log('chartUserT',chartUserT)
+                console.log('temp1',chartUserTemp1)
+                if (chartUserTemp1) {
+                    let objTemp1 = { ...chartResult, easy: chartUserTemp1.score};
+                    setChartResult(objTemp1)
+                }
                 let chartUserTemp2 = quizUserData.find((item) => (
                     (item.userId === authenticateUser.id) &&
                     (item.categoryId === '1') &&
                     (item.levelId === '2'))
                 )
-                console.log('chartUserT2',chartUserTemp2)
-                console.log('quizUserData',quizUserData)
+                console.log('temp2',chartUserTemp2)
+
+                if (chartUserTemp2) {
+                    let objTemp2 = { ...chartResult, medium: chartUserTemp2.score};
+                    setChartResult(objTemp2)
+                }
 
                 let chartUserTemp3 = quizUserData.find((item) => (
                     (item.userId === authenticateUser.id) &&
                     (item.categoryId === '1') &&
                     (item.levelId === '3'))
                 )
-                if (chartUserTemp1 && chartUserTemp2 && chartUserTemp3) {
-                    let objTemp2 = { ...chartResult, easy: chartUserTemp1.score, medium: chartUserTemp2.score, hard: chartUserTemp3.score };
-                    setChartResult(objTemp2)
-                    console.log('objTemp', objTemp2)
-                } else {
-                    let objTemp2 = { ...chartResult, easy: 0, medium: 0, hard: 0 };
-                    setChartResult(objTemp2)
+                console.log('temp3',chartUserTemp3)
+
+                if (chartUserTemp3) {
+                    let objTemp3 = { ...chartResult, hard: chartUserTemp3.score };
+                    setChartResult(objTemp3)
                 }
                 break;
             }
@@ -86,23 +92,28 @@ function QuizDashboard() {
                     (item.categoryId === '2') &&
                     (item.levelId === '1'))
                 )
+                if (chartUserTemp1) {
+                    let objTemp1 = { ...chartResult, easy: chartUserTemp1.score};
+                    setChartResult(objTemp1)
+                }
                 let chartUserTemp2 = quizUserData.find((item) => (
                     (item.userId === authenticateUser.id) &&
                     (item.categoryId === '2') &&
                     (item.levelId === '2'))
                 )
+                if (chartUserTemp2) {
+                    let objTemp2 = { ...chartResult, medium: chartUserTemp2.score};
+                    setChartResult(objTemp2)
+                }
+
                 let chartUserTemp3 = quizUserData.find((item) => (
                     (item.userId === authenticateUser.id) &&
                     (item.categoryId === '2') &&
                     (item.levelId === '3'))
                 )
-                if (chartUserTemp1 && chartUserTemp2 && chartUserTemp3) {
-                    let objTemp2 = { ...chartResult, easy: chartUserTemp1.score, medium: chartUserTemp2.score, hard: chartUserTemp3.score };
-                    setChartResult(objTemp2)
-                    console.log('objTemp1', objTemp2)
-                } else {
-                    let objTemp2 = { ...chartResult, easy: 0, medium: 0, hard: 0 };
-                    setChartResult(objTemp2)
+                if (chartUserTemp3) {
+                    let objTemp3 = { ...chartResult, hard: chartUserTemp3.score };
+                    setChartResult(objTemp3)
                 }
                 break;
             }
@@ -137,7 +148,7 @@ function QuizDashboard() {
         }
 
     }
-
+console.log('medium', chartResult.medium);
     const data = {
         labels: ['Easy', 'Medium', 'Hard'],
         datasets: [
@@ -235,13 +246,7 @@ function QuizDashboard() {
                     }
                 }
             >
-                <Bar
-
-                    data={data}
-                // options={options}
-                >
-
-                </Bar>
+                <Bar data={data}/>
             </div>
 
             <Link to='/quizType'><Button variant="contained">Go to Quiz</Button></Link>

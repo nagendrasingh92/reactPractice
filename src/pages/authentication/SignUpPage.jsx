@@ -1,10 +1,11 @@
-import { useFormik } from 'formik';
-import './signUpPage.css';
-import * as yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
-import { authenticateConstants } from '../../store/reducers/authenticate/actions'
-import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import { updateUserList } from '../../redux/slices/authenticate/authenticateSlice';
+import './signUpPage.css';
+//import { authenticateConstants } from '../../store/reducers/authenticate/actions'
 
 
 function SignUpPage() {
@@ -48,7 +49,7 @@ function SignUpPage() {
             if (!temp) {
                 let userlist = [...userData, { ...userInfo, id: id } ]
                 console.log('ddsf', userlist)
-                dispatch({ type: authenticateConstants.UPDATE_USER_LIST, payload: userlist })
+                dispatch(updateUserList(userlist));
                 navigate(`/loginPage`)
             } else {
                 alert('Already exist.')

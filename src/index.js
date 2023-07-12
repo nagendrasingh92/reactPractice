@@ -4,20 +4,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from "react-router-dom";
-import store from './store/store';
-import {CONSTANTS} from './helper/constants/constants';
+//import { BrowserRouter } from "react-router-dom";
+import store from './redux/store/store';
+// import {CONSTANTS} from './helper/constants/constants';
 
-const {BASEURL} = CONSTANTS;
+// const {BASEURL} = CONSTANTS;
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter  basename={BASEURL}>
+    {/* <BrowserRouter  basename={BASEURL}> */}
       <Provider store={store}>
         <App />
       </Provider>
-    </BrowserRouter>
+    {/* </BrowserRouter> */}
   </React.StrictMode>
 );
 
