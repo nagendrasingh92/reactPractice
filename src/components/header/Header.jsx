@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './header.css';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch  } from 'react-redux';
-import { authenticateConstants } from '../../store/reducers/authenticate/actions';
+import { useSelector, useDispatch } from 'react-redux';
+import { loggedOutUserData } from '../../redux/slices/authenticate/authenticateSlice';
+
+//import { authenticateConstants } from '../../store/reducers/authenticate/actions';
 
 
 function Header() {
@@ -17,20 +18,20 @@ function Header() {
     console.log('value', item)
     switch (item) {
       case 'logIn': {
-        navigate(`/loginPage`)
+        navigate('/loginPage');
         break;
       }
       default: {
-        dispatch({ type: authenticateConstants.LOGGEDOUT_USER_DATA})
-        navigate(`*`)
+        dispatch((loggedOutUserData()));
+        navigate('/');
         break;
       }
     }
-  }
+  };
   return (
     <div className="sectionOne">
       <div className="logo">
-      <Link to="/">Portfolio</Link>
+        <Link to="/">Portfolio</Link>
       </div>
       <div className="linkWrap">
         <div className="pannel">
@@ -41,11 +42,11 @@ function Header() {
           </ul>
         </div>
         <div className="directLink">
-          <a href="https://github.com/nagendrasingh92/reactPractice" target="_blank"><i className="fa-brands fa-github"></i></a>
-          <a href="https://twitter.com/nagendraReact" target="_blank"><i className="fa-brands fa-twitter"></i></a>
-          <a href="https://www.linkedin.com/in/nagendra-singh-chauhan-0328091aa" target="_blank"><i className="fa-brands fa-linkedin"></i></a>
+          <a href="https://github.com/nagendrasingh92/reactPractice" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-github"></i></a>
+          <a href="https://twitter.com/nagendraReact" target="_blank" rel="noopener noreferrer" ><i className="fa-brands fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/in/nagendra-singh-chauhan-0328091aa" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-linkedin"></i></a>
           <i className="fa-solid fa-circle-half-stroke"></i>
-          {authenticateUser == null ? (<LoginIcon onClick={()=> handleUser('logIn')}></LoginIcon>) : (<LogoutIcon onClick={()=> handleUser('logOut')}></LogoutIcon>)}
+          {authenticateUser == null ? (<LoginIcon onClick={() => handleUser('logIn')}></LoginIcon>) : (<LogoutIcon onClick={() => handleUser('logOut')}></LogoutIcon>)}
         </div>
       </div>
     </div>

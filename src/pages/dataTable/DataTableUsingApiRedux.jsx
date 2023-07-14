@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import  { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
 import './DataTableUsingApi.css';
-import { arrayConstants } from '../../store/reducers/dataTableUsingApi/actions'
+import { fetchArrayData } from '../../redux/slices/dataTableUsingApi/dataTableUsingApiThunk'
+import { updateData } from '../../redux/slices/dataTableUsingApi/dataTableUsingApiSlice';
 
 
 function DataTableUsingApiRedux() {
+    console.log("hi")
     const dispatch = useDispatch();
     const { arrayData } = useSelector((state) => state.dataTableUsingApi );
 
@@ -13,14 +14,9 @@ function DataTableUsingApiRedux() {
     const [filterVal, setFilterVal] = useState('');
     const [searchApiData, setSearchApiData] = useState([]);
 
-    const arrayContainer = async () => {
-        await axios.get(`https://jsonplaceholder.typicode.com/todos`)
-            .then((res) => {
-                dispatch({type:  arrayConstants.UPDATE, payload: res.data })
-
-                setSearchApiData(res.data)
-            });
-    }
+    const arrayContainer = () => {
+        dispatch(fetchArrayData());
+    };
     const handleSearchValue = (event) => {
         console.log("value", event.target.value)
         
@@ -29,10 +25,10 @@ function DataTableUsingApiRedux() {
 
     const handleFilter = () => {
         if (filterVal === '') {
-            dispatch({type:  arrayConstants.UPDATE, payload: searchApiData })
+            dispatch(updateData(searchApiData));
         } else {
-            const filterResult = searchApiData.filter(item => item.title.toLowerCase().includes(filterVal.toLowerCase()))
-            dispatch({type:  arrayConstants.UPDATE, payload: filterResult })
+            const filterResult = arrayData.filter(item => item.title.toLowerCase().includes(filterVal.toLowerCase()))
+            dispatch(updateData(filterResult));
         }
     }
     return (
@@ -67,7 +63,7 @@ function DataTableUsingApiRedux() {
                 </thead>
                 <tbody>
                     {
-                        arrayData.map((item, index) => {
+                        arrayData?.map((item, index) => {
                             return (<tr key={index}>
                                 <td>{item.userId}</td>
                                 <td>{item.id}</td>

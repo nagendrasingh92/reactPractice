@@ -1,34 +1,35 @@
-import { useFormik } from 'formik';
-import './signUpPage.css';
-import * as yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
-import { authenticateConstants } from '../../store/reducers/authenticate/actions'
-import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { updateUserList } from '../../redux/slices/authenticate/authenticateSlice';
+import './signUpPage.css';
+//import { authenticateConstants } from '../../store/reducers/authenticate/actions'
 
 
 function SignUpPage() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { userData } = useSelector((state) => state.authenticate);
-    const validationSchema = yup.object({
-        email: yup
+    const validationSchema = Yup.object({
+        email: Yup
             .string('Enter your email')
             .email('Enter a valid email')
             .required('Email is required'),
-        name: yup
+        name: Yup
             .string()
             .min(4, 'Must be 4 characters')
             .required('Required'),
 
-        password: yup
+        password: Yup
             .string('Enter your password')
             .min(8, 'Password should be of minimum 8 characters length')
             .required('Password is required'),
-        confirmPassword: yup
+        confirmPassword: Yup
             .string()
             .required('Please confirm your password.')
-            .oneOf([yup.ref('password')], 'Your passwords do not match.')
+            .oneOf([Yup.ref('password')], 'Your passwords do not match.')
     });
 
     console.log('userData12', userData)
@@ -48,7 +49,7 @@ function SignUpPage() {
             if (!temp) {
                 let userlist = [...userData, { ...userInfo, id: id } ]
                 console.log('ddsf', userlist)
-                dispatch({ type: authenticateConstants.UPDATE_USER_LIST, payload: userlist })
+                dispatch(updateUserList(userlist));
                 navigate(`/loginPage`)
             } else {
                 alert('Already exist.')

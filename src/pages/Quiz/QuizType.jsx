@@ -76,8 +76,6 @@ function QuizType() {
         setExpanded(id)
     }
     const handleLevelSelect = (id, subId) => {
-        console.log('id, subId', id, subId)
-        console.log('userid', authenticateUser)
         setSlectedQuiz({ id, subId })
     }
     const handleNavigate = () => {

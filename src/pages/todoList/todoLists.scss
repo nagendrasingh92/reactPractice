@@ -1,40 +1,61 @@
-$color_1: white;
-$background-color_1: green;
+.todoAppWrap {
+    width: 500px;
+    margin: 20px auto;
 
-.todoListsPageWrap {
-	font-weight: bold;
-	box-shadow: inset 0 -0.5em 1em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-	border-radius: 15px;
-	width: 60%;
-	margin: auto;
-	text-align: center;
-	.todoListsWrap {
-		margin: auto;
-		padding: 2em;
-		.submitBttn {
-			margin: 10px;
-		}
-	}
-	.taskContainerWrap {
-        padding: 2em;
-		.taskRow {
-			margin: 20px;
-			.todoDelete {
-				margin: 6px;
-				
-			}
-			.todoEdit {
-				margin: 6px;
-				
-			}
-			.save {
-				margin: 6px;
-				
-			}
-			.cancel {
-				margin: 6px;
-				
-			}
-		}
-	}
+    .css-g28sfz-MuiListItem-root>.MuiListItemButton-root {
+        padding-right: 0px;
+    }
+
+    .css-1mcnwpj-MuiList-root {
+        max-width: none;
+    }
+
+    .todoTitle {
+        text-align: center;
+    }
+
+    .taskButton {
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    .taskInput {
+        background-color: #eee;
+        border-radius: 6px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        
+
+        input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            flex: 1;
+        }
+
+        .taskButton {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    }
+
+    .taskList {
+        background-color: #eee;
+        margin-top: 20px;
+        border-radius: 6px;
+        padding: 20px;
+    }
+    .taskOperation{
+        background-color: #eee;
+        margin-top: 20px;
+        border-radius: 6px;
+        padding: 20px;
+        justify-content: space-between;
+        display: flex;
+        .operationButton{
+            background-color: green;
+        }
+    }
+
 }

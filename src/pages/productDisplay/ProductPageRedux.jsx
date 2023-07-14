@@ -1,44 +1,50 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
+//import axios from 'axios';
 import './productPageRedux.scss'
-import { productPageConstants } from '../../store/reducers/productPage/actions'
+//import { productPageConstants } from '../../store/reducers/productPage/actions';
+import { updateWishlist, removeWishlistItem } from '../../redux/slices/productPage/productPageSlice';
+import { fetchProductsData } from '../../redux/slices/productPage/productPageThunk';
 import Button from '@mui/material/Button';
 
 
 function ProductPageRedux() {
     const dispatch = useDispatch();
-    const { productsData } = useSelector((state) => state.product);
-    const [whishListData, setWhishListData] = useState([])
+    const { products, wishlistData  } = useSelector((state) => state.productPage);
     const [skip, setSkip] = useState(0);
-
     useEffect(() => {
         loadData()
     }, [])
 
-    
 
     const handleWishList = (id) => {
-        let data = [...whishListData];
-
-        if (!data.includes(id)) {
-            data.push(id)
-            setWhishListData(data)
-        } else {
-            alert('item already added');
-        }
-
+        dispatch(updateWishlist(id));
     };
 
+
+    // const handleWishList = (id) => {
+    //     let data = [...wishlistData];
+
+    //     if (!data.includes(id)) {
+    //         data.push(id)
+    //         setwishlistData(data)
+    //     } else {
+    //         alert('item already added');
+    //     }
+
+    // };
+
     const handleRemove = (id) => {
-        let remaningData = whishListData.filter((item) => item !== id);
-        setWhishListData(remaningData)
+        dispatch(removeWishlistItem(id));
+        //let remaningData = wishlistData.filter((item) => item !== id);
+        //setwishlistData(remaningData)
     };
 
     const calculateTotal = () => {
+        console.log('dddd',wishlistData)
         let total = 0;
-        whishListData.map((item) => {
-            let data = productsData.products.find((productItem) => productItem.id === item);
+        wishlistData?.map((item) => {
+            let data = products?.find((productItem) => productItem.id === item);
             console.log('data', data)
             total += data.price;
         })
@@ -46,29 +52,29 @@ function ProductPageRedux() {
     }
 
     const getData = (type) => {
-        console.log('type', type, 'productsData', productsData, 'skip+10', skip+10)
-        switch(type){
-            case 'prev': 
+        switch (type) {
+            case 'prev':
                 loadData()
                 break;
-            case 'next': 
-                if(productsData.total >= skip+10){
-                    setSkip(skip+10)
+            case 'next':
+                if (products?.total >= skip + 10) {
+                    setSkip(skip + 10)
                     loadData()
                 }
                 break;
             default:
                 break;
         }
-    }
+    };
 
     const loadData = () => {
-        axios.get(`https://dummyjson.com/products?limit=10&skip=${skip}`)
-        .then((res) => {
-            console.log('res', res)
-            dispatch({ type: productPageConstants.UPDATE, payload: res.data })
-        });
-    }
+        dispatch(fetchProductsData(skip));
+        // axios.get(`https://dummyjson.com/products?limit=10&skip=${skip}`)
+        // .then((res) => {
+        //     console.log('res', res)
+        //     dispatch({ type: productPageConstants.UPDATE, payload: res.data })
+        // });
+    };
 
     return (
         <div>
@@ -81,12 +87,14 @@ function ProductPageRedux() {
                 <div className="wishList">
                     Wishlist <br />
                     <ul className="productSelected">
-                        {(productsData && productsData.products && whishListData) &&
-                            whishListData.map((item) => {
-                                let data = productsData.products.find((productItem) => productItem.id === item);
+                        {/* {(productsData && productsData.products && wishlistData) && */
+                            wishlistData?.map((item) => {
+                                debugger;
+                                let data = products?.find((productItem) => productItem.id === item);
+                                console.log('data',data);
                                 return (
                                     <li className="listBorder" >
-                                        <span className="selectedProduct">{data.title}</span>
+                                        <span className="selectedProduct">{data?.title}</span>
                                         <Button variant="contained" className='remove' onClick={() => handleRemove(item)}>Remove</Button>
 
                                     </li>
@@ -100,8 +108,9 @@ function ProductPageRedux() {
 
             <div className="productContainer">
 
-                {(productsData && productsData.products) &&
-                    productsData.products.map((item) => {
+                {/* {(productsData && productsData.products) &&
+                    productsData.*/
+                    products?.map((item) => {
                         return (
                             <div className="productBorder">
                                 <div className="cardHeaderWrap">

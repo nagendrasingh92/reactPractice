@@ -39,7 +39,7 @@ function QuizScore() {
                         <TableBody>
                             {quizData.map((row) => (
                                 <TableRow
-                                    key={row.name}
+                                    key={row.id}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                     <TableCell align="left">{row.id}</TableCell>

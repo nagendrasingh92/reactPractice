@@ -73,7 +73,7 @@ function Home() {
                 src: weatherUpdate,
                 cardHeader: 'Weather find',
                 operation: 'Operation:- Display temperature, description, humidity, wind speed.',
-                previewLink: '/weather',
+                previewLink: '/WeatherRedux',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/weatherSearch',
                 tech: 'html, css, reactJs'
             },
@@ -83,7 +83,7 @@ function Home() {
                 src: findString,
                 cardHeader: 'Data Table using API',
                 operation: 'Operation:- Fetch data table from APIs and place a search box.',
-                previewLink: '/dataTableUsingApi',
+                previewLink: '/DataTableUsingApiRedux',
                 codeLink: 'https://github.com/nagendrasingh92/reactPractice/tree/dev/src/pages/dataTable',
                 tech: 'html, css, reactJs'
             },
@@ -141,7 +141,10 @@ function Home() {
         <>
             <div className="sectionTwo" id="about">
                 <div className="intro">
-                    <div>Hi👋,</div>
+                
+                    <div>Hi<span className="wave" role="img" aria-labelledby="wave">
+                  👋🏻
+                </span>,</div>
                     <div>My name is </div>
                     <div><span className="name">Nagendra Singh Chauhan</span></div>
                     <div>I am a web developer.</div>
