@@ -1,6 +1,6 @@
-import { useSelector, useDispatch } from 'react-redux';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { useSelector, useDispatch } from 'react-redux';
 import { useFormik } from "formik";
 import { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
@@ -16,12 +16,12 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { updateUserList } from '../../redux/slices/authenticate/authenticateSlice';
 
 
 import { userInforSchema } from './userInfoSchema';
 import './adminPortal.scss';
 
-import { setUserList, setOpen, setEditId, addUser, deleteUser, resetForm } from '../../redux/slices//adminPortal/adminPortalSlice'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -43,29 +43,61 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-// import { authenticateConstants } from '../../store/reducers/authenticate/actions'
-
 function AdminPortal() {
+    const { userData } = useSelector((state) => state.authenticate);
     const dispatch = useDispatch();
-    const { userList, open, editId } = useSelector((state) => state.adminPortal);
+    console.log('userData',userData);
+    // const [userList, setUserList] = useState([])
+    const [open, setOpen] = useState(false);
+    const [editId, setEditId] = useState('');
 
     const handleClickOpen = () => {
-        dispatch(setOpen(true));
+        setOpen(true);
     };
 
     const handleClose = () => {
-        dispatch(setOpen(false));
+        setOpen(false);
     };
 
     const handleSubmitForm = (values) => {
-    dispatch(addUser(values));
+        let userEntry = { ...values};
+        let temp = userData.find((item) => item.email === userEntry.email);
+
+        if (editId) {
+            let editTemp = userData.map((item) => {
+                if (item.id === editId) {
+                    return {
+                        ...item,
+                        name: userEntry.name,
+                        email: userEntry.email,
+                        password: userEntry.password,
+                    };   
+                }
+                return item;
+            });
+            console.log('editTemp',editTemp)
+
+            dispatch(updateUserList(editTemp));
+
+            // setUserList(editTemp);
+            setEditId(null);
+        } else if (!temp) {
+            let id = Date.now().toString(36) + Math.random().toString(36).substr(2);
+            let userContainer = [...userData, { ...userEntry, id: id }]
+            dispatch(updateUserList(userContainer));
+
+            // setUserList(userContainer);
+        } else {
+            alert('Already exist.')
+        }
+        setOpen(false)
     }
 
     const formik = useFormik({
         initialValues: {
-            firstName: null,
-            lastName: null,
+            name: null,
             email: null,
+            password: null,
         },
         validationSchema: userInforSchema,
         onSubmit: handleSubmitForm,
@@ -74,29 +106,39 @@ function AdminPortal() {
     useEffect(() => {
         const { resetForm } = formik;
         if (!open) {
-            dispatch(resetForm());
+            setEditId(null)
+            resetForm()
         }
-    }, [open, dispatch, formik]);
+    }, [open])
 
     useEffect(() => {
         if (editId) {
             const { setFieldValue } = formik;
-            const temp = userList.find((item) => item.id === editId);
-            setFieldValue('firstName', temp.firstName)
-            setFieldValue('lastName', temp.lastName)
+            let temp = userData.find((item) => item.id === editId);
+            setFieldValue('name', temp.name)
             setFieldValue('email', temp.email)
+            setFieldValue('password', temp.password)
         }
-    }, [editId, userList, formik]);
+    }, [editId])
 
     const handleEdit = (id) => {
-        dispatch(setEditId(id));
-        dispatch(setOpen(true))
-    };
+        //let editData = userList.find((item) => item.id === id);
+        setEditId(id)
+        //setEditData(editData)
+        setOpen(true)
+        //setIsEdit(true)
+    }
 
     const handleDelete = (id) => {
-        dispatch(deleteUser(id));
-    };
+        let deleteTemp = userData.filter((item) => {
+            return (
+                item.id !== id
+            )
+        })
+        dispatch(updateUserList(deleteTemp));
 
+        // setUserList(deleteTemp);
+    }
     return (
         <div className='userInfoWrap'>
             <div>
@@ -118,29 +160,18 @@ function AdminPortal() {
                             <div>
                                 <TextField
                                     style={{ margin: 10 }}
-                                    label="First Name"
+                                    label="Name"
                                     variant="outlined"
-                                    name="firstName"
-                                    type="firstName"
+                                    name="name"
+                                    type="name"
                                     onChange={formik.handleChange}
-                                    value={formik.values.firstName}
-                                    error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-                                    helperText={formik.touched.firstName && formik.errors.firstName}
+                                    value={formik.values.name}
+                                    error={formik.touched.name && Boolean(formik.errors.name)}
+                                    helperText={formik.touched.name && formik.errors.name}
                                 />
                                 <TextField
                                     style={{ margin: 10 }}
-                                    label="Last Name"
-                                    variant="outlined"
-                                    name="lastName"
-                                    type="lastName"
-                                    onChange={formik.handleChange}
-                                    value={formik.values.lastName}
-                                    error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-                                    helperText={formik.touched.lastName && formik.errors.lastName}
-                                />
-                                <TextField
-                                    style={{ margin: 10 }}
-                                    label="Email Address"
+                                    label="Email"
                                     variant="outlined"
                                     name="email"
                                     type="email"
@@ -148,6 +179,17 @@ function AdminPortal() {
                                     value={formik.values.email}
                                     error={formik.touched.email && Boolean(formik.errors.email)}
                                     helperText={formik.touched.email && formik.errors.email}
+                                />
+                                <TextField
+                                    style={{ margin: 10 }}
+                                    label="Password"
+                                    variant="outlined"
+                                    name="password"
+                                    type="password"
+                                    onChange={formik.handleChange}
+                                    value={formik.values.password}
+                                    error={formik.touched.password && Boolean(formik.errors.password)}
+                                    helperText={formik.touched.password && formik.errors.password}
                                 />
                             </div>
                             <Button variant="contained" type="submit" >Save</Button>
@@ -161,23 +203,23 @@ function AdminPortal() {
                         <TableHead>
                             <TableRow>
                                 <StyledTableCell>Id</StyledTableCell>
-                                <StyledTableCell >First Name</StyledTableCell>
-                                <StyledTableCell >Last Name</StyledTableCell>
-                                <StyledTableCell >Email Id</StyledTableCell>
+                                <StyledTableCell >Name</StyledTableCell>
+                                <StyledTableCell >Email</StyledTableCell>
+                                <StyledTableCell >Password</StyledTableCell>
                                 <StyledTableCell >Update</StyledTableCell>
                                 <StyledTableCell >Remove</StyledTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {console.log('userList', userList)}
-                            {userList.map((item) => (
+                            {console.log('userData', userData)}
+                            {userData.map((item) => (
                                 <StyledTableRow key={item.id}>
                                     <StyledTableCell component="th" scope="row">
                                         {item.id}
                                     </StyledTableCell>
-                                    <StyledTableCell >{item.firstName}</StyledTableCell>
-                                    <StyledTableCell >{item.lastName}</StyledTableCell>
+                                    <StyledTableCell >{item.name}</StyledTableCell>
                                     <StyledTableCell >{item.email}</StyledTableCell>
+                                    <StyledTableCell >{item.password}</StyledTableCell>
 
                                     <StyledTableCell >
                                         <Button variant="contained" onClick={() => handleEdit(item.id)} >Edit</Button>

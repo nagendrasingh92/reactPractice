@@ -5,7 +5,6 @@ import dataTableUsingApiReducer from '../slices/dataTableUsingApi/dataTableUsing
 import productPageReducer from '../slices/productPage/productPageSlice';
 import todoListsReducer from '../slices/todoList/todoListsSlice';
 import quizReducer from '../slices/quiz/quizSlice';
-import adminPortalReducer from '../slices/adminPortal/adminPortalSlice';
 const rootReducer = combineReducers({
     authenticate: authenticateReducer,
     weather: weatherReducer,
@@ -13,7 +12,6 @@ const rootReducer = combineReducers({
     productPage: productPageReducer,
     todo: todoListsReducer,
     quiz: quizReducer,
-    adminPortal: adminPortalReducer,
 });
 
 export default rootReducer;

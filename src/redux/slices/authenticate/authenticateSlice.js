@@ -23,8 +23,8 @@ const authenticateSlice = createSlice({
         },
         loggedOutUserData: (state) => {
             state.authenticateUser = null;
-        }
-    }
+        },
+    },
 });
 
 export const {

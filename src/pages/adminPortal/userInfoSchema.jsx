@@ -1,8 +1,17 @@
 import * as Yup from "yup";
 
 export const userInforSchema = Yup.object({
-    firstName: Yup.string().min(2).max(25).required("Please enter First Name"),
-    lastName: Yup.string().min(2).max(25).required("Please enter Last Name"),
+    email: Yup
+        .string('Enter your email')
+        .email('Enter a valid email')
+        .required('Email is required'),
+    name: Yup
+        .string()
+        .min(4, 'Must be 4 characters')
+        .required('Required'),
 
-    email: Yup.string().email().required("Please enter your email"),
+    password: Yup
+        .string('Enter your password')
+        .min(8, 'Password should be of minimum 8 characters length')
+        .required('Password is required'),
 }) 
