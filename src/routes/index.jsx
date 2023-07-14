@@ -12,7 +12,7 @@ import WeatherRedux from '../pages/weatherSearch/WeatherRedux';
 import DataTableUsingApiRedux from "../pages/dataTable/DataTableUsingApiRedux";
 import TodoListsRedux from "../pages/todoList/TodoListsRedux";
 import ProductPageRedux from "../pages/productDisplay/ProductPageRedux";
-import AdminPortal from "../pages/AdminPortal";
+import AdminPortal from "../pages/adminPortal/AdminPortal";
 import QuizDashboard from "../pages/quiz/QuizDashboard";
 import QuizType from "../pages/quiz/QuizType";
 import QuizQuestion from '../pages/quiz/QuizQuestion';
