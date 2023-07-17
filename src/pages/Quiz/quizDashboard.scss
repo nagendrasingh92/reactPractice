@@ -1,24 +1,42 @@
 .quizDashboardWrap {
     background-color: rgb(252, 248, 248);
-    text-align: center;
-    border-radius: 10px;
-    width: 70%;
-    margin: auto;
     min-height: 25em;
-    font-weight: bold;
-    text-align: left;
-
-    .userDetailsWrap {
-        border-radius: 4px;
-        padding: 10px;
-        width: 30%;
-        margin: auto;
-        border: 2px solid red;
-        .userDetail {
-            background-color: rgb(88, 207, 88);
-            font-size: 2em;
-            padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 30px;
+    .scoreWrap{
+        margin-top: 20px;
+        .quizType{
+            .MuiPaper-root{
+                margin-bottom: 10px;
+            }
         }
+        .title{
+            margin: 20px 0;
+            font-weight: bolder;
+            font-size: large;
+        }
+    }
+    .userDetailsWrap {
+        margin-top: 20px;
+
+
+        .userDetailBorder {
+            border-radius: 4px;
+            padding: 10px;
+            border: 2px solid rgb(100, 147, 228);
+            font-family: 'sans-serif';
+            .userDetail {
+                background-color: rgb(221, 238, 221);
+                font-size: 1.2em;
+                font-weight: bolder;
+                padding: 5px;
+                text-align: center;
+
+            }
+        }
+
+        
     }
 
 }

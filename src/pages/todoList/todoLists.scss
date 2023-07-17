@@ -2,7 +2,7 @@
     width: 500px;
     margin: 20px auto;
 
-    .css-g28sfz-MuiListItem-root>.MuiListItemButton-root {
+    .MuiListItem-root > .MuiListItemButton-root {
         padding-right: 0px;
     }
 
@@ -39,7 +39,22 @@
             cursor: pointer;
         }
     }
+    .searchWrap{ 
+        .taskOperation{
+            input {
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                flex: 1;
+                margin: 0 10px;
+            }
+            .taskStatus{
+                border: 2px solid rgb(47, 145, 201);
+                border-radius: 10px;
+            }
+        }
 
+    }
     .taskList {
         background-color: #eee;
         margin-top: 20px;

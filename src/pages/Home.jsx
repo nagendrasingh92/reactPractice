@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import './home.css'
+
 import developer from "../assets/image/developer.jpg"
 import bootstrapIcon from "../assets/image/bootstrapIcon.svg"
 import calculator from "../assets/image/calculator.jpg"
@@ -23,9 +24,8 @@ import contractImage from "../assets/image/contractPage.jpg"
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { CONSTANTS } from "../helper/constants/constants"
-
+import TypeWriter from 'typewriter-effect';
 const { BASEURL } = CONSTANTS;
-
 function Home() {
     const { authenticateUser } = useSelector((state) => state.authenticate);
     const navigate = useNavigate();
@@ -142,12 +142,29 @@ function Home() {
             <div className="sectionTwo" id="about">
                 <div className="intro">
                 
-                    <div>Hi<span className="wave" role="img" aria-labelledby="wave">
+                    <div>Hi There! <span className="wave" role="img" aria-labelledby="wave">
                   👋🏻
                 </span>,</div>
-                    <div>My name is </div>
-                    <div><span className="name">Nagendra Singh Chauhan</span></div>
-                    <div>I am a web developer.</div>
+                    <div></div>
+                    <div><span>I'M </span><span className="name">Nagendra Singh Chauhan</span></div>
+                    <TypeWriter 
+                    options={{
+                        strings: [
+                            'Front-End developer.',
+                        ],
+                        autoStart: true,
+                        loop: true,
+                        deleteSpeed: 50,
+                    }}
+                        // onInit={ (typewriter) => {
+                        //     typewriter
+                        //         .typeString('Front-End developer.')
+                        //         .pauseFor(1000)
+                        //         .deleteAll()
+                        //         .typeString('Front-End developer.')
+                        //         .start();
+                        // }}
+                    />
                 </div>
                 <div className="developerImage">
                     <div className="imageWrap">

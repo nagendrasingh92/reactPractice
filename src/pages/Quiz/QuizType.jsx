@@ -7,13 +7,11 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 
 
 function QuizType() {
     const navigate = useNavigate();
-    const { authenticateUser } = useSelector((state) => state.authenticate);
     const [expanded, setExpanded] = useState('');
     const [slectedQuiz, setSlectedQuiz] = useState(null);
     const category = [
@@ -88,13 +86,7 @@ function QuizType() {
         }
     }
     return (
-        <div className='quizDashboardWrap'>
-            <div className='userDetailsWrap'>
-                <div className='userDetail'>User Details</div>
-                <div>Username: {authenticateUser.name}</div>
-                <div>Email-Id: {authenticateUser.email}</div>
-            </div>
-            
+        <div className='quizType'>
             {category.length > 0 && category.map((item) => {
                 return (
                     <div>

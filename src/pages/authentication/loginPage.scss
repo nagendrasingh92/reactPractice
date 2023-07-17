@@ -1,0 +1,38 @@
+.loginPageWrap {
+    text-align: center;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+  
+    .pageContent {
+      border-radius: 10px;
+      border: 2px solid grey;
+      width: 50%;
+      margin: auto;
+      text-align: center;
+      padding: 20px;
+  
+      .textFieldWrap {
+        margin: 10px;
+      }
+  
+      .rememberMe input {
+        width: auto;
+      }
+  
+      .iconWrap {
+        .icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          color: rgb(246, 242, 242);
+          width: 40px;
+          height: 40px;
+          background-color: red;
+          margin: auto;
+        }
+      }
+    }
+  }
+  

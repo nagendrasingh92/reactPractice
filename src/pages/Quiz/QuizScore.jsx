@@ -1,5 +1,4 @@
-
-import { useSelector } from 'react-redux';
+ import { useSelector } from 'react-redux';
 import './quizScore.scss';
 import Table from '@mui/material/Table';
 import Button from '@mui/material/Button';
@@ -9,14 +8,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 
 function QuizScore() {
     const { quizResult } = useSelector((state) => state.quiz);
     const { quizData } = useSelector((state) => state.quiz);
 
-    console.log('que', quizData)
     return (
         <div className='scoreboarderWrap'>
             <div className='marginForAll'>
