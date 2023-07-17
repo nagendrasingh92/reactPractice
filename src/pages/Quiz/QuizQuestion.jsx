@@ -3,14 +3,15 @@ import { useState, useEffect } from 'react';
 import { Button } from "@material-ui/core";
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { update, updateUserData, updateQuizScore} from '../../redux/slices/quiz/quizSlice';
+import { update, updateUserData, updateQuizScore } from '../../redux/slices/quiz/quizSlice';
 
 import QuestionData from './QuestionData';
 import './quizQuestion.scss'
+import Timer from '../../components/Timer';
 //import { quizConstants } from '../../store/reducers/quiz/actions'
 
 function QuizQuestion() {
-    const {authenticateUser} = useSelector((state) => state.authenticate);
+    const { authenticateUser } = useSelector((state) => state.authenticate);
     // let t1 = useSelector((state) => state.quiz);
     const { quizUserData } = useSelector((state) => state.quiz);
     const dispatch = useDispatch();
@@ -21,18 +22,22 @@ function QuizQuestion() {
 
 
     useEffect(() => {
-        let questionList = QuestionData.filter((item) => item.categoryId === parseInt(params.id) && item.levelId === parseInt(params.subId))
+        let questionList = QuestionData.filter(
+            (item) =>
+                item.categoryId === parseInt(params.id) &&
+                item.levelId === parseInt(params.subId)
+        );
         setQuizList(questionList);
     }, [params.id, params.subId]);
 
     const handleOption = (selectedOp) => {
         let tempQ = [...quizList];
+        console.log('tempQ',tempQ);
         tempQ[currentQuestion].userAns = selectedOp;
         setQuizList(tempQ);
     }
 
     const handleOperation = (type) => {
-        debugger;
         switch (type) {
             case 'previous': {
                 if (currentQuestion > 0) {
@@ -50,7 +55,7 @@ function QuizQuestion() {
             case 'submit': {
                 let score = 0;
                 quizList.forEach((item) => {
-                    if (item.userAns === item.correctAns){
+                    if (item.userAns === item.correctAns) {
                         score += 1;
                     }
                 });
@@ -64,30 +69,30 @@ function QuizQuestion() {
                 };
 
                 let tempUserData = [...quizUserData];
-                let tempUserQuizObj = tempUserData.find((item) => ( 
-                    (item.userId === authenticateUser.id) && 
-                    (item.categoryId === params.id) && 
+                let tempUserQuizObj = tempUserData.find((item) => (
+                    (item.userId === authenticateUser.id) &&
+                    (item.categoryId === params.id) &&
                     (item.levelId === params.subId))
                 )
 
-                if(tempUserQuizObj && tempUserQuizObj.userId && tempUserQuizObj.score > score){ 
+                if (tempUserQuizObj && tempUserQuizObj.userId && tempUserQuizObj.score > score) {
                     tempUserData.forEach((item) => {
-                        if((item.userId === authenticateUser.id) && 
-                        (item.categoryId === params.id) && 
-                        (item.levelId === params.subId)){
+                        if ((item.userId === authenticateUser.id) &&
+                            (item.categoryId === params.id) &&
+                            (item.levelId === params.subId)) {
                             item.score = score
                         }
                         return item;
                     })
                 } else if (!tempUserQuizObj) {
-                    tempUserData.push(quizScoreData)
+                    tempUserData.push(quizScoreData);
                 }
                 dispatch(update(quizList));
                 dispatch(updateUserData(tempUserData));
                 dispatch(updateQuizScore(quizScoreData));
                 setQuizList([]);
-                quizScoreData={};
-                navigate(`/quizDashboard/score`)
+                quizScoreData = {};
+                navigate(`/quizDashboard/score`);
                 break;
             }
             default:
@@ -123,6 +128,7 @@ function QuizQuestion() {
 
     return (
         <div className='quizWrap'>
+            <Timer totalTime={10} onTimeComplete={handleOperation.bind(null, 'submit')} />
             <div className='questionContainer'>
                 {
                     quizList.filter((item, index) => index === currentQuestion).map((item) => {

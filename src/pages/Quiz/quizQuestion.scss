@@ -9,6 +9,15 @@
     justify-content: center;
     min-height: 25em;
     font-weight: bold;
+    position: relative;
+
+    .timer {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 18px;
+        font-weight: bold;
+    }
 
     .questionContainer {
         width: 60%;
@@ -20,14 +29,17 @@
 
         .questionWrap {
             margin: 10px;
-            .questionTitle{
+
+            .questionTitle {
                 text-align: left;
                 margin: 10px;
             }
+
             .optionsWrap {
                 display: flex;
                 flex-wrap: wrap;
                 text-align: left;
+
                 .optionWrap {
                     flex: 1 0 40%;
                     margin: 10px;

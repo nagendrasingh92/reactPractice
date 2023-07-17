@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import TextField from '@mui/material/TextField';
 import { validationSchema } from '../../helper/constants/validation';
-import './loginPage.css';
-//import { authenticateConstants } from '../../store/reducers/authenticate/actions'
+import Button from '@mui/material/Button';
+
+import './loginPage.scss';
 import { ROUTE_PATH } from '../../helper/constants/route';
 
 const { HOME } = ROUTE_PATH;
@@ -33,11 +34,13 @@ function LoginPage() {
 
     const handleLogin = (values) => {
         let userInfo = values;
-        let temp = userData.find((item) => item.email === userInfo.email && item.password === userInfo.password);
-        console.log('temp', userData)
+        let temp = userData.find(
+            item =>
+                item.email === userInfo.email && item.password === userInfo.password
+        );
         if (temp) {
             dispatch(loggedInUserData(temp))
-            if(searchParams.get("redirect")){
+            if (searchParams.get("redirect")) {
                 navigate(searchParams.get("redirect"))
             } else {
                 navigate(HOME)
@@ -48,8 +51,13 @@ function LoginPage() {
     }
 
     const guestLogin = () => {
-        formik.setFieldValue("email", 'guest@g.com');
-        formik.setFieldValue("password", '12345678');
+        const guestCredentials = {
+            email: 'guest@g.com',
+            password: '12345678',
+        };
+        handleLogin(guestCredentials);
+        // formik.setFieldValue("email", 'guest@g.com');
+        // formik.setFieldValue("password", '12345678');
     }
 
     return (
@@ -58,8 +66,8 @@ function LoginPage() {
 
                 <div className="iconWrap">
                     <i className="fa-solid fa-lock icon"></i>
+                    LOGIN
                 </div>
-                LOGIN
                 <div className="textFieldWrap">
                     <TextField
                         size="small"
@@ -90,14 +98,16 @@ function LoginPage() {
                     Remember Me.
                 </div>
                 <div className="signInbttn">
-                    <button type="submit"> SIGN IN</button>
+                <Button variant="contained" className="taskButton" type="submit">SIGN IN</Button>
                 </div>
                 <div className="singUp">
                     Don't have an account?
                     <Link to='/signUpPage'>Sign Up</Link>
                 </div>
                 <div>
-                Continue as <button type='button' onClick={()=> guestLogin()} >Guest</button>
+                
+
+                    Continue as <Button variant="contained" className="taskButton" onClick={() => guestLogin()}>Guest</Button>
                 </div>
             </form>
 

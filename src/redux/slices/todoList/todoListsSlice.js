@@ -6,8 +6,26 @@ const todoListsSlice = createSlice({
         todoData: [],
     },
     reducers: {
+        getUserTask: (state, action) => {
+            return state.todoData.filter((item) => item.userId === action.payload);
+        },
         updateTodoData: (state, action) => {
-            state.todoData = action.payload;
+            debugger;
+            let data = action.payload;
+            console.log('data',data);
+            let isNew = true;
+            let task = state.todoData?.map((item) => {
+                if(item.id === data.id ){
+                    item = data;
+                    isNew = false
+                };
+                return item
+            })
+
+            if(isNew){
+                task.push(data);
+            }
+            state.todoData = task
         },
     },
 });

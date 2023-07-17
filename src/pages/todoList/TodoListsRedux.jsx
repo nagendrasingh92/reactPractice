@@ -11,10 +11,14 @@ import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import './todoLists.scss';
+import { useEffect } from "react";
 
 function TodoApp() {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.todo.todoData);
+  const todoData = useSelector((state) => state.todo.todoData);
+  const { authenticateUser } = useSelector((state) => state.authenticate);
+
+
 
   const [userInput, setUserInput] = useState('');
   const [taskContainer, setTaskContainer] = useState([]);
@@ -24,6 +28,16 @@ function TodoApp() {
 
   const [isEdit, setIsEdit] = useState(false);
   const [checked, setChecked] = useState([0]);
+
+
+  useEffect(() => {
+    const userTasks = todoData.filter(
+      (task) => task.userId === authenticateUser.id
+    );
+    setTaskContainer([...userTasks]);
+    setTaskSearchFilter([...userTasks])
+
+  }, [userInput]);
 
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
@@ -43,39 +57,50 @@ function TodoApp() {
       }
       return item
     })
-    setTaskContainer(tempTaskList)
-    setTaskSearchFilter(tempTaskList)
+    dispatch(updateTodoData(tempTaskList));
+    setTaskContainer(tempTaskList);
+    setTaskSearchFilter(tempTaskList);
   };
 
   const handleChange = (value) => {
-    dispatch(updateTodoData(value));
     setUserInput(value)
   }
 
   const handleTask = () => {
-    let similarTask = taskContainer.filter((item) => item.taskText.toLowerCase() === userInput.toLowerCase());
+    let similarTask = taskContainer.filter(
+      (item) => item.taskText.toLowerCase() === userInput.toLowerCase()
+    );
     if (userInput === '') {
+
       alert('please enter the task')
-    } if (isEdit) {
+
+    } else if (isEdit) {
+
       let tempTaskList = [...taskContainer];
-      tempTaskList = tempTaskList.map((item) => {
-        if (item.isEdit) {
-          item.taskText = userInput;
-          item.isEdit = false;
-        }
-        return item;
-      })
-      setIsEdit(false)
-      setTaskContainer(tempTaskList)
-      setTaskSearchFilter(tempTaskList)
+      let editObj = tempTaskList.find((item) => item.isEdit)
+      editObj.taskText = userInput;
+      editObj.isEdit = false;
+      setIsEdit(false);
+
+      dispatch(updateTodoData(editObj));
+      setTaskContainer(tempTaskList);
+      setTaskSearchFilter(tempTaskList);
+
     } else if (similarTask && !similarTask.length) {
+
       let Id = (new Date().getTime()).toString(36)
-      let taskTemp = [...taskContainer, { id: Id, taskText: userInput, isEdit: false, editTask: userInput, status: 'pending' }];
-      console.log('taskTemp', taskTemp);
-      setTaskContainer(taskTemp)
-      setTaskSearchFilter(taskTemp)
+      let taskTemp = {
+        id: Id,
+        taskText: userInput,
+        isEdit: false,
+        editTask: userInput,
+        status: 'pending',
+        userId: authenticateUser?.id,
+      };
+      dispatch(updateTodoData(taskTemp));
+      // setTaskContainer(taskTemp);
+      // setTaskSearchFilter(taskTemp);
       taskTemp = '';
-      console.log('similarTask', similarTask.length);
     } else {
       alert('Task Already exists.')
     }
@@ -85,7 +110,6 @@ function TodoApp() {
   const handleEdit = (id) => {
     setIsEdit(true)
     let tempTaskList = [...taskContainer];
-    console.log('value', id)
     let editTemp = tempTaskList.map((item) => {
       if (item.id === id) {
         item.isEdit = true;
@@ -93,8 +117,10 @@ function TodoApp() {
       }
       return item
     })
-    setTaskContainer(editTemp)
-    setTaskSearchFilter(editTemp)
+
+    dispatch(updateTodoData([...editTemp]));
+    setTaskContainer([...editTemp])
+    setTaskSearchFilter([...editTemp])
   }
 
   const handleDelete = (id) => {
@@ -103,8 +129,10 @@ function TodoApp() {
         item.id !== id
       )
     })
-    setTaskContainer(deleteTemp)
-    setTaskSearchFilter(deleteTemp)
+
+    dispatch(updateTodoData(deleteTemp));
+    setTaskContainer(deleteTemp);
+    setTaskSearchFilter(deleteTemp);
   }
 
   const handleTaskCancel = () => {
@@ -114,7 +142,6 @@ function TodoApp() {
 
   const handleSearchValue = (event) => {
     setFilterVal(event.target.value)
-    console.log('search', event.target.value)
   }
 
   const handleFilter = () => {
@@ -122,12 +149,12 @@ function TodoApp() {
       setTaskSearchFilter(taskContainer)
     } else {
       const filterResult = taskContainer.filter(item => item.taskText.toLowerCase().includes(filterVal.toLowerCase()))
-      setTaskSearchFilter(filterResult)
+      console.log('filterResult', filterResult)
+      setTaskSearchFilter([...filterResult])
     }
   }
 
   const handleStatusFilter = (event) => {
-    console.log(event.target.value)
     let filter = event.target.value;
     setTaskStatus(filter)
     taskContainer.filter((item) => (filter !== 'all' ? item.status === filter : true))
@@ -147,15 +174,19 @@ function TodoApp() {
           placeholder="New Task"
         />
         <Stack spacing={2} direction="row">
-          <Button variant="contained" className="taskButton" onClick={() => handleTask()}>{isEdit ? 'Save' : 'Add'}</Button>
+          <Button
+            variant="contained"
+            className="taskButton"
+            onClick={() => handleTask()}
+          >
+            {isEdit ? 'Save' : 'Add'}
+          </Button>
           {isEdit ? (<Button variant="contained" className="taskButton" onClick={() => handleTaskCancel()}>{isEdit ? 'Cancle' : ''}</Button>) : ''}
         </Stack>
       </div>
       <div className="searchWrap">
         <div className="taskOperation">
-          <div className="searchBttn" onClick={() => handleFilter()}>
-            Search by task name
-          </div>
+          <Button variant="contained" className="taskButton" onClick={() => handleFilter()}>Search task</Button>
           <input
             placeholder="search"
             className="searchBarInput"
@@ -163,48 +194,47 @@ function TodoApp() {
             value={filterVal}
             onChange={(event) => handleSearchValue(event)}
           />
+          <select className="taskStatus" name="taskStatus" value={taskStatus} onChange={(event) => handleStatusFilter(event)}>
+            <option value="all">All</option>
+            <option value="pending">Pending</option>
+            <option value="completed">Completed</option>
+          </select>
         </div>
-      </div>
-      <div className="taskOperation">
-        <div>
-          Search by status
-        </div>
-        <select name="taskStatus" value={taskStatus} onChange={(event) => handleStatusFilter(event)}>
-          <option value="all">All</option>
-          <option value="pending">Pending</option>
-          <option value="completed">Completed</option>
-        </select>
       </div>
       <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-        {taskSearchFilter.filter((item) => (taskStatus !== 'all' ? item.status === taskStatus : true)).map((value, index) => {
-          const labelId = `checkbox-list-label-${value.index}`;
-          return (
-            <ListItem
-              key={index}
-              secondaryAction={
-                <IconButton edge="end" aria-label="comments">
-                </IconButton>
-              }
-              className="taskList"
-              disablePadding
-            >
-              <ListItemButton role={undefined} onClick={handleToggle(value, value.id)} dense>
-                <ListItemIcon>
-                  <Checkbox
-                    edge="start"
-                    checked={checked.indexOf(value) !== -1}
-                    tabIndex={-1}
-                    disableRipple
-                    inputProps={{ 'aria-labelledby': labelId }}
-                  />
-                </ListItemIcon>
-                <ListItemText id={labelId} primary={value.taskText} />
-              </ListItemButton>
-              <Button variant="contained" className="taskButton" onClick={() => handleEdit(value.id)}>Edit</Button>
-              <Button variant="contained" className="taskButton" onClick={() => handleDelete(value.id)}>Delete</Button>
-            </ListItem>
-          );
-        })}
+        {taskSearchFilter
+          .filter((item) =>
+          (taskStatus !== 'all' ? item.status === taskStatus : true
+          )
+          ).map((value, index) => {
+            const labelId = `checkbox-list-label-${value.index}`;
+            return (
+              <ListItem
+                key={index}
+                secondaryAction={
+                  <IconButton edge="end" aria-label="comments">
+                  </IconButton>
+                }
+                className="taskList"
+                disablePadding
+              >
+                <ListItemButton role={undefined} onClick={handleToggle(value, value.id)} dense>
+                  <ListItemIcon>
+                    <Checkbox
+                      edge="start"
+                      checked={checked.indexOf(value) !== -1}
+                      tabIndex={-1}
+                      disableRipple
+                      inputProps={{ 'aria-labelledby': labelId }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText id={labelId} primary={value.taskText} />
+                </ListItemButton>
+                <Button variant="contained" className="taskButton" onClick={() => handleEdit(value.id)}>Edit</Button>
+                <Button variant="contained" className="taskButton" onClick={() => handleDelete(value.id)}>Delete</Button>
+              </ListItem>
+            );
+          })}
       </List>
     </div>
   );
