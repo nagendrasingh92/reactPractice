@@ -7,17 +7,34 @@
     .pageContent {
       border-radius: 10px;
       border: 2px solid grey;
-      width: 50%;
+      max-width: 600px;
+      min-width: 400px;
       margin: auto;
       text-align: center;
       padding: 20px;
   
       .textFieldWrap {
-        margin: 10px;
+        padding: 10px 0;
+        width: 100%;
       }
   
-      .rememberMe input {
-        width: auto;
+      .rememberMe {
+        display: flex;
+        padding: 10px 0;
+        input {
+          margin-right: 10px;
+         width: auto;
+        }
+      }
+
+      .singUp{
+        padding-top: 10px;
+        a {
+          padding-left: 10px;
+        }
+      }
+      .seprator{
+        padding: 10px 0;
       }
   
       .iconWrap {

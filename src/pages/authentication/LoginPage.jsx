@@ -70,7 +70,7 @@ function LoginPage() {
                 </div>
                 <div className="textFieldWrap">
                     <TextField
-                        size="small"
+                        fullWidth
                         id="email"
                         name="email"
                         label="Email"
@@ -82,7 +82,7 @@ function LoginPage() {
                 </div>
                 <div className="textFieldWrap">
                     <TextField
-                        size="small"
+                        fullWidth
                         id="password"
                         name="password"
                         label="Password"
@@ -101,13 +101,12 @@ function LoginPage() {
                 <Button variant="contained" className="taskButton" type="submit">SIGN IN</Button>
                 </div>
                 <div className="singUp">
-                    Don't have an account?
+                    Don't have an account ?
                     <Link to='/signUpPage'>Sign Up</Link>
                 </div>
+                <div className='seprator'>or</div>
                 <div>
-                
-
-                    Continue as <Button variant="contained" className="taskButton" onClick={() => guestLogin()}>Guest</Button>
+                    Continue as <Button variant="contained" size="small" color="success" className="taskButton" onClick={() => guestLogin()}>Guest</Button>
                 </div>
             </form>
 
